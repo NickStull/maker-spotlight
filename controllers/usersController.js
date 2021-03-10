@@ -3,7 +3,7 @@
 // Defining methods for the postsController
 module.exports = {
   findAll: function() {
-    console.log("Backend is Connected!!!")
+    console.log("Backend is Connected!!!");
   }
 };
 
