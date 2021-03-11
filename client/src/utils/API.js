@@ -4,6 +4,10 @@ export default {
   // Gets all posts
   getUsers: function() {
     return axios.get("/api/users");
+  },
+  // Saves new user to db
+  saveUser: function(postData) {
+    return axios.post("/api/users", postData);
   }
 };
 
@@ -20,6 +24,6 @@ export default {
 //     return axios.delete("/api/users/" + id);
 //   },
 //   // Saves a post to the database
-//   savePost: function(postData) {
+//   saveUser: function(postData) {
 //     return axios.post("/api/users", postData);
 //   }
