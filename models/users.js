@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UsersSchema = new Schema({
+  userId: { 
+    type: String,
+    trim: true, 
+    required: true
+  },
+
   firstName: { 
       type: String,
       trim: true, 
@@ -22,17 +28,6 @@ const UsersSchema = new Schema({
       required: [true, "Please enter a valid email address!"]
   },
 
-  password: {
-    type: String,
-    trim: true,
-    required: [true, "Please enter a password!"]
-  },
-
-  maker: {
-    type: Boolean,
-    default: false
-  },
-
   admin: {
     type: Boolean,
     default: false
@@ -45,11 +40,6 @@ const UsersSchema = new Schema({
   },
 
   wantTo: {
-    type: Boolean,
-    default: false
-  },
-
-  featured: {
     type: Boolean,
     default: false
   },
@@ -91,14 +81,8 @@ const UsersSchema = new Schema({
     type: String,
     trim: true,
     default: ""
-  },
+  }
 
-  pictures: [
-      {
-        type: String,
-        trim: true
-      }
-  ]
 });
 
 const Users = mongoose.model("Users", UsersSchema);
