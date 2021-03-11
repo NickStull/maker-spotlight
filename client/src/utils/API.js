@@ -2,9 +2,13 @@ import axios from "axios";
 
 export default {
   // Gets all posts
-  getUsers: function() {
+  getUsers: function () {
     return axios.get("/api/users");
-  }
+  },
+
+  imgur: function () {
+    return axios.get("/api/imgur");
+  },
 };
 
 // // Gets all posts
