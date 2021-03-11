@@ -2,12 +2,16 @@ import axios from "axios";
 
 export default {
   // Gets all posts
-  getUsers: function() {
+  getUsers: function () {
     return axios.get("/api/users");
   },
   // Saves new user to db
   saveUser: function(postData) {
     return axios.post("/api/users", postData);
+  },
+
+  imgur: function () {
+    return axios.get("/api/imgur");
   }
 };
 
