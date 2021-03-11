@@ -27,9 +27,9 @@ const Test = () => {
       <p>Check terminal console logs for "Backend is Connected!!!"</p>
       {dataState
         ?
-          <p>{dataState.data[0].firstName}</p>
+        <p>{dataState.data[0].firstName}</p>
         :
-          <p>No data</p>
+        <p>No data</p>
       }
     </div>
   )
