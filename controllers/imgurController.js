@@ -2,8 +2,7 @@
 const axios = require("axios");
 
 module.exports = {
-  imgur: function () {
-    console.log("imgur hit baby!");
+  imgur: function (req, res) {
     axios
       .get("https://api.imgur.com/3/image/W1DJ2DE", {
         headers: {
@@ -11,8 +10,8 @@ module.exports = {
         },
       })
       .then((results) => {
-        console.log("imgur", results);
-        res.json(results.data);
+        console.log("imgur", results.data.data.link);
+        res.json(results.data.data.link);
       })
       .catch((err) => console.log("error fo sho", err));
   },

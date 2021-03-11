@@ -5,6 +5,10 @@ export default {
   getUsers: function () {
     return axios.get("/api/users");
   },
+
+  imgur: function () {
+    return axios.get("/api/imgur");
+  },
 };
 
 // // Gets all posts

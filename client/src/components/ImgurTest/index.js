@@ -3,28 +3,25 @@ import API from "../../utils/API";
 
 const Imgur = () => {
   const [dataState, setDataState] = useState();
-  API.imgur()
-    .then((results) => {
-      console.log("imgur", results);
-      // setDataState(results);
-      // console.log("dataState", dataState);
-    })
-    .catch((err) => console.log("error fo sho", err));
-  // useEffect(() => {
-  //   API.imgur()
-  //     .then((results) => {
-  //       console.log("imgur", results);
-  //       // setDataState(results);
-  //       // console.log("dataState", dataState);
-  //     })
-  //     .catch((err) => console.log("error fo sho", err));
-  // }, []);
-
+  // API.imgur()
+  //   .then((results) => {
+  //     console.log("imgur", results);
+  //     // setDataState(results);
+  //     // console.log("dataState", dataState);
+  //   })
+  //   .catch((err) => console.log("error fo sho", err));
+  useEffect(() => {
+    API.imgur()
+      .then((results) => {
+        console.log("imgur front end", results);
+        setDataState(results.data);
+      })
+      .catch((err) => console.log("error fo sho", err));
+  }, []);
+  // {dataState.data.data.link}
   return (
     <div>
-      <h1>Test Heading</h1>
-      <p>Check terminal console logs for "Backend is Connected!!!"</p>
-      {dataState ? <p>{dataState.data[0].firstName}</p> : <p>No data</p>}
+      <img src={dataState} alt="photo" />
     </div>
   );
 };
