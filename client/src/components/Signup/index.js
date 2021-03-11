@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import ReactDom from 'react-dom'
+import { useAuth } from '../../utils/contexts/AuthContext'
 
 const styles = {
   modal: {
@@ -23,6 +24,32 @@ const styles = {
 }
 
 const Signup = ({ open, onClose }) => {
+  
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { signup } = useAuth()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if(passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError('Passwords do not match')
+    }
+
+    try {
+      setError('')
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+    } catch {
+      setError('Failed to create an account')
+    }
+
+    setLoading(false)
+  }
+
   if (!open) return null
 
   return ReactDom.createPortal(
@@ -30,7 +57,35 @@ const Signup = ({ open, onClose }) => {
       <div style={styles.overlay} />
       <div style={styles.modal}>
         <button onClick={onClose}>Close Modal</button>
-        <p>This is a modal</p>
+        {error && <div>{error}</div>}
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            ref={emailRef}
+            required
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            ref={passwordRef}
+            required
+          />
+          <input
+            name="passwordConfirm"
+            type="password"
+            placeholder="Confirm Password"
+            ref={passwordConfirmRef}
+            required
+          />
+          <button 
+            disabled={loading}
+            type="submit">
+              Submit
+            </button>
+        </form>
       </div>
     </>,
     document.getElementById('portal')
