@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react'
-import ReactDom from 'react-dom'
-import { useAuth } from '../../utils/contexts/AuthContext'
+import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../utils/contexts/AuthContext';
+import Home from '../Home';
 
 const styles = {
   modal: {
@@ -23,7 +24,7 @@ const styles = {
   }
 }
 
-const Signup = ({ open, onClose }) => {
+const Signup = () => {
   
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -50,13 +51,16 @@ const Signup = ({ open, onClose }) => {
     setLoading(false)
   }
 
-  if (!open) return null
-
-  return ReactDom.createPortal(
+  return (
     <>
+      <Home />
       <div style={styles.overlay} />
       <div style={styles.modal}>
-        <button onClick={onClose}>Close Modal</button>
+        <button>
+          <Link to='/'>
+            Close Modal
+          </Link>
+        </button>
         {error && <div>{error}</div>}
         <form className="form" onSubmit={handleSubmit}>
           <input
@@ -87,8 +91,7 @@ const Signup = ({ open, onClose }) => {
             </button>
         </form>
       </div>
-    </>,
-    document.getElementById('portal')
+    </>
   )
 }
 
