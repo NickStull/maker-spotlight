@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../utils/contexts/AuthContext';
 import Home from '../Home';
-
 const styles = {
   modal: {
     position: 'fixed',
@@ -23,23 +22,18 @@ const styles = {
     zIndex: 1000
   }
 }
-
 const Signup = () => {
-  
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { signup } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    if(passwordRef.current.value !== passwordConfirmRef.current.value) {
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError('Passwords do not match')
     }
-
     try {
       setError('')
       setLoading(true)
@@ -47,10 +41,8 @@ const Signup = () => {
     } catch {
       setError('Failed to create an account')
     }
-
     setLoading(false)
   }
-
   return (
     <>
       <Home />
@@ -84,15 +76,14 @@ const Signup = () => {
             ref={passwordConfirmRef}
             required
           />
-          <button 
+          <button
             disabled={loading}
             type="submit">
-              Submit
+            Submit
             </button>
         </form>
       </div>
     </>
   )
 }
-
 export default Signup;
