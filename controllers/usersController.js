@@ -1,8 +1,9 @@
-// const db = require("../models");
+const db = require("../models");
 
 // Defining methods for the postsController
 module.exports = {
   findAll: function() {
+    // db.Users.find
     console.log("Backend is Connected!!!");
   }
 };
