@@ -1,20 +1,20 @@
 @use '../../styles/variables';
 
+
 .pageHeader {
 	height: 70px;
-	background-color: $primary;
-	color: $dark;
+	background-color: brown;
+	color: white;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 	padding: 1em 2em;
-
-	div {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		border: 2px solid black;
-	}
 }
-//test
+
+.headerDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	color: white;
+}

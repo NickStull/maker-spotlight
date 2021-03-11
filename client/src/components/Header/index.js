@@ -26,7 +26,7 @@ const Header = () => {
 			<header className='pageHeader'>
 				{loggedInState ?
 					<>
-						<div>
+						<div className='headerDiv'>
 							<h3>Meet Your Maker</h3>
 							<h1>{`${makerResults[0].firstName} ${makerResults[0].lastName}`}</h1>
 						</div>

@@ -9,16 +9,15 @@ const HeaderDropdown = () => {
 		dropdown === 'closed' ?
 			setDropdownState('open') :
 			setDropdownState('closed');
-		alert('working');
 	}
 
 
 	return (
 		<div className="dropdown">
-			<span onClick={handleDropdownClick}>Mouse over me</span>
-			<div className={dropdown === 'closed' ? "dropdown-content" : "dropdown-content show"}>
-				<p>Hello World! <br></br>Additional Content</p>
-			</div>
+			<span onClick={handleDropdownClick}>Click here to open</span>
+			{/* <div className={dropdown === 'closed' ? "hide" : "dropdown-content"}> */}
+			<div className={dropdown === 'closed' ? "hide" : "dropdown-content"}>Hello World! Additional Content</div>
+			{/* </div> */}
 		</div>
 	)
 }
