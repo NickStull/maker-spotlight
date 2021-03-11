@@ -11,10 +11,12 @@ const HeaderDropdown = () => {
 			setDropdownState('closed');
 	}
 
+	let userResults = [{ firstName: 'Oscar' }]
+
 
 	return (
 		<div className="dropdown">
-			<span onClick={handleDropdownClick}>Click here to open</span>
+			<span onClick={handleDropdownClick}>Welcome, {userResults.firstName} you rascal</span>
 			{/* <div className={dropdown === 'closed' ? "hide" : "dropdown-content"}> */}
 			<div className={dropdown === 'closed' ? "hide" : "dropdown-content"}>Hello World! Additional Content</div>
 			{/* </div> */}
