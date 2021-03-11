@@ -1,12 +1,18 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 import React from 'react'
 import ReactDom from 'react-dom'
 =======
+=======
+>>>>>>> 151fdd012172179b2d6cf9b0ccc31c6c67c4b90a
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../utils/contexts/AuthContext';
 import Home from '../Home';
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> 151fdd012172179b2d6cf9b0ccc31c6c67c4b90a
 
 const styles = {
   modal: {
@@ -29,17 +35,80 @@ const styles = {
   }
 }
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 const Signup = ({ open, onClose }) => {
   if (!open) return null
+=======
+const Signup = () => {
+  
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { signup } = useAuth()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+>>>>>>> 151fdd012172179b2d6cf9b0ccc31c6c67c4b90a
 
-  return ReactDom.createPortal(
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if(passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError('Passwords do not match')
+    }
+
+    try {
+      setError('')
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+    } catch {
+      setError('Failed to create an account')
+    }
+
+    setLoading(false)
+  }
+
+  return (
     <>
+      <Home />
       <div style={styles.overlay} />
       <div style={styles.modal}>
-        <button onClick={onClose}>Close Modal</button>
-        <p>This is a modal</p>
+        <button>
+          <Link to='/'>
+            Close Modal
+          </Link>
+        </button>
+        {error && <div>{error}</div>}
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            ref={emailRef}
+            required
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            ref={passwordRef}
+            required
+          />
+          <input
+            name="passwordConfirm"
+            type="password"
+            placeholder="Confirm Password"
+            ref={passwordConfirmRef}
+            required
+          />
+          <button 
+            disabled={loading}
+            type="submit">
+              Submit
+            </button>
+        </form>
       </div>
+<<<<<<< HEAD
     </>,
     document.getElementById('portal')
 =======
@@ -112,6 +181,9 @@ const Signup = () => {
       </div>
     </>
 >>>>>>> Stashed changes
+=======
+    </>
+>>>>>>> 151fdd012172179b2d6cf9b0ccc31c6c67c4b90a
   )
 }
 
