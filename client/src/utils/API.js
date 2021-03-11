@@ -10,6 +10,10 @@ export default {
     return axios.post("/api/users", postData);
   },
 
+  getUser: function(id) {
+    return axios.get("/api/users/" + id);
+  },
+
   imgur: function () {
     return axios.get("/api/imgur");
   }
@@ -20,14 +24,7 @@ export default {
 //     return axios.get("/api/users");
 //   },
 //   // Gets the post with the given id
-//   getPost: function(id) {
+//   getUser: function(id) {
 //     return axios.get("/api/users/" + id);
 //   },
-//   // Deletes the post with the given id
-//   deletePost: function(id) {
-//     return axios.delete("/api/users/" + id);
-//   },
-//   // Saves a post to the database
-//   saveUser: function(postData) {
-//     return axios.post("/api/users", postData);
-//   }
+
