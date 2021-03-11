@@ -15,9 +15,15 @@ const Test = () => {
       .catch(err => console.log(err));
   }, []);
 
+  const styles = {
+    heading: {
+      backgroundColor: 'red'
+    }
+  }
+
   return (
     <div>
-      <h1>Test Heading</h1>
+      <h1 style={styles.heading}>Test Heading</h1>
       <p>Check terminal console logs for "Backend is Connected!!!"</p>
       {dataState
         ?
