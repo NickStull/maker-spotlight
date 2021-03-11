@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import API from "../../utils/API"
+import React, { useState } from "react";
+import HeaderDropdown from '../Dropdown'
 import './header.css'
 
 const Header = () => {
@@ -19,16 +19,7 @@ const Header = () => {
 		loggedInState ? setLoggedInState(false) : setLoggedInState(true);
 		console.log(loggedInState);
 	}
-	// useEffect(() => {
-	//   API.getUsers()
-	//     .then(
-	//       results => {
-	//         console.log(results);
-	//         setDataState(results);
-	//       }
-	//     )
-	//     .catch(err => console.log(err));
-	// }, []);
+
 
 	return (
 		<>
@@ -39,6 +30,7 @@ const Header = () => {
 							<h3>Meet Your Maker</h3>
 							<h1>{`${makerResults[0].firstName} ${makerResults[0].lastName}`}</h1>
 						</div>
+						<HeaderDropdown />
 						<button>Welcome<br />{`${userResults[0].firstName}`}</button>
 					</>
 					:

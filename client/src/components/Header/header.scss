@@ -1,6 +1,9 @@
+@use '../../styles/variables';
+
 .pageHeader {
 	height: 70px;
-	background-color: brown;
+	background-color: $primary;
+	color: $dark;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -11,5 +14,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		border: 2px solid black;
 	}
 }
+//test
