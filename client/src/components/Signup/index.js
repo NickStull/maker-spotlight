@@ -1,6 +1,7 @@
-import React from 'react'
-import ReactDom from 'react-dom'
-
+import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../utils/contexts/AuthContext';
+import Home from '../Home';
 const styles = {
   modal: {
     position: 'fixed',
@@ -21,20 +22,68 @@ const styles = {
     zIndex: 1000
   }
 }
-
-const Signup = ({ open, onClose }) => {
-  if (!open) return null
-
-  return ReactDom.createPortal(
+const Signup = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { signup } = useAuth()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError('Passwords do not match')
+    }
+    try {
+      setError('')
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+    } catch {
+      setError('Failed to create an account')
+    }
+    setLoading(false)
+  }
+  return (
     <>
+      <Home />
       <div style={styles.overlay} />
       <div style={styles.modal}>
-        <button onClick={onClose}>Close Modal</button>
-        <p>This is a modal</p>
+        <button>
+          <Link to='/'>
+            Close Modal
+          </Link>
+        </button>
+        {error && <div>{error}</div>}
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            ref={emailRef}
+            required
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            ref={passwordRef}
+            required
+          />
+          <input
+            name="passwordConfirm"
+            type="password"
+            placeholder="Confirm Password"
+            ref={passwordConfirmRef}
+            required
+          />
+          <button
+            disabled={loading}
+            type="submit">
+            Submit
+            </button>
+        </form>
       </div>
-    </>,
-    document.getElementById('portal')
+    </>
   )
 }
-
 export default Signup;

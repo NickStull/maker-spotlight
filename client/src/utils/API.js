@@ -1,34 +1,10 @@
 import axios from "axios";
-// import FormData from "form-data";
-// var data = new FormData();
-
-// var config = {
-//   method: "get",
-//   url: "https://api.imgur.com/3/image/W1DJ2DE",
-//   headers: {
-//     Authorization: "Client-ID 667bcb070bc5aa9",
-//     // ...data.getHeaders(),
-//   },
-//   data: data,
-// };
 
 export default {
   // Gets all posts
-  // getUsers: function () {
-  //   return
-  //   });
-  // },
-
-  imgur: function () {
-    return axios.get("/test/imgur");
+  getUsers: function () {
+    return axios.get("/api/users");
   },
-
-  // .then((res) => {
-  //   console.log("deedly dee", res.data);
-  // })
-  // .catch((error) => {
-  //   console.error("error for sure", error);
-  // });
 };
 
 // // Gets all posts
