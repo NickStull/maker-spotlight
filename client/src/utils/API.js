@@ -2,9 +2,17 @@ import axios from "axios";
 
 export default {
   // Gets all posts
-  getUsers: function() {
+  getUsers: function () {
     return axios.get("/api/users");
-  }
+  },
+
+  imgur: function () {
+    return axios.get("https://api.imgur.com/jSwDTay.jpg", {
+      headers: {
+        Authorization: `Client-ID 667bcb070bc5aa9`,
+      },
+    });
+  },
 };
 
 // // Gets all posts

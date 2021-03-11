@@ -1,10 +1,12 @@
-import './App.css';
-import Test from "./components/Test"
+import "./App.css";
+import Imgur from "./components/ImgurTest";
+import Test from "./components/Test";
 
 function App() {
   return (
     <div>
       <Test />
+      <Imgur />
     </div>
   );
 }
