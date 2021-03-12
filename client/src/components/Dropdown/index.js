@@ -1,26 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext'
 import './dropdown.css'
+import API from "../../utils/API"
 
 const HeaderDropdown = () => {
 
-	const [dropdown, setDropdownState] = useState("closed");
+  const { currentUser } = useAuth();
+  const [dropdown, setDropdownState] = useState("closed");
+  const [currentUserName, setCurrentUserName] = useState();
 
-	function handleDropdownClick() {
-		dropdown === 'closed' ?
-			setDropdownState('open') :
-			setDropdownState('closed');
-		alert('working');
-	}
+  //check to see if user is logged in via context provider
+  useEffect(() => {
+    if (currentUser) {
+      getUserName();
+    }
+  }, [currentUser])
 
+  //use firebase id to get user info from mongodb
+  const getUserName = async () => {
+    // console.log('CURRENT USER', currentUser.uid);
+    let dbResults;
+    try {
+      dbResults = await API.getUser(currentUser.uid);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setCurrentUserName(dbResults.data.firstName)
+    }
+  };
 
-	return (
-		<div className="dropdown">
-			<span onClick={handleDropdownClick}>Mouse over me</span>
-			<div className={dropdown === 'closed' ? "dropdown-content" : "dropdown-content show"}>
-				<p>Hello World! <br></br>Additional Content</p>
-			</div>
-		</div>
-	)
+  function handleDropdownClick() {
+    dropdown === 'closed' ?
+      setDropdownState('open') :
+      setDropdownState('closed');
+  }
+
+  return (
+    <div className="dropdown">
+      <span onClick={handleDropdownClick}>Welcome, {currentUserName}</span>
+      <div className={dropdown === 'closed' ? "hide" : "dropdown-content"}>
+        <button>Signout</button>
+        <button>View Account Info</button>
+      </div>
+    </div>
+  )
 }
 
 export default HeaderDropdown;
