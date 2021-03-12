@@ -8,6 +8,7 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Imgur from "./components/ImgurTest";
+import Admin from "./components/pages/Admin";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Test />
           <Header />
           <SignupButton />
-          <Imgur />
+          <Route exact path="/admin" component={Admin} />
           <Route exact path="/" component={Home} />
           <Route path="/signup" component={Signup} />
         </AuthProvider>
