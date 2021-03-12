@@ -6,11 +6,12 @@ export default {
     return axios.get("/api/users");
   },
   // Saves new user to db
-  saveUser: function(postData) {
+  saveUser: function (postData) {
     return axios.post("/api/users", postData);
   },
 
-  getUser: function(id) {
+  getUser: function (id) {
+    console.log("Axios getUser hit with ", id);
     return axios.get("/api/users/" + id);
   },
 
