@@ -4,28 +4,25 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../utils/contexts/AuthContext';
 import Home from '../Home';
 
-const Signup = () => {
+const Login = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const emailRef = useRef();
   const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
-  const { signup } = useAuth()
+  const { login } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError('Passwords do not match')
-    }
+    
     try {
       setError('')
       setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
+      await login(emailRef.current.value, passwordRef.current.value)
     } catch {
-        setError('Failed to create an account')
+        setError('Failed to log in')
     } finally {
         if(!error){
           handleClose()
@@ -36,12 +33,12 @@ const Signup = () => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Sign Up
+        Log In
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Sign Up</Modal.Title>
+          <Modal.Title>Log In</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {error && <div>{error}</div>}
@@ -66,66 +63,19 @@ const Signup = () => {
                 required
               />
             </Form.Group>
-            <Form.Group controlId="formBasicPasswordConfirm">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control 
-                name="passwordConfirm"
-                type="password" 
-                placeholder="Confirm Password" 
-                ref={passwordConfirmRef}
-                required
-              />
-            </Form.Group>
             <Button variant="primary" type="submit" disabled={loading}>
-              Sign Up
+              Log In
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <div>Already have an account?</div>
+          <div>Need an account?</div>
           <Button variant="primary" onClick={handleClose}>
-            Log In
+            Sign Up
           </Button>
         </Modal.Footer>
       </Modal>
-      {/* <div style={styles.overlay} />
-      <div style={styles.modal}>
-        <button>
-          <Link to='/'>
-            Close Modal
-          </Link>
-        </button>
-        {error && <div>{error}</div>}
-        <form className="form" onSubmit={handleSubmit}>
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            ref={emailRef}
-            required
-          />
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            ref={passwordRef}
-            required
-          />
-          <input
-            name="passwordConfirm"
-            type="password"
-            placeholder="Confirm Password"
-            ref={passwordConfirmRef}
-            required
-          />
-          <button
-            disabled={loading}
-            type="submit">
-            Submit
-            </button>
-        </form> */}
-      {/* </div> */}
     </>
   )
 }
-export default Signup;
+export default Login;
