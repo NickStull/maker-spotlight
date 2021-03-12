@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const UsersSchema = new Schema({
+const NewsLetterSchema = new Schema({
   userId: { 
     type: String,
     trim: true, 
@@ -28,37 +28,6 @@ const UsersSchema = new Schema({
       required: [true, "Please enter a valid email address!"]
   },
 
-  admin: {
-    type: Boolean,
-    default: false
-  },
-
-  voted: {
-    type: String,
-    trim: true,
-    default: ""
-  },
-
-  wantTo: {
-    type: Boolean,
-    default: false
-  },
-
-  candidate: {
-    type: Boolean,
-    default: false
-  },
-
-  currentVotes: {
-    type: Number,
-    default: 0
-  },
-
-  totalVotes: {
-    type: Number,
-    default: 0
-  },
-
   businessName: {
     type: String,
     trim: true,
@@ -83,13 +52,16 @@ const UsersSchema = new Schema({
     default: ""
   },
 
-  active: {
-    type: Boolean,
-    default: true
-  }
+  photos: [
+    {
+      id: String,
+      link: String,
+      description: String
+    }
+  ]
 
 });
 
-const Users = mongoose.model("Users", UsersSchema);
+const Users = mongoose.model("Users", NewsLetterSchema);
 
 module.exports = Users;
