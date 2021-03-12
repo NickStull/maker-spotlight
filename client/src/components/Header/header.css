@@ -1,6 +1,8 @@
+@use '../../styles/variables';
 .pageHeader {
   height: 70px;
   background-color: brown;
+  color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17,7 +19,7 @@
   padding: 1em 2em;
 }
 
-.pageHeader div {
+.headerDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,5 +30,6 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  color: white;
 }
 /*# sourceMappingURL=header.css.map */
