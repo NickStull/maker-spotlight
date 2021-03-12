@@ -7,6 +7,7 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Imgur from "./components/ImgurTest";
+import CarouselViewer from "./components/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
         <AuthProvider>
           <Header />
           <Signup />
-          <Imgur />
+          {/* <Imgur /> */}
+          <CarouselViewer />
           <Route exact path="/" component={Home} />
           <Route path="/signup" component={Signup} />
         </AuthProvider>
