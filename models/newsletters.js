@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const UsersSchema = new Schema({
+const NewsLettersSchema = new Schema({
+  issueNumber: {
+    type: Number,
+    default: 0
+  },
+  
   userId: { 
     type: String,
     trim: true, 
@@ -28,37 +33,6 @@ const UsersSchema = new Schema({
       required: [true, "Please enter a valid email address!"]
   },
 
-  admin: {
-    type: Boolean,
-    default: false
-  },
-
-  voted: {
-    type: String,
-    trim: true,
-    default: ""
-  },
-
-  wantTo: {
-    type: Boolean,
-    default: false
-  },
-
-  candidate: {
-    type: Boolean,
-    default: false
-  },
-
-  currentVotes: {
-    type: Number,
-    default: 0
-  },
-
-  totalVotes: {
-    type: Number,
-    default: 0
-  },
-
   businessName: {
     type: String,
     trim: true,
@@ -83,21 +57,30 @@ const UsersSchema = new Schema({
     default: ""
   },
 
-  // This would be used so that we wouldn't have to delete entries from the database
-  active: {
-    type: Boolean,
-    default: true
-  },
-  // An array to that lists every time a user is featured
-  featured: [
+  photos: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'NewsLetters'
-    }
-  ]
+      id: {
+        type: String,
+        trim: true
+      },
+      link: {
+        type: String,
+        trim: true
+      },
+      description: {
+        type: String,
+        trim: true
+      }
+    }  
+  ],
+
+  date: {
+    type: String,
+    default: Date
+  } 
 
 });
 
-const Users = mongoose.model("Users", UsersSchema);
+const NewsLetters = mongoose.model("NewsLetters", NewsLettersSchema);
 
-module.exports = Users;
+module.exports = NewsLetters;
