@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Test from "./components/Test";
 import { AuthProvider } from "./utils/contexts/AuthContext";
 import Signup from "./components/Signup";
+import SignupButton from "./components/SignupButton";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Imgur from "./components/ImgurTest";

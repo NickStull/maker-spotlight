@@ -1,39 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
+import Container from "../../components/Container";
+// import SearchForm from "../../components/SearchForm";
+import SearchResults from "../../components/SearchResults";
+import Alert from "../../components/Alert";
+import API from "../../utils/API";
 
 // Using the datalist element we can create autofill suggestions based on the props.breeds array
 function SearchForm(props) {
-  function filterFunction() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    let div = document.getElementById("myDropdown");
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-      let txtValue = a[i].textContent || a[i].innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        a[i].style.display = "";
-      } else {
-        a[i].style.display = "none";
-      }
-    }
-  }
+  // console.log("prop.result ", props.result);
+  // const [maker, setMaker] = useState(false);
+  // const [user, setUser] = useState(false);
+  // const [advertiser, setAdvertiser] = useState(false);
+  // const [search, setSearch] = useState({});
 
-  function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
+  // useEffect(() => {
+
+  //   // API.searchTerms(search)
+  //   //   .then((res) => {
+  //   //     if (res.data.length === 0) {
+  //   //       throw new Error("No results found.");
+  //   //     }
+  //   //     if (res.data.status === "error") {
+  //   //       throw new Error(res.data.message);
+  //   //     }
+  //   //     setTitle(res.data[1][0]);
+  //   //     setUrl(res.data[3][0]);
+  //   //   })
+  //   //   .catch((err) => setError(err));
+  // }, [maker, user, advertiser, search]);
+
+  // const handleInputChange = (event) => {
+  //   setMaker(document.getElementById("maker").checked);
+  //   setUser(document.getElementById("user").checked);
+  //   setAdvertiser(document.getElementById("advertiser").checked);
+  // };
 
   return (
     <form className="search">
       <div className="form-group">
         <p>Please Select:</p>
-        <input type="radio" id="maker" name="type" value="maker"></input>
+        <input
+          onChange={props.handleRadioButton}
+          type="radio"
+          id="maker"
+          name="type"
+          value="maker"
+        ></input>
         <label htmlFor="maker">Maker</label>
         <br />
-        <input type="radio" id="user" name="type" value="user"></input>
+        <input
+          onChange={props.handleRadioButton}
+          type="radio"
+          id="user"
+          name="type"
+          value="user"
+        ></input>
         <label htmlFor="user">User</label>
         <br />
         <input
+          onChange={props.handleRadioButton}
           type="radio"
           id="advertiser"
           name="type"
@@ -42,7 +68,7 @@ function SearchForm(props) {
         <label htmlFor="advertiser">Advertiser</label>
         <br />
         <label htmlFor="language"></label>
-        {/* <input
+        <input
           value={props.search}
           onChange={props.handleInputChange}
           name="term"
@@ -51,8 +77,16 @@ function SearchForm(props) {
           className="form-control"
           placeholder="Search by Name"
           id="term"
-        /> */}
-        <div className="dropdown">
+        />
+      </div>
+    </form>
+  );
+}
+
+export default SearchForm;
+
+{
+  /* <div className="dropdown">
           <button onClick={myFunction} className="dropbtn">
             Dropdown
           </button>
@@ -71,10 +105,5 @@ function SearchForm(props) {
             <a href="#support">Support</a>
             <a href="#tools">Tools</a>
           </div>
-        </div>
-      </div>
-    </form>
-  );
+        </div> */
 }
-
-export default SearchForm;

@@ -7,14 +7,29 @@ import Alert from "../../../components/Alert";
 import API from "../../../utils/API";
 
 function Search() {
-  const [search, setSearch] = useState("Wikipedia");
+  const [search, setSearch] = useState("Search by Name");
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
+  const [maker, setMaker] = useState(false);
+  const [user, setUser] = useState(false);
+  const [advertiser, setAdvertiser] = useState(false);
+  const [group, setGroup] = useState({});
 
   useEffect(() => {
     if (!search) {
       return;
+    } else if (maker === true) {
+      console.log("searching for makers");
+      API.getMakers();
+    } else if (user === true) {
+      console.log("searching for users");
+      API.getUsers().then((res) => {
+        return setGroup(res);
+      });
+    } else if (advertiser === true) {
+      console.log("searching for advertisers");
+      API.getAdvertisers();
     }
 
     API.getUsers(search)
@@ -29,10 +44,17 @@ function Search() {
         setUrl(res.data[3][0]);
       })
       .catch((err) => setError(err));
-  }, [search]);
+  }, [maker, user, advertiser, search]);
 
   const handleInputChange = (event) => {
     setSearch(event.target.value);
+    console.log(event.target.value);
+  };
+
+  const handleRadioButton = (event) => {
+    setMaker(document.getElementById("maker").checked);
+    setUser(document.getElementById("user").checked);
+    setAdvertiser(document.getElementById("advertiser").checked);
   };
 
   return (
@@ -45,7 +67,11 @@ function Search() {
         >
           {error}
         </Alert>
-        <SearchForm handleInputChange={handleInputChange} results={search} />
+        <SearchForm
+          handleInputChange={handleInputChange}
+          results={search}
+          handleRadioButton={handleRadioButton}
+        />
         <SearchResults title={title} url={url} />
       </Container>
     </div>
