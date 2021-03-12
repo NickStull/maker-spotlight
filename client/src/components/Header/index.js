@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext'
 import HeaderDropdown from '../Dropdown'
+import Login from "../Login";
+import Signup from "../Signup";
 import './header.css'
 
 const Header = () => {
@@ -22,6 +24,8 @@ const Header = () => {
 				{/* display dropdown button based on loggedInState */}
 				{loggedInState ? <HeaderDropdown /> : <></>
 				}
+				<Signup />
+				<Login />
 			</header>
 		</>
 	)
