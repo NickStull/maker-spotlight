@@ -6,7 +6,7 @@ module.exports = {
     axios
       .get("https://api.imgur.com/3/image/" + query, {
         headers: {
-          Authorization: `Client-ID 667bcb070bc5aa9`,
+          Authorization: `Client-ID ${process.env.IMGUR_CLIENT_ID}`,
         },
       })
       .then((results) => {
