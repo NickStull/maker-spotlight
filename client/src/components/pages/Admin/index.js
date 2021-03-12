@@ -21,15 +21,19 @@ function Search() {
       return;
     } else if (maker === true) {
       console.log("searching for makers");
-      API.getMakers();
+      API.getMakers().then((res) => {
+        setGroup(res);
+      });
     } else if (user === true) {
       console.log("searching for users");
       API.getUsers().then((res) => {
-        return setGroup(res);
+        setGroup(res);
       });
     } else if (advertiser === true) {
       console.log("searching for advertisers");
-      API.getAdvertisers();
+      API.getAdvertisers().then((res) => {
+        setGroup(res);
+      });
     }
 
     API.getUsers(search)

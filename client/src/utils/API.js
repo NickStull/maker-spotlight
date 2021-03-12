@@ -21,6 +21,7 @@ export default {
 
   getMakers: function () {
     console.log("getmakers hit baby");
+    return axios.get("/api/makers");
   },
 
   getAdvertisers: function () {
