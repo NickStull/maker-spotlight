@@ -15,9 +15,16 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  findById: function (req, res) {
-    console.log('CONTROLLER HIT WITH ', req.params.id);
-    db.Users.findById(req.params.id)
+  // findById: function (req, res) {
+  //   console.log('CONTROLLER HIT WITH ', req.params.id);
+  //   db.Users.findById(req.params.id)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
+
+  findByFirebaseId: function (req, res) {
+    console.log('find by firebase id CONTROLLER HIT WITH ', req.params.id);
+    db.Users.findOne({ userId: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
