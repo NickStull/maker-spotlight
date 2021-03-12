@@ -83,10 +83,18 @@ const UsersSchema = new Schema({
     default: ""
   },
 
+  // This would be used so that we wouldn't have to delete entries from the database
   active: {
     type: Boolean,
     default: true
-  }
+  },
+  // An array to that lists every time a user is featured
+  featured: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'NewsLetters'
+    }
+  ]
 
 });
 

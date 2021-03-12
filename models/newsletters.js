@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const NewsLetterSchema = new Schema({
+const NewsLettersSchema = new Schema({
+  issueNumber: {
+    type: Number,
+    default: 0
+  },
+  
   userId: { 
     type: String,
     trim: true, 
@@ -54,14 +59,28 @@ const NewsLetterSchema = new Schema({
 
   photos: [
     {
-      id: String,
-      link: String,
-      description: String
-    }
-  ]
+      id: {
+        type: String,
+        trim: true
+      },
+      link: {
+        type: String,
+        trim: true
+      },
+      description: {
+        type: String,
+        trim: true
+      }
+    }  
+  ],
+
+  date: {
+    type: String,
+    default: Date
+  } 
 
 });
 
-const Users = mongoose.model("Users", NewsLetterSchema);
+const NewsLetters = mongoose.model("NewsLetters", NewsLettersSchema);
 
-module.exports = Users;
+module.exports = NewsLetters;
