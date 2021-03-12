@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext'
 import './dropdown.css'
 import API from "../../utils/API"
+import Button from 'react-bootstrap/Button';
 
 const HeaderDropdown = () => {
 
@@ -39,8 +40,8 @@ const HeaderDropdown = () => {
     <div className="dropdown">
       <span onClick={handleDropdownClick}>Welcome, {currentUserName}</span>
       <div className={dropdown === 'closed' ? "hide" : "dropdown-content"}>
-        <button>Signout</button>
-        <button>View Account Info</button>
+        <Button>Signout</Button>
+        <Button>View Account Info</Button>
       </div>
     </div>
   )
