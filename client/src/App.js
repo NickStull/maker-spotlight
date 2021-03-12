@@ -8,7 +8,7 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Imgur from "./components/ImgurTest";
-import Admin from "./components/pages/Admin";
+import Admin from "./components/pages/Admin/index";
 
 function App() {
   return (
