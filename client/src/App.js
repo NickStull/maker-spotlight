@@ -7,11 +7,8 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Imgur from "./components/ImgurTest";
-<<<<<<< HEAD
 import Admin from "./components/pages/Admin/index";
-=======
-import "bootstrap/dist/css/bootstrap.min.css"
->>>>>>> main
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
@@ -19,13 +16,8 @@ function App() {
       <Router>
         <AuthProvider>
           <Header />
-<<<<<<< HEAD
           <SignupButton />
           <Route exact path="/admin" component={Admin} />
-=======
-          <Signup />
-          <Imgur />
->>>>>>> main
           <Route exact path="/" component={Home} />
           <Route path="/signup" component={Signup} />
         </AuthProvider>
