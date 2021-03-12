@@ -1,44 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext'
 import HeaderDropdown from '../Dropdown'
 import './header.css'
 
 const Header = () => {
 
-	const [loggedInState, setLoggedInState] = useState(true);
+	const [loggedInState, setLoggedInState] = useState(false);
+	const { currentUser } = useAuth();
 
-	let makerResults = [
-		{
-			firstName: 'Bob',
-			lastName: 'Bowie',
+	//check to see if user is logged in via context provider
+	useEffect(() => {
+		if (currentUser) {
+			setLoggedInState(true);
 		}
-	]
-
-	let userResults = [{ firstName: 'Oscar' }]
-
-	function toggleLoggedIn() {
-		loggedInState ? setLoggedInState(false) : setLoggedInState(true);
-		console.log(loggedInState);
-	}
-
+	}, [currentUser])
 
 	return (
 		<>
 			<header className='pageHeader'>
-				{loggedInState ?
-					<>
-						<div>
-							<h3>Meet Your Maker</h3>
-							<h1>{`${makerResults[0].firstName} ${makerResults[0].lastName}`}</h1>
-						</div>
-						<HeaderDropdown />
-						<button>Welcome<br />{`${userResults[0].firstName}`}</button>
-					</>
-					:
-					<h1>Meet Your Maker</h1>
+				<h1>Maker Spotlight</h1>
+				{/* display dropdown button based on loggedInState */}
+				{loggedInState ? <HeaderDropdown /> : <></>
 				}
 			</header>
-			<button onClick={toggleLoggedIn}>Logged In{loggedInState}</button>
-
 		</>
 	)
 }

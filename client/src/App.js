@@ -14,7 +14,6 @@ function App() {
     <>
       <Router>
         <AuthProvider>
-          <Test />
           <Header />
           <Signup />
           <Imgur />
