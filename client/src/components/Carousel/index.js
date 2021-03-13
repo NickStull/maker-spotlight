@@ -16,25 +16,9 @@ const CarouselViewer = () => {
 	const { currentUser } = useAuth();
 	const [featuredImagesState, setFeaturedImagesState] = useState([testImage1]);
 
-	// useEffect(() => {
-	// 	setDummyImages();
-	// 	// getNewsletterImages();
-	// }, [])
-
-	// useEffect(() => {
-	// 	console.log('CURRENT USER', currentUser);
-	// 	if (currentUser) {
-	// 		console.log('CURRENT USER INSIDE IF', currentUser);
-	// 		getUserInfo();
-	// 	}
-	// }, [currentUser])
-
-	// useEffect(() => {
-	// console.log('USE EFFECT');
-	// if (featuredImagesState) {
-	// 	addFeaturedImagesToArr();
-	// }
-	// }, [featuredImagesState])
+	useEffect(() => {
+		getUserInfo();
+	}, [])
 
 	// function setDummyImages() {
 	// 	setFeaturedImages([
@@ -67,40 +51,6 @@ const CarouselViewer = () => {
 			// updateState();
 		}
 	};
-	getUserInfo();
-
-	function updateState() { setFeaturedImagesState(featuredImages) };
-
-	// let featuredImages = [];
-	// function addFeaturedImagesToArr() {
-
-	// 	console.log('IMAGES ARRAY ', featuredImages);
-	// }
-
-
-	// let dummyImages = [
-	// 	{
-	// 		src: testImage1,
-	// 		caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloribus vel a, modi quidem, enim eveniet aliquid delectus molestias corrupti quo in earum blanditiis maxime. Hic inventore ducimus magni sed.'
-	// 	},
-	// 	{
-	// 		src: testImage3,
-	// 		caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloribus vel a, modi quidem, enim eveniet aliquid delectus molestias corrupti quo in earum blanditiis maxime. Hic inventore ducimus magni sed.'
-	// 	},
-	// 	{
-	// 		src: testImage3,
-	// 		caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloribus vel a, modi quidem, enim eveniet aliquid delectus molestias corrupti quo in earum blanditiis maxime. Hic inventore ducimus magni sed.'
-	// 	},
-	// ]
-
-
-
-	//check to see if user is logged in via context provider
-	// useEffect(() => {
-	// 	if (currentUser) {
-	// 		setLoggedInState(true);
-	// 	}
-	// }, [currentUser])
 
 	return (
 		<main className='carouselWrapper'>
