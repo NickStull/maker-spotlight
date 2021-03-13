@@ -16,6 +16,7 @@ function Search() {
   const [searchGroup, setSearchGroup] = useState([]);
   const [resultsArr, setResultsArr] = useState([]);
   const [userId, setUserId] = useState("");
+  const [editToggle, setEditToggle] = useState(true);
 
   useEffect(() => {
     if (!search) {
