@@ -17,7 +17,22 @@ export default {
 
   imgur: function () {
     return axios.get("/api/imgur");
-  }
+  },
+
+  getMakers: function () {
+    console.log("getmakers hit baby");
+    return axios.get("/api/makers");
+  },
+
+  getAdvertisers: function () {
+    console.log("getAdvert hit");
+    return axios.get("/api/advertisers");
+  },
+
+  getUserByName: function (name) {
+    console.log("getUserByName hit with", name);
+    return axios.get("/api/users/name/" + name);
+  },
 };
 
 // // Gets all posts
@@ -28,4 +43,3 @@ export default {
 //   getUser: function(id) {
 //     return axios.get("/api/users/" + id);
 //   },
-

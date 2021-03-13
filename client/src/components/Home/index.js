@@ -1,12 +1,11 @@
 import React from 'react';
-import Header from '../Header';
-import Imgur from '../ImgurTest';
+import CarouselViewer from '../Carousel';
 
 const Home = () => {
   return (
-      <>
-        <Imgur />
-      </>
+    <>
+      <CarouselViewer />
+    </>
   )
 }
 

@@ -5,6 +5,12 @@ import { AuthProvider } from "./utils/contexts/AuthContext";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import CarouselViewer from "./components/Carousel";
+import Signup from "./components/Signup";
+import SignupButton from "./components/SignupButton";
+import Home from "./components/Home";
+import Header from "./components/Header";
+import Admin from "./components/pages/Admin/index";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
@@ -12,8 +18,10 @@ function App() {
       <Router>
         <AuthProvider>
           <Header />
-          <CarouselViewer />
+          <SignupButton />
+          <Route exact path="/admin" component={Admin} />
           <Route exact path="/" component={Home} />
+          <Route path="/signup" component={Signup} />
         </AuthProvider>
       </Router>
     </>
