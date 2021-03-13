@@ -8,13 +8,13 @@ import API from "../../../utils/API";
 
 function Search() {
   const [search, setSearch] = useState("Search by Name");
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("Derek Bardini");
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const [maker, setMaker] = useState(false);
   const [user, setUser] = useState(false);
   const [advertiser, setAdvertiser] = useState(false);
-  const [group, setGroup] = useState({});
+  const [searchGroup, setSearchGroup] = useState({});
 
   useEffect(() => {
     if (!search) {
@@ -22,37 +22,54 @@ function Search() {
     } else if (maker === true) {
       console.log("searching for makers");
       API.getMakers().then((res) => {
-        setGroup(res);
+        searchFunc(res);
       });
     } else if (user === true) {
       console.log("searching for users");
       API.getUsers().then((res) => {
-        setGroup(res);
+        searchFunc(res);
       });
     } else if (advertiser === true) {
       console.log("searching for advertisers");
       API.getAdvertisers().then((res) => {
-        setGroup(res);
+        searchFunc(res);
       });
     }
 
-    API.getUsers(search)
-      .then((res) => {
-        if (res.data.length === 0) {
-          throw new Error("No results found.");
-        }
-        if (res.data.status === "error") {
-          throw new Error(res.data.message);
-        }
-        setTitle(res.data[1][0]);
-        setUrl(res.data[3][0]);
-      })
-      .catch((err) => setError(err));
+    // API.getUsers(search)
+    //   .then((res) => {
+    //     if (res.data.length === 0) {
+    //       throw new Error("No results found.");
+    //     }
+    //     if (res.data.status === "error") {
+    //       throw new Error(res.data.message);
+    //     }
+    //     setTitle(res.data[1][0]);
+    //     setUrl(res.data[3][0]);
+    //   })
+    //   .catch((err) => setError(err));
   }, [maker, user, advertiser, search]);
+
+  const searchFunc = (results) => {
+    setSearchGroup(results);
+    let namesArr = [];
+    let fullName = "";
+
+    for (let i = 0; i < results.data.length; i++) {
+      console.log("first name", searchGroup.data[i].firstName);
+      console.log("last name", searchGroup.data[i].lastName);
+    }
+
+    // API.getUserByName(searchGroup).then((res) => {
+    //   if (res.data === null) {
+    //     console.log("no results");
+    //   }
+    //   console.log(res);
+    // });
+  };
 
   const handleInputChange = (event) => {
     setSearch(event.target.value);
-    console.log(event.target.value);
   };
 
   const handleRadioButton = (event) => {

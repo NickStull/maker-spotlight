@@ -26,6 +26,12 @@ export default {
 
   getAdvertisers: function () {
     console.log("getAdvert hit");
+    return axios.get("/api/advertisers");
+  },
+
+  getUserByName: function (name) {
+    console.log("getUserByName hit with", name);
+    return axios.get("/api/users/name/" + name);
   },
 };
 
