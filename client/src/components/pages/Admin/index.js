@@ -5,10 +5,11 @@ import SearchForm from "../../../components/SearchForm";
 import SearchResults from "../../../components/SearchResults";
 import Alert from "../../../components/Alert";
 import API from "../../../utils/API";
+import { STATES } from "mongoose";
 
 function Search() {
   const [search, setSearch] = useState("Search by Name");
-  const [title, setTitle] = useState("Derek Bardini");
+  const [title, setTitle] = useState("Search Employee Results");
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const [maker, setMaker] = useState(false);
@@ -51,13 +52,21 @@ function Search() {
   }, [maker, user, advertiser, search]);
 
   const searchFunc = (results) => {
-    setSearchGroup(results);
     let namesArr = [];
     let fullName = "";
 
     for (let i = 0; i < results.data.length; i++) {
-      console.log("first name", searchGroup.data[i].firstName);
-      console.log("last name", searchGroup.data[i].lastName);
+      fullName =
+        results.data[i].firstName.toLowerCase() +
+        " " +
+        results.data[i].lastName.toLowerCase();
+      // namesArr.push(fullName);
+      if (fullName.includes(search.toLowerCase())) {
+        // console.log("you typed ", search, "are you looking for ", fullName);
+        namesArr.push(fullName);
+        setTitle(namesArr);
+        console.log(title.length);
+      }
     }
 
     // API.getUserByName(searchGroup).then((res) => {
@@ -93,7 +102,7 @@ function Search() {
           results={search}
           handleRadioButton={handleRadioButton}
         />
-        <SearchResults title={title} url={url} />
+        <SearchResults title={title[0]} url={url} />
       </Container>
     </div>
   );
