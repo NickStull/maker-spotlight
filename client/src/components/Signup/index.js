@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import API from '../../utils/API';
 import { useAuth } from '../../utils/contexts/AuthContext';
 import Home from '../Home';
 
@@ -9,12 +10,16 @@ const Signup = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup } = useAuth()
+  
+  const { signup, currentUser } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -23,16 +28,28 @@ const Signup = () => {
     try {
       setError('')
       setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
+      console.log("before await")
+      let firebaseSignup = await signup(emailRef.current.value, passwordRef.current.value)
+      console.log("after await")
+      let newUser = {
+        userId: firebaseSignup.user.uid,
+        firstName: firstNameRef.current.value,
+        lastName: lastNameRef.current.value,
+        email: emailRef.current.value
+      }
+      await API.saveUser(newUser);
     } catch {
-        setError('Failed to create an account')
+      setError('Failed to create an account')
     } finally {
-        if(!error){
-          handleClose()
-        }
+      if(!error){
+        handleClose()
+      }
     }
     setLoading(false)
   }
+
+
+
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -44,8 +61,29 @@ const Signup = () => {
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {currentUser && currentUser.email}
           {error && <div>{error}</div>}
           <Form className="form" onSubmit={handleSubmit}>
+          <Form.Group controlId="formBasicFirst">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control 
+                name="firstName"
+                type="text" 
+                placeholder="First Name" 
+                ref={firstNameRef}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicLast">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control 
+                name="lastName"
+                type="text" 
+                placeholder="Last Name" 
+                ref={lastNameRef}
+                required
+              />
+            </Form.Group>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control 
