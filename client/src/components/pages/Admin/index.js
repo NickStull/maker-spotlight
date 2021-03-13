@@ -5,17 +5,17 @@ import SearchForm from "../../../components/SearchForm";
 import SearchResults from "../../../components/SearchResults";
 import Alert from "../../../components/Alert";
 import API from "../../../utils/API";
-import { STATES } from "mongoose";
 
 function Search() {
   const [search, setSearch] = useState("Search by Name");
-  const [title, setTitle] = useState("Search Employee Results");
+  const [title, setTitle] = useState([]);
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const [maker, setMaker] = useState(false);
   const [user, setUser] = useState(false);
   const [advertiser, setAdvertiser] = useState(false);
-  const [searchGroup, setSearchGroup] = useState({});
+  const [searchGroup, setSearchGroup] = useState([]);
+  const [resultsArr, setResultsArr] = useState([]);
 
   useEffect(() => {
     if (!search) {
@@ -23,20 +23,23 @@ function Search() {
     } else if (maker === true) {
       console.log("searching for makers");
       API.getMakers().then((res) => {
-        searchFunc(res);
+        setSearchGroup(res);
+        setResultsArr(res);
       });
     } else if (user === true) {
       console.log("searching for users");
       API.getUsers().then((res) => {
-        searchFunc(res);
+        setSearchGroup(res);
+        setResultsArr(res);
       });
     } else if (advertiser === true) {
       console.log("searching for advertisers");
       API.getAdvertisers().then((res) => {
-        searchFunc(res);
+        setSearchGroup(res);
+        setResultsArr(res);
       });
     }
-
+    // console.log("search group: ", searchGroup);
     // API.getUsers(search)
     //   .then((res) => {
     //     if (res.data.length === 0) {
@@ -49,25 +52,40 @@ function Search() {
     //     setUrl(res.data[3][0]);
     //   })
     //   .catch((err) => setError(err));
-  }, [maker, user, advertiser, search]);
+  }, [maker, user, advertiser]);
 
-  const searchFunc = (results) => {
-    let namesArr = [];
-    let fullName = "";
-
-    for (let i = 0; i < results.data.length; i++) {
-      fullName =
-        results.data[i].firstName.toLowerCase() +
-        " " +
-        results.data[i].lastName.toLowerCase();
-      // namesArr.push(fullName);
-      if (fullName.includes(search.toLowerCase())) {
-        // console.log("you typed ", search, "are you looking for ", fullName);
-        namesArr.push(fullName);
-        setTitle(namesArr);
-        console.log(title.length);
-      }
+  const searchFunc = (query) => {
+    console.log("results Arr:   ", resultsArr);
+    if (query === "") {
+      let emptyQuery = resultsArr;
+      setSearchGroup(emptyQuery);
+    } else {
+      let tempArray = resultsArr.data.filter((person) => {
+        return (
+          person.firstName.search(new RegExp(query, "i")) !== -1 ||
+          person.lastName.search(new RegExp(query, "i")) !== -1
+        );
+      });
+      console.log("temp ARRRAY: ", tempArray);
+      setSearchGroup(tempArray);
     }
+    // let namesArr = [];
+    // let fullName = "";
+
+    // for (let i = 0; i < searchGroup.data.length; i++) {
+    //   fullName =
+    //     searchGroup.data[i].firstName.toLowerCase() +
+    //     " " +
+    //     searchGroup.data[i].lastName.toLowerCase();
+    //   // namesArr.push(fullName);
+    //   if (fullName.includes(search.toLowerCase())) {
+    //     // console.log("you typed ", search, "are you looking for ", fullName);
+
+    //     namesArr.push(fullName);
+    //     setTitle(namesArr);
+    //     console.log(title);
+    //   }
+    // }
 
     // API.getUserByName(searchGroup).then((res) => {
     //   if (res.data === null) {
@@ -79,6 +97,7 @@ function Search() {
 
   const handleInputChange = (event) => {
     setSearch(event.target.value);
+    searchFunc(event.target.value);
   };
 
   const handleRadioButton = (event) => {
@@ -88,23 +107,33 @@ function Search() {
   };
 
   return (
-    <div>
-      <Container style={{ minHeight: "100vh" }}>
-        <h1 className="text-center">Search for a User</h1>
-        <Alert
-          type="danger"
-          style={{ opacity: error ? 1 : 0, marginBottom: 10 }}
-        >
-          {error}
-        </Alert>
-        <SearchForm
-          handleInputChange={handleInputChange}
-          results={search}
-          handleRadioButton={handleRadioButton}
-        />
-        <SearchResults title={title[0]} url={url} />
-      </Container>
-    </div>
+    console.log("search group: ", searchGroup),
+    console.log("title", title),
+    (
+      <div>
+        <Container style={{ minHeight: "100vh" }}>
+          <h1 className="text-center">Search for a User</h1>
+          <Alert
+            type="danger"
+            style={{ opacity: error ? 1 : 0, marginBottom: 10 }}
+          >
+            {error}
+          </Alert>
+          <SearchForm
+            handleInputChange={handleInputChange}
+            results={search}
+            handleRadioButton={handleRadioButton}
+          />
+          {searchGroup.length > 0 ? (
+            searchGroup.map((item) => (
+              <SearchResults title={item.firstName + " " + item.lastName} />
+            ))
+          ) : (
+            <SearchResults />
+          )}
+        </Container>
+      </div>
+    )
   );
 }
 
