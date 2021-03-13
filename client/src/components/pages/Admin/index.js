@@ -9,13 +9,13 @@ import API from "../../../utils/API";
 function Search() {
   const [search, setSearch] = useState("Search by Name");
   const [title, setTitle] = useState([]);
-  const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const [maker, setMaker] = useState(false);
   const [user, setUser] = useState(false);
   const [advertiser, setAdvertiser] = useState(false);
   const [searchGroup, setSearchGroup] = useState([]);
   const [resultsArr, setResultsArr] = useState([]);
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     if (!search) {
@@ -106,6 +106,11 @@ function Search() {
     setAdvertiser(document.getElementById("advertiser").checked);
   };
 
+  const userOnClick = (event) => {
+    setUserId(event.target.id);
+    console.log(userId);
+  };
+
   return (
     console.log("search group: ", searchGroup),
     console.log("title", title),
@@ -126,7 +131,13 @@ function Search() {
           />
           {searchGroup.length > 0 ? (
             searchGroup.map((item) => (
-              <SearchResults title={item.firstName + " " + item.lastName} />
+              <SearchResults
+                title={
+                  item.firstName + " " + item.lastName + " Email: " + item.email
+                }
+                id={item.userId}
+                userOnClick={userOnClick}
+              />
             ))
           ) : (
             <SearchResults />
