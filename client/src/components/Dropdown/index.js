@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from "../../utils/contexts/AuthContext";
 import "./dropdown.css";
 import API from "../../utils/API";
+import Logout from "../Logout";
 
 const HeaderDropdown = () => {
   const { currentUser } = useAuth();
@@ -38,7 +39,7 @@ const HeaderDropdown = () => {
     <div className="dropdown">
       <span onClick={handleDropdownClick}>Welcome, {currentUserName}</span>
       <div className={dropdown === "closed" ? "hide" : "dropdown-content"}>
-        <button>Signout</button>
+        <Logout />
         <button>View Account Info</button>
       </div>
     </div>

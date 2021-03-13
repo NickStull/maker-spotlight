@@ -1,39 +1,25 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import API from '../../utils/API';
 import { useAuth } from '../../utils/contexts/AuthContext';
 import Home from '../Home';
-// const styles = {
-//   modal: {
-//     position: 'fixed',
-//     top: '50%',
-//     left: '50%',
-//     transform: 'translate(-50%, -50%)',
-//     backgroundColor: '#FFF',
-//     padding: '50px',
-//     zIndex: 1000
-//   },
-//   overlay: {
-//     position: 'fixed',
-//     top: 0,
-//     left: 0,
-//     right: 0,
-//     bottom: 0,
-//     backgroundColor: 'rgba(0, 0, 0, .7)',
-//     zIndex: 1000
-//   }
-// }
+
 const Signup = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup } = useAuth()
+  
+  const { signup, currentUser } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -42,16 +28,30 @@ const Signup = () => {
     try {
       setError('')
       setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
+      console.log("before await")
+      let firebaseSignup = await signup(emailRef.current.value, passwordRef.current.value)
+      console.log("after await")
+      let newUser = {
+        userId: firebaseSignup.user.uid,
+        firstName: firstNameRef.current.value,
+        lastName: lastNameRef.current.value,
+        email: emailRef.current.value
+      }
+      await API.saveUser(newUser);
     } catch {
       setError('Failed to create an account')
+    } finally {
+      if(!error){
+        handleClose()
+      }
     }
     setLoading(false)
   }
+
+
+
   return (
     <>
-      <Home />
-
       <Button variant="primary" onClick={handleShow}>
         Sign Up
       </Button>
@@ -61,7 +61,29 @@ const Signup = () => {
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {currentUser && currentUser.email}
+          {error && <div>{error}</div>}
           <Form className="form" onSubmit={handleSubmit}>
+          <Form.Group controlId="formBasicFirst">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control 
+                name="firstName"
+                type="text" 
+                placeholder="First Name" 
+                ref={firstNameRef}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicLast">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control 
+                name="lastName"
+                type="text" 
+                placeholder="Last Name" 
+                ref={lastNameRef}
+                required
+              />
+            </Form.Group>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control 
@@ -92,14 +114,15 @@ const Signup = () => {
                 required
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
+            <Button variant="primary" type="submit" disabled={loading}>
+              Sign Up
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose} disabled={loading} type="submit">
-            Save Changes
+          <div>Already have an account?</div>
+          <Button variant="primary" onClick={handleClose}>
+            Log In
           </Button>
         </Modal.Footer>
       </Modal>

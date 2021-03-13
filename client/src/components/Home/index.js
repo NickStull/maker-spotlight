@@ -1,10 +1,12 @@
 import React from 'react';
+import Header from '../Header';
+import Imgur from '../ImgurTest';
 
 const Home = () => {
   return (
-      <div>
-        <h2>This is the creator spotlight</h2>
-      </div>
+      <>
+        <Imgur />
+      </>
   )
 }
 
