@@ -5,8 +5,9 @@ function SearchResults(props) {
   return (
     <ul className="list-group search-results">
       <li className="list-group-item">
-        <h2>{props.title}</h2>
-        <a href={props.url}>{props.url}</a>
+        <h2 onClick={props.userOnClick} id={props.id}>
+          {props.title}
+        </h2>
       </li>
     </ul>
   );
