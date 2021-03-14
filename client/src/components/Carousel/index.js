@@ -12,9 +12,8 @@ import testImage1 from './testImages/testKnifeImg1.jpeg'
 
 const CarouselViewer = () => {
 
-	// const [loggedInState, setLoggedInState] = useState(false);
-	const { currentUser } = useAuth();
 	const [featuredImagesState, setFeaturedImagesState] = useState([testImage1]);
+	const [index, setIndex] = useState(0);
 
 	useEffect(() => {
 		getUserInfo();
@@ -52,15 +51,25 @@ const CarouselViewer = () => {
 		}
 	};
 
+
+	// handles the advancing of the slides
+	const handleSelect = (selectedIndex, e) => {
+		setIndex(selectedIndex);
+	};
+
 	return (
 		<main className='carouselWrapper'>
-			<Carousel>
+			<Carousel activeIndex={index} onSelect={handleSelect}>
 				{featuredImagesState.map(
 					image => {
 						return (
 							<Carousel.Item>
 								<CloudinaryContext cloudName="makerspotlight">
-									<Image publicId={image} />
+									<Image
+										publicId={image}
+										className="d-block w-100"
+										// src="holder.js/800x400?text=First slide&bg=373940"
+										alt="First slide" />
 								</CloudinaryContext>
 								<Carousel.Caption>
 									<section className='caption'>
@@ -73,7 +82,6 @@ const CarouselViewer = () => {
 					}
 				)}
 			</Carousel>
-			{/* <img src={featuredImages[0]} alt="" /> */}
 		</main>
 	)
 }
