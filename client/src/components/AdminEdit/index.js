@@ -23,6 +23,28 @@ function AdminEdit(props) {
         </Form.Group>
       </Form.Row>
 
+      <Form.Group controlId="formGridEmail">
+        <Form.Label>Email</Form.Label>
+        <Form.Control type="email" placeholder={ props.user.data.email } />
+      </Form.Group>
+
+      <Form.Row>
+        <Form.Group id="formGridAdmin">
+          <Form.Check type="switch" 
+                      label="Admin" 
+                      id="admin-switch"
+                      defaultChecked={ props.user.data.admin } 
+          />
+        </Form.Group>
+{/* START HERE */}
+        <Form.Group id="formGridAdmin">
+          <Form.Check type="switch" 
+                      label="Admin" 
+                      id="admin-switch"
+                      defaultChecked={ props.user.data.admin } 
+          />
+        </Form.Group>
+      </Form.Row>
 
       <Form.Group controlId="formGridAddress1">
         <Form.Label>Address</Form.Label>

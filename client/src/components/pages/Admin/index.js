@@ -44,6 +44,15 @@ function Search() {
     }
   }, [maker, user, advertiser]);
 
+  useEffect(() => {
+    API.getUser(userId)
+    .then((res) => {
+      console.log("-----------------------Information------------------------");
+      console.log(res);
+      setEditUser(res);
+    });
+  }, [userId]);
+
   const searchFunc = (query) => {
     console.log("results Arr:   ", resultsArr);
     if (query === "") {
@@ -74,19 +83,14 @@ function Search() {
 
   const userOnClick = (event) => {
     setUserId(event.target.id);
-<<<<<<< HEAD
     setEditToggle(false);
-    console.log(userId);
+    console.log("userId: ", userId);
     API.getUser(userId)
       .then((res) => {
         console.log("-----------------------Information------------------------");
         console.log(res);
         setEditUser(res);
       });
-=======
-    console.log(editToggle);
-    editToggle === true ? setEditToggle(false) : setEditToggle(true);
->>>>>>> main
   };
 
   return (
