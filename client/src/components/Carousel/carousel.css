@@ -6,5 +6,19 @@
 
 .carouselWrapper {
   width: 600px;
+  margin-top: 2em;
+}
+
+.carouselCaption {
+  background-color: brown;
+  margin: 0em 2em 2em 2em;
+  color: white;
+  border-radius: 0em 0em 2em 2em;
+  padding: 2em;
+  z-index: 10;
+}
+
+.carouselImg {
+  z-index: 1;
 }
 /*# sourceMappingURL=carousel.css.map */

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
 import Carousel from 'react-bootstrap/Carousel';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { Image, CloudinaryContext, Transformation } from 'cloudinary-react';
 import API from "../../utils/API";
 import './carousel.css'
@@ -57,38 +60,43 @@ const CarouselViewer = () => {
 	};
 
 	return (
-		<main className='carouselWrapper'>
-			<Carousel activeIndex={index} onSelect={handleSelect}>
-				{featuredImagesState.map(
-					image => {
-						return (
-							<Carousel.Item>
-								<CloudinaryContext cloudName="makerspotlight">
-									<Image
-										publicId={image}
-										className="d-block w-100"
-										// src="holder.js/800x400?text=First slide&bg=373940"
-										alt="First slide"
-									// aspect-ratio="3:2" 
-									// width="1200"
-									// height="900"
-									// mode="Pad"
-									>
-										{/* <Transformation aspect-ratio="3:2" mode="ad" /> */}
-									</Image>
-								</CloudinaryContext>
-								<Carousel.Caption>
+		<Container fluid>
+			<Row>
+				<Carousel activeIndex={index} onSelect={handleSelect}>
+					{featuredImagesState.map(
+						(image, index) => {
+							return (
+								<Carousel.Item key={index}>
+									<CloudinaryContext cloudName="makerspotlight">
+										<Image
+											publicId={image}
+											className="d-block w-100 carouselImg"
+											// src="holder.js/800x400?text=First slide&bg=373940"
+											alt="First slide"
+										// aspect-ratio="3:2" 
+										// width="1200"
+										// height="900"
+										// mode="Pad"
+										>
+											{/* <Transformation aspect-ratio="3:2" mode="pad" /> */}
+										</Image>
+									</CloudinaryContext>
+									{/* <Carousel.Caption>
 									<section className='caption'>
 										<h3>First slide label</h3>
 										<p>{image.caption}</p>
 									</section>
-								</Carousel.Caption>
-							</Carousel.Item>
-						)
-					}
-				)}
-			</Carousel>
-		</main>
+								</Carousel.Caption> */}
+									<figcaption className='carouselCaption'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloribus vel a, modi quidem, enim eveniet aliquid delectus molestias corrupti quo in earum blanditiis maxime. Hic inventore ducimus magni sed.
+								</figcaption>
+								</Carousel.Item>
+
+							)
+						}
+					)}
+				</Carousel>
+			</Row>
+		</Container>
 	)
 }
 

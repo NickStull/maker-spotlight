@@ -10,6 +10,10 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 1em 2em;
+	h1{
+		color: white;
+		font-family: 'Chisel', serif;
+	}
 }
 
 .headerDiv {
@@ -17,4 +21,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	color: white;
+	font-family: 'Chisel', serif;
 }
+
+

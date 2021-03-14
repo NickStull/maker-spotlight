@@ -16,7 +16,19 @@ const usersSeed = [
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg3_jdecau.jpg',
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg2_hhbvdz.webp',
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg1_gzlddh.jpg'
-    ]
+    ],
+    admin: true,
+    voted: false,
+    wantTo: true,
+    candidate: true,
+    currentVotes: 20,
+    totalVotes: 100,
+    businessName: 'The Chop Shop',
+    phoneNumber: '555 - 555 - 5555',
+    website: 'https://www.dawsonknives.com/',
+    bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
+    active: true,
+    featured: []
   },
   {
     userId: "d28jGwxVdZXYOQGzS6NbxkB3ddP2",
@@ -28,7 +40,19 @@ const usersSeed = [
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg3_jdecau.jpg',
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg2_hhbvdz.webp',
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg1_gzlddh.jpg'
-    ]
+    ],
+    admin: true,
+    voted: false,
+    wantTo: true,
+    candidate: true,
+    currentVotes: 20,
+    totalVotes: 100,
+    businessName: 'The Chop Shop',
+    phoneNumber: '555 - 555 - 5555',
+    website: 'https://www.dawsonknives.com/',
+    bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
+    active: true,
+    featured: []
   },
   {
     userId: "u5irgyagz7YT5m77Zsx8Mb51Ngs2",
@@ -40,7 +64,19 @@ const usersSeed = [
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg3_jdecau.jpg',
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg2_hhbvdz.webp',
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg1_gzlddh.jpg'
-    ]
+    ],
+    admin: true,
+    voted: false,
+    wantTo: true,
+    candidate: true,
+    currentVotes: 20,
+    totalVotes: 100,
+    businessName: 'The Chop Shop',
+    phoneNumber: '555 - 555 - 5555',
+    website: 'https://www.dawsonknives.com/',
+    bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
+    active: true,
+    featured: []
   },
   {
     userId: "x5YnUFqsuZdmBDhPuxUc4bziVoP2",
@@ -52,7 +88,19 @@ const usersSeed = [
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg3_jdecau.jpg',
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg2_hhbvdz.webp',
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg1_gzlddh.jpg'
-    ]
+    ],
+    admin: true,
+    voted: false,
+    wantTo: true,
+    candidate: true,
+    currentVotes: 20,
+    totalVotes: 100,
+    businessName: 'The Chop Shop',
+    phoneNumber: '555 - 555 - 5555',
+    website: 'https://www.dawsonknives.com/',
+    bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
+    active: true,
+    featured: []
   }
 ];
 
@@ -66,3 +114,6 @@ db.Users.remove({})
     console.error(err);
     process.exit(1);
   });
+
+//+++++++++++++++++++++
+
