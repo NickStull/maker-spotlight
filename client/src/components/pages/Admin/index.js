@@ -4,6 +4,7 @@ import Container from "../../../components/Container";
 import SearchForm from "../../../components/SearchForm";
 import SearchResults from "../../../components/SearchResults";
 import Alert from "../../../components/Alert";
+import AdminEdit from "../../../components/AdminEdit";
 import API from "../../../utils/API";
 
 function Search() {
@@ -17,6 +18,7 @@ function Search() {
   const [resultsArr, setResultsArr] = useState([]);
   const [userId, setUserId] = useState("");
   const [editToggle, setEditToggle] = useState(true);
+  const [editUser, setEditUser] = useState("");
 
   useEffect(() => {
     if (!search) {
@@ -40,19 +42,6 @@ function Search() {
         setResultsArr(res);
       });
     }
-    // console.log("search group: ", searchGroup);
-    // API.getUsers(search)
-    //   .then((res) => {
-    //     if (res.data.length === 0) {
-    //       throw new Error("No results found.");
-    //     }
-    //     if (res.data.status === "error") {
-    //       throw new Error(res.data.message);
-    //     }
-    //     setTitle(res.data[1][0]);
-    //     setUrl(res.data[3][0]);
-    //   })
-    //   .catch((err) => setError(err));
   }, [maker, user, advertiser]);
 
   const searchFunc = (query) => {
@@ -70,30 +59,6 @@ function Search() {
       console.log("temp ARRRAY: ", tempArray);
       setSearchGroup(tempArray);
     }
-    // let namesArr = [];
-    // let fullName = "";
-
-    // for (let i = 0; i < searchGroup.data.length; i++) {
-    //   fullName =
-    //     searchGroup.data[i].firstName.toLowerCase() +
-    //     " " +
-    //     searchGroup.data[i].lastName.toLowerCase();
-    //   // namesArr.push(fullName);
-    //   if (fullName.includes(search.toLowerCase())) {
-    //     // console.log("you typed ", search, "are you looking for ", fullName);
-
-    //     namesArr.push(fullName);
-    //     setTitle(namesArr);
-    //     console.log(title);
-    //   }
-    // }
-
-    // API.getUserByName(searchGroup).then((res) => {
-    //   if (res.data === null) {
-    //     console.log("no results");
-    //   }
-    //   console.log(res);
-    // });
   };
 
   const handleInputChange = (event) => {
@@ -109,12 +74,17 @@ function Search() {
 
   const userOnClick = (event) => {
     setUserId(event.target.id);
+    setEditToggle(false);
     console.log(userId);
+    API.getUser(userId)
+      .then((res) => {
+        console.log("-----------------------Information------------------------");
+        console.log(res);
+        setEditUser(res);
+      });
   };
 
   return (
-    console.log("search group: ", searchGroup),
-    console.log("title", title),
     (
       <div>
         <Container style={{ minHeight: "100vh" }}>
@@ -143,6 +113,14 @@ function Search() {
           ) : (
             <SearchResults />
           )}
+          { !editToggle && editUser
+            ? <>
+                <br></br>
+                <br></br>
+                <AdminEdit user={ editUser }/>
+              </>
+            : <></>
+          }
         </Container>
       </div>
     )
