@@ -21,15 +21,15 @@ const Header = () => {
 		<>
 			<header className='pageHeader'>
 				<a href="/">
-					<h1>Maker Spotlight</h1>
+					<h1>Bladesmith Spotlight</h1>
 				</a>
 				{/* display dropdown button based on loggedInState */}
-				{loggedInState 
-				? <HeaderDropdown /> 
-				:<>
-					<Signup />
-					<Login />
-				</>
+				{loggedInState
+					? <HeaderDropdown />
+					: <>
+						<Signup />
+						<Login />
+					</>
 				}
 			</header>
 		</>
