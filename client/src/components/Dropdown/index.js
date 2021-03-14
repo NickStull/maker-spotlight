@@ -14,7 +14,7 @@ const HeaderDropdown = () => {
     if (currentUser) {
       getUserName();
     }
-  }, [currentUser]);
+  }, []);
 
   //use firebase id to get user info from mongodb
   const getUserName = async () => {

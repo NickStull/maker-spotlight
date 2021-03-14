@@ -15,7 +15,7 @@ const Header = () => {
 		if (currentUser) {
 			setLoggedInState(true);
 		}
-	}, [currentUser])
+	}, [])
 
 	return (
 		<>
