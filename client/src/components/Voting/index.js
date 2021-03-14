@@ -9,29 +9,36 @@ import './voting.css'
 const Voting = () => {
 
 	const [votedState, setVotedState] = useState(false);
+	const [candidatesState, setCandidatesState] = useState([]);
 
 	useEffect(() => {
-		getUserInfo();
-	}, [])
+		console.log('CANDIDATES STATE', candidatesState);
+		if (candidatesState.length === 0) {
+			getCandidates()
+		}
+	}, [candidatesState])
 
 	//use firebase id to get user info from mongodb
-	const getUserInfo = async () => {
+	const getCandidates = async () => {
+		console.log('GET CANDIDATES CALLED');
 		let dbResults;
 		try {
 			dbResults = await API.getCandidates();
 		} catch (err) {
 			console.error(err);
 		} finally {
-			console.log('CANDIDATES', dbResults);
-			// setFeaturedImagesState(dbResults.data[0].images)
+			// console.log('CANDIDATES', dbResults);
+			setCandidatesState(dbResults.data);
+			console.log('CANDIDATES STATE', candidatesState);
 		}
 	};
 
 	return (
 		<Container fluid >
 			<h1>Voting Page</h1>
-			<CandidateProfile />
-
+			{candidatesState.map((candidate, index) => {
+				return <CandidateProfile />
+			})}
 		</Container>
 	)
 }
