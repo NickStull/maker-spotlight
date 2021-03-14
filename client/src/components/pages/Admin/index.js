@@ -70,30 +70,6 @@ function Search() {
       console.log("temp ARRRAY: ", tempArray);
       setSearchGroup(tempArray);
     }
-    // let namesArr = [];
-    // let fullName = "";
-
-    // for (let i = 0; i < searchGroup.data.length; i++) {
-    //   fullName =
-    //     searchGroup.data[i].firstName.toLowerCase() +
-    //     " " +
-    //     searchGroup.data[i].lastName.toLowerCase();
-    //   // namesArr.push(fullName);
-    //   if (fullName.includes(search.toLowerCase())) {
-    //     // console.log("you typed ", search, "are you looking for ", fullName);
-
-    //     namesArr.push(fullName);
-    //     setTitle(namesArr);
-    //     console.log(title);
-    //   }
-    // }
-
-    // API.getUserByName(searchGroup).then((res) => {
-    //   if (res.data === null) {
-    //     console.log("no results");
-    //   }
-    //   console.log(res);
-    // });
   };
 
   const handleInputChange = (event) => {
@@ -102,9 +78,19 @@ function Search() {
   };
 
   const handleRadioButton = (event) => {
-    setMaker(document.getElementById("maker").checked);
-    setUser(document.getElementById("user").checked);
-    setAdvertiser(document.getElementById("advertiser").checked);
+    if (event.target.id === "maker") {
+      setMaker(true);
+      setUser(false);
+      setAdvertiser(false);
+    } else if (event.target.id === "advertiser") {
+      setMaker(false);
+      setUser(false);
+      setAdvertiser(true);
+    } else if (event.target.id === "user") {
+      setMaker(false);
+      setUser(true);
+      setAdvertiser(false);
+    }
   };
 
   const userOnClick = (event) => {

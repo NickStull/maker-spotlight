@@ -1,85 +1,56 @@
 import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
+import {
+  InputGroup,
+  DropdownButton,
+  Dropdown,
+  FormControl,
+} from "react-bootstrap";
 import Container from "../../components/Container";
 // import SearchForm from "../../components/SearchForm";
 import SearchResults from "../../components/SearchResults";
 import Alert from "../../components/Alert";
 import API from "../../utils/API";
 
-// Using the datalist element we can create autofill suggestions based on the props.breeds array
 function SearchForm(props) {
-  // console.log("prop.result ", props.result);
-  // const [maker, setMaker] = useState(false);
-  // const [user, setUser] = useState(false);
-  // const [advertiser, setAdvertiser] = useState(false);
-  // const [search, setSearch] = useState({});
-
-  // useEffect(() => {
-
-  //   // API.searchTerms(search)
-  //   //   .then((res) => {
-  //   //     if (res.data.length === 0) {
-  //   //       throw new Error("No results found.");
-  //   //     }
-  //   //     if (res.data.status === "error") {
-  //   //       throw new Error(res.data.message);
-  //   //     }
-  //   //     setTitle(res.data[1][0]);
-  //   //     setUrl(res.data[3][0]);
-  //   //   })
-  //   //   .catch((err) => setError(err));
-  // }, [maker, user, advertiser, search]);
-
-  // const handleInputChange = (event) => {
-  //   setMaker(document.getElementById("maker").checked);
-  //   setUser(document.getElementById("user").checked);
-  //   setAdvertiser(document.getElementById("advertiser").checked);
-  // };
-
   return (
-    <form className={props.editToggle ? "search" : "vanish search"}>
-      <div className="form-group">
-        <p>Please Select:</p>
-        <input
-          onChange={props.handleRadioButton}
-          type="radio"
-          id="maker"
-          name="type"
-          value="maker"
-        ></input>
-        <label htmlFor="maker">Maker</label>
-        <br />
-        <input
-          onChange={props.handleRadioButton}
-          type="radio"
-          id="user"
-          name="type"
-          value="user"
-        ></input>
-        <label htmlFor="user">User</label>
-        <br />
-        <input
-          onChange={props.handleRadioButton}
-          type="radio"
-          id="advertiser"
-          name="type"
-          value="advertiser"
-        ></input>
-        <label htmlFor="advertiser">Advertiser</label>
-        <br />
-        <label htmlFor="language"></label>
-        <input
-          value={props.search}
-          onChange={props.handleInputChange}
-          name="term"
-          list="term"
-          type="text"
-          className="form-control"
-          placeholder="Search by Name"
-          id="term"
-        />
-      </div>
-    </form>
+    <>
+      <InputGroup className="mb-3">
+        <DropdownButton
+          as={InputGroup.Prepend}
+          variant="outline-secondary"
+          title="Dropdown"
+          id="input-group-dropdown-1"
+        >
+          <Dropdown.Item onClick={props.handleRadioButton} id="user">
+            Users
+          </Dropdown.Item>
+          <Dropdown.Item onClick={props.handleRadioButton} id="maker">
+            Makers
+          </Dropdown.Item>
+          <Dropdown.Item onClick={props.handleRadioButton} id="advertiser">
+            Advertisers
+          </Dropdown.Item>
+        </DropdownButton>
+        <FormControl aria-describedby="basic-addon1" />
+      </InputGroup>
+
+      <form className={props.editToggle ? "search" : "vanish search"}>
+        <div className="form-group">
+          <input
+            value={props.search}
+            onChange={props.handleInputChange}
+            name="term"
+            list="term"
+            type="text"
+            className="form-control"
+            placeholder="Search by Name"
+            id="term"
+          />
+        </div>
+      </form>
+    </>
   );
 }
 
