@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
 import Carousel from 'react-bootstrap/Carousel';
-import { Image, CloudinaryContext } from 'cloudinary-react';
+import { Image, CloudinaryContext, Transformation } from 'cloudinary-react';
 import API from "../../utils/API";
 import './carousel.css'
 
@@ -36,7 +36,6 @@ const CarouselViewer = () => {
 	// 	])
 	// }
 
-	let featuredImages = [testImage1];
 	//use firebase id to get user info from mongodb
 	const getUserInfo = async () => {
 		let dbResults;
@@ -69,7 +68,14 @@ const CarouselViewer = () => {
 										publicId={image}
 										className="d-block w-100"
 										// src="holder.js/800x400?text=First slide&bg=373940"
-										alt="First slide" />
+										alt="First slide"
+									// aspect-ratio="3:2" 
+									// width="1200"
+									// height="900"
+									// mode="Pad"
+									>
+										{/* <Transformation aspect-ratio="3:2" mode="ad" /> */}
+									</Image>
 								</CloudinaryContext>
 								<Carousel.Caption>
 									<section className='caption'>
