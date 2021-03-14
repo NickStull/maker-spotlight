@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
 import { Row, Col, Container } from 'react-bootstrap';
 import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
+import CandidateProfile from '../CandidateProfile'
 import API from "../../utils/API";
 import './voting.css'
 
@@ -29,6 +30,7 @@ const Voting = () => {
 	return (
 		<Container fluid >
 			<h1>Voting Page</h1>
+			<CandidateProfile />
 
 		</Container>
 	)
