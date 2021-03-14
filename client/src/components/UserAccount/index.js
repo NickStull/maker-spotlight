@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Form, Button, Card } from 'react-bootstrap';
 import { useAuth } from '../../utils/contexts/AuthContext';
 
 const UserAccount = () => {
   const { accountInfo } = useAuth();
+  let user
+
+  useEffect(() => {
+    user = accountInfo
+  })
 
   return (
     <>
@@ -17,7 +22,7 @@ const UserAccount = () => {
               <Form.Control 
                 name="firstName"
                 type="text" 
-                value={ accountInfo.firstName } 
+                value={ user.firstName } 
                 // ref={firstNameRef}
                 required
               />
@@ -27,7 +32,7 @@ const UserAccount = () => {
               <Form.Control 
                 name="lastName"
                 type="text" 
-                value={ accountInfo.lastName }  
+                // value={ accountInfo.lastName }  
                 // ref={lastNameRef}
                 required
               />
@@ -37,7 +42,7 @@ const UserAccount = () => {
               <Form.Control 
                 name="email"
                 type="email" 
-                value={ accountInfo.email } 
+                // value={ accountInfo.email } 
                 // ref={emailRef}
                 required
               />
