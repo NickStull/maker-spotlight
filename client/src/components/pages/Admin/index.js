@@ -109,7 +109,8 @@ function Search() {
 
   const userOnClick = (event) => {
     setUserId(event.target.id);
-    console.log(userId);
+    console.log(editToggle);
+    editToggle === true ? setEditToggle(false) : setEditToggle(true);
   };
 
   return (
