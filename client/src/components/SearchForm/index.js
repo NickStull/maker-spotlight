@@ -37,7 +37,7 @@ function SearchForm(props) {
   // };
 
   return (
-    <form className="search">
+    <form className={props.editToggle ? "search" : "vanish search"}>
       <div className="form-group">
         <p>Please Select:</p>
         <input
