@@ -78,7 +78,7 @@ const CarouselViewer = () => {
 										// height="900"
 										// mode="Pad"
 										>
-											{/* <Transformation aspect-ratio="3:2" mode="ad" /> */}
+											{/* <Transformation aspect-ratio="3:2" mode="pad" /> */}
 										</Image>
 									</CloudinaryContext>
 									{/* <Carousel.Caption>
