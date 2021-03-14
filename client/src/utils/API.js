@@ -12,7 +12,6 @@ export default {
   },
 
   getUser: function (id) {
-    console.log("Axios getUser hit with ", id);
     return axios.get("/api/users/" + id);
   },
 
@@ -31,7 +30,6 @@ export default {
   },
 
   getCandidates: function () {
-    console.log("candidates hit");
     return axios.get("/api/candidates");
   },
 
