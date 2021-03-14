@@ -1,61 +1,157 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Form, Col, Button } from 'react-bootstrap';
 
 function AdminEdit(props) {
-  console.log("-------------props------------------");
-  console.log(props);
+  // let address = (!props.user.data.address || props.user.data.address === "") ? "1234 Main St" : props.user.data.address
+  const idRef = useRef();
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const emailRef = useRef();
+  const adminRef = useRef();
+  const votedRef = useRef();
+  const wantToRef = useRef();
+  const candidateRef = useRef();
+  const currentVotesRef = useRef();
+  const totalVotesRef = useRef();
+  const businessNameRef = useRef();
+  const address1Ref = useRef();
+  const address2Ref = useRef();
+  const addressRef = useRef();
+  const stateRef = useRef();
+  const zipRef = useRef();
+  const phoneRef = useRef();
+  const websiteRef = useRef();
+  const bioRef = useRef();
+  const activeRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('-------------------in the submit---------------------');
+    console.log(idRef.current.placeholder);
+    let firstNameTemp = firstNameRef.current.value ? firstNameRef.current.value : props.user.data.firstName;
+    let lastNameTemp = lastNameRef.current.value ? lastNameRef.current.value : props.user.data.lastName;
+    console.log(firstNameTemp);
+    let userEdit = {
+      userId: idRef.current.placeholder,
+      firstName: firstNameTemp,
+    }
+    
+  }
+
   return (
-    <Form>
+    <Form className="editForm" onSubmit={handleSubmit}>
       <Form.Group controlId="formGridUserId">
         <Form.Label>User Id</Form.Label>
-        <Form.Control placeholder={ props.user.data.userId } readOnly />
+        <Form.Control 
+          ref={ idRef }
+          placeholder={ props.user.data.userId }
+          readOnly />
       </Form.Group>
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridFirstName">
           <Form.Label>First Name</Form.Label>
-          <Form.Control placeholder={ props.user.data.firstName } />
+          <Form.Control 
+            ref={ firstNameRef }
+            placeholder={ props.user.data.firstName } />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridLastName">
-          <Form.Label>Password</Form.Label>
-          <Form.Control placeholder={ props.user.data.lastName } />
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control 
+            ref={ lastNameRef }
+            placeholder={ props.user.data.lastName } />
         </Form.Group>
       </Form.Row>
 
       <Form.Group controlId="formGridEmail">
         <Form.Label>Email</Form.Label>
-        <Form.Control type="email" placeholder={ props.user.data.email } />
+        <Form.Control 
+          type="email" 
+          ref={ emailRef }
+          value={ props.user.data.email } />
       </Form.Group>
-
+      <br></br>
       <Form.Row>
-        <Form.Group id="formGridAdmin">
+        <Form.Group as={Col} id="formGridAdmin">
           <Form.Check type="switch" 
                       label="Admin" 
                       id="admin-switch"
                       defaultChecked={ props.user.data.admin } 
           />
         </Form.Group>
-{/* START HERE */}
-        <Form.Group id="formGridAdmin">
+
+        <Form.Group as={Col} id="formGridWantTo">
           <Form.Check type="switch" 
-                      label="Admin" 
-                      id="admin-switch"
-                      defaultChecked={ props.user.data.admin } 
+                      label="Wants to be featured" 
+                      id="want-to-switch"
+                      defaultChecked={ props.user.data.wantTo } 
           />
         </Form.Group>
       </Form.Row>
 
-      <Form.Group controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" />
+      <Form.Row>
+        <Form.Group as={Col} id="formGridActive">
+          <Form.Check type="switch" 
+                      label="Active" 
+                      id="active-switch"
+                      defaultChecked={ props.user.data.active } 
+          />
+        </Form.Group>
+        
+
+        <Form.Group as={Col} id="formGridCandidate">
+          <Form.Check type="switch" 
+                      label="Feature Candidate" 
+                      id="candidate-switch"
+                      defaultChecked={ props.user.data.candidate } 
+          />
+        </Form.Group>
+      </Form.Row>
+
+      <Form.Row>
+        <Form.Group as={Col} id="formGridVoted">
+            <Form.Check type="switch" 
+                        label="Voted" 
+                        id="voted-switch"
+                        defaultChecked={ props.user.data.voted } 
+            />
+        </Form.Group>
+      </Form.Row>
+      
+      <Form.Row>
+        <Form.Group as={Col} controlId="formGridCurrentVotes">
+          <Form.Label>Current Votes</Form.Label>
+          <Form.Control placeholder={ props.user.data.currentVotes } />
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="formGridTotalVotes">
+          <Form.Label>Total Votes</Form.Label>
+          <Form.Control placeholder={ props.user.data.totalVotes } />
+        </Form.Group>
+      </Form.Row>
+      <br></br>
+      <Form.Group controlId="formGridBusiness">
+        <Form.Label>Business Name</Form.Label>
+        <Form.Control placeholder={ props.user.data.businessName } />
       </Form.Group>
 
-      <Form.Group controlId="formGridAddress2">
-        <Form.Label>Address 2</Form.Label>
-        <Form.Control placeholder="Apartment, studio, or floor" />
-      </Form.Group>
-
+      <Form.Row>
+        <Col xs={8}>
+          <Form.Group controlId="formGridAddress1">
+            <Form.Label>Address</Form.Label>
+            <Form.Control 
+              ref={ addressRef } 
+              placeholder={ props.user.data.address } />
+          </Form.Group>
+        </Col>
+        <Col>
+          <Form.Group controlId="formGridAddress2">
+            <Form.Label>Address 2</Form.Label>
+            <Form.Control placeholder={ props.user.data.address2 } />
+          </Form.Group>
+        </Col> 
+        </Form.Row>
       <Form.Row>
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>City</Form.Label>
@@ -66,7 +162,56 @@ function AdminEdit(props) {
           <Form.Label>State</Form.Label>
           <Form.Control as="select" defaultValue="Choose...">
             <option>Choose...</option>
-            <option>...</option>
+            <option>Alabama</option>
+            <option>Alaska</option>
+            <option>Arizona</option>
+            <option>Arkansas</option>
+            <option>California</option>
+            <option>Colorado</option>
+            <option>Connecticut</option>
+            <option>Delaware</option>
+            <option>Florida</option>
+            <option>Georgia</option>
+            <option>Hawaii</option>
+            <option>Idaho</option>
+            <option>Illinois</option>
+            <option>Indiana</option>
+            <option>Iowa</option>
+            <option>Kansas</option>
+            <option>Kentucky</option>
+            <option>Louisiana</option>
+            <option>Maine</option>
+            <option>Maryland</option>
+            <option>Massachusetts</option>
+            <option>Michigan</option>
+            <option>Minnesota</option>
+            <option>Mississippi</option>
+            <option>Missouri</option>
+            <option>Montana</option>
+            <option>Nebraska</option>
+            <option>Nevada</option>
+            <option>New Hampshire</option>
+            <option>New Jersey</option>
+            <option>New Mexico</option>
+            <option>New York</option>
+            <option>North Carolina</option>
+            <option>North Dakota</option>
+            <option>Ohio</option>
+            <option>Oklahoma</option>
+            <option>Oregon</option>
+            <option>Pennsylvania</option>
+            <option>Rhode Island</option>
+            <option>South Carolina</option>
+            <option>South Dakota</option>
+            <option>Tennessee</option>
+            <option>Texas</option>
+            <option>Utah</option>
+            <option>Vermont</option>
+            <option>Virginia</option>
+            <option>Washington</option>
+            <option>West Virginia</option>
+            <option>Wisconsin</option>
+            <option>Wyoming</option>
           </Form.Control>
         </Form.Group>
 
@@ -76,13 +221,28 @@ function AdminEdit(props) {
         </Form.Group>
       </Form.Row>
 
-      <Form.Group id="formGridCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
+      <Form.Group controlId="formGridPhone">
+        <Form.Label>Phone</Form.Label>
+        <Form.Control placeholder={ props.user.data.phoneNumber } />
+      </Form.Group>
+
+      <Form.Group controlId="formGridWebsite">
+        <Form.Label>Website</Form.Label>
+        <Form.Control placeholder={ props.user.data.website } />
+      </Form.Group>
+
+      <Form.Group controlId="formGridBio">
+        <Form.Label>Bio</Form.Label>
+        <Form.Control as="textarea" rows={5} placeholder={ props.user.data.bioText } />
       </Form.Group>
 
       <Button variant="primary" type="submit">
         Submit
       </Button>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </Form>
     
     

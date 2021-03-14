@@ -18,11 +18,8 @@ function Search() {
   const [resultsArr, setResultsArr] = useState([]);
   const [userId, setUserId] = useState("");
   const [editToggle, setEditToggle] = useState(true);
-<<<<<<< HEAD
   const [editUser, setEditUser] = useState("");
-=======
   const [menuState, setMenuState] = useState("User Type");
->>>>>>> main
 
   useEffect(() => {
     if (!search) {
@@ -99,11 +96,8 @@ function Search() {
   const userOnClick = (event) => {
     setUserId(event.target.id);
     setEditToggle(false);
-    console.log("userId: ", userId);
     API.getUser(userId)
       .then((res) => {
-        console.log("-----------------------Information------------------------");
-        console.log(res);
         setEditUser(res);
       });
   };
@@ -143,11 +137,7 @@ function Search() {
             <SearchResults />
           )}
           { !editToggle && editUser
-            ? <>
-                <br></br>
-                <br></br>
-                <AdminEdit user={ editUser }/>
-              </>
+            ? <AdminEdit user={ editUser } />
             : <></>
           }
         </Container>
