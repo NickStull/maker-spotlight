@@ -9,6 +9,7 @@ import SignupButton from "./components/SignupButton";
 import Admin from "./components/pages/Admin/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UserAccount from "./components/UserAccount";
+import AccountContainer from "./components/AccountContainer";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <AuthProvider>
           <Header />
           <Route exact path="/" component={Home} />
-          <Route exact path="/account" component={UserAccount} />
+          <Route exact path="/account" component={AccountContainer} />
           <Route exact path="/admin" component={Admin} />
         </AuthProvider>
       </Router>

@@ -12,9 +12,8 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [accountInfo, setAccountInfo] = useState();
 
-  const signup = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password)
-  }
+  const signup = (email, password) => auth.createUserWithEmailAndPassword(email, password)
+  
 
   const login = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password)
@@ -38,6 +37,7 @@ const AuthProvider = ({ children }) => {
   }, [])
 
   const value = {
+    accountInfo,
     currentUser,
     accountInfo,
     login,
