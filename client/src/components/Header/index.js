@@ -20,12 +20,17 @@ const Header = () => {
 	return (
 		<>
 			<header className='pageHeader'>
-				<h1>Maker Spotlight</h1>
+				<a href="/">
+					<h1>Maker Spotlight</h1>
+				</a>
 				{/* display dropdown button based on loggedInState */}
-				{loggedInState ? <HeaderDropdown /> : <></>
+				{loggedInState 
+				? <HeaderDropdown /> 
+				:<>
+					<Signup />
+					<Login />
+				</>
 				}
-				<Signup />
-				<Login />
 			</header>
 		</>
 	)

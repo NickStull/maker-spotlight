@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext'
-import './dropdown.css'
-import API from "../../utils/API"
-import Button from 'react-bootstrap/Button';
+import { useAuth } from "../../utils/contexts/AuthContext";
+import "./dropdown.css";
+import API from "../../utils/API";
+import { DropdownButton, Dropdown } from "react-bootstrap"
 import Logout from "../Logout";
 
 const HeaderDropdown = () => {
   const { currentUser } = useAuth();
-  const [dropdown, setDropdownState] = useState("closed");
   const [currentUserName, setCurrentUserName] = useState();
 
   //check to see if user is logged in via context provider
@@ -30,19 +29,11 @@ const HeaderDropdown = () => {
     }
   };
 
-  function handleDropdownClick() {
-    dropdown === "closed"
-      ? setDropdownState("open")
-      : setDropdownState("closed");
-  }
-
   return (
-    <div className="dropdown">
-      <span onClick={handleDropdownClick}>Welcome, {currentUserName}</span>
-      <div className={dropdown === "closed" ? "hide" : "dropdown-content"}>
-        <Logout />
-      </div>
-    </div>
+    <DropdownButton className="dropdown" id="dropdown-basic-button" title={`Welcome, ${currentUserName}!`}>
+      <Dropdown.Item href="/account">Edit Account</Dropdown.Item>
+      <Logout />
+    </DropdownButton>
   );
 };
 
