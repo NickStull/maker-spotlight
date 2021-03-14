@@ -25,10 +25,12 @@ const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged( async (user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user);
-      let userInfo = await API.getUser(user.uid);
-      setAccountInfo(userInfo.data)
+      if (user) {
+        let userInfo = await API.getUser(user.uid);
+        setAccountInfo(userInfo.data)
+      }
       setLoading(false);
     })
 
