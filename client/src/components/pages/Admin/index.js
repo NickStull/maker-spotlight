@@ -17,6 +17,7 @@ function Search() {
   const [resultsArr, setResultsArr] = useState([]);
   const [userId, setUserId] = useState("");
   const [editToggle, setEditToggle] = useState(true);
+  const [menuState, setMenuState] = useState("User Type");
 
   useEffect(() => {
     if (!search) {
@@ -40,19 +41,6 @@ function Search() {
         setResultsArr(res);
       });
     }
-    // console.log("search group: ", searchGroup);
-    // API.getUsers(search)
-    //   .then((res) => {
-    //     if (res.data.length === 0) {
-    //       throw new Error("No results found.");
-    //     }
-    //     if (res.data.status === "error") {
-    //       throw new Error(res.data.message);
-    //     }
-    //     setTitle(res.data[1][0]);
-    //     setUrl(res.data[3][0]);
-    //   })
-    //   .catch((err) => setError(err));
   }, [maker, user, advertiser]);
 
   const searchFunc = (query) => {
@@ -62,38 +50,12 @@ function Search() {
       setSearchGroup(emptyQuery);
     } else {
       let tempArray = resultsArr.data.filter((person) => {
-        return (
-          person.firstName.search(new RegExp(query, "i")) !== -1 ||
-          person.lastName.search(new RegExp(query, "i")) !== -1
-        );
+        let fullName = person.firstName + " " + person.lastName;
+        return fullName.search(new RegExp(query, "i")) !== -1;
       });
       console.log("temp ARRRAY: ", tempArray);
       setSearchGroup(tempArray);
     }
-    // let namesArr = [];
-    // let fullName = "";
-
-    // for (let i = 0; i < searchGroup.data.length; i++) {
-    //   fullName =
-    //     searchGroup.data[i].firstName.toLowerCase() +
-    //     " " +
-    //     searchGroup.data[i].lastName.toLowerCase();
-    //   // namesArr.push(fullName);
-    //   if (fullName.includes(search.toLowerCase())) {
-    //     // console.log("you typed ", search, "are you looking for ", fullName);
-
-    //     namesArr.push(fullName);
-    //     setTitle(namesArr);
-    //     console.log(title);
-    //   }
-    // }
-
-    // API.getUserByName(searchGroup).then((res) => {
-    //   if (res.data === null) {
-    //     console.log("no results");
-    //   }
-    //   console.log(res);
-    // });
   };
 
   const handleInputChange = (event) => {
@@ -102,14 +64,28 @@ function Search() {
   };
 
   const handleRadioButton = (event) => {
-    setMaker(document.getElementById("maker").checked);
-    setUser(document.getElementById("user").checked);
-    setAdvertiser(document.getElementById("advertiser").checked);
+    if (event.target.id === "maker") {
+      setMaker(true);
+      setUser(false);
+      setAdvertiser(false);
+      setMenuState("Makers");
+    } else if (event.target.id === "advertiser") {
+      setMaker(false);
+      setUser(false);
+      setAdvertiser(true);
+      setMenuState("Advertisers");
+    } else if (event.target.id === "user") {
+      setMaker(false);
+      setUser(true);
+      setAdvertiser(false);
+      setMenuState("Users");
+    }
   };
 
   const userOnClick = (event) => {
     setUserId(event.target.id);
-    console.log(userId);
+    console.log(editToggle);
+    editToggle === true ? setEditToggle(false) : setEditToggle(true);
   };
 
   return (
@@ -118,7 +94,9 @@ function Search() {
     (
       <div>
         <Container style={{ minHeight: "100vh" }}>
-          <h1 className="text-center">Search for a User</h1>
+          <h1 className={editToggle ? "text-center" : "text-center vanish"}>
+            Search for a User
+          </h1>
           <Alert
             type="danger"
             style={{ opacity: error ? 1 : 0, marginBottom: 10 }}
@@ -126,6 +104,8 @@ function Search() {
             {error}
           </Alert>
           <SearchForm
+            menuState={menuState}
+            editToggle={editToggle}
             handleInputChange={handleInputChange}
             results={search}
             handleRadioButton={handleRadioButton}
@@ -133,6 +113,7 @@ function Search() {
           {searchGroup.length > 0 ? (
             searchGroup.map((item) => (
               <SearchResults
+                editToggle={editToggle}
                 title={
                   item.firstName + " " + item.lastName + " Email: " + item.email
                 }
@@ -150,92 +131,3 @@ function Search() {
 }
 
 export default Search;
-
-{
-  /* <button>Makers</button>
-<button>Advertisers</button>
-<button>Users</button> */
-}
-
-// import React, { Component } from "react";
-// import SearchForm from "./SearchForm";
-// import ResultList from "./ResultList";
-// import API from "../utils/API";
-
-// class SearchResultContainer extends Component {
-//   state = {
-//     search: "",
-//     results: []
-//   };
-
-//   // When this component mounts, search the Giphy API for pictures of kittens
-//   componentDidMount() {
-//     this.searchGiphy("kittens");
-//   }
-
-//   searchGiphy = query => {
-//     API.search(query)
-//       .then(res => this.setState({ results: res.data.data }))
-//       .catch(err => console.log(err));
-//   };
-
-//   handleInputChange = event => {
-//     const name = event.target.name;
-//     const value = event.target.value;
-//     this.setState({
-//       [name]: value
-//     });
-//   };
-
-//   // When the form is submitted, search the Giphy API for `this.state.search`
-//   handleFormSubmit = event => {
-//     event.preventDefault();
-//     this.searchGiphy(this.state.search);
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <SearchForm
-//           search={this.state.search}
-//           handleFormSubmit={this.handleFormSubmit}
-//           handleInputChange={this.handleInputChange}
-//         />
-//         <ResultList results={this.state.results} />
-//       </div>
-//     );
-//   }
-// }
-
-// export default SearchResultContainer;
-
-// const Admin = () => {
-//   const [maker, setMaker] = useState({
-//     search: "",
-//     results: [],
-//   });
-//   const [username, setUsername] = useState();
-
-//   const makerSearch = () => {};
-//   return (
-//     <>
-//       <div className="topnav">
-//         <div className="search-container">
-//           <form action="/action_page.php">
-//             <input
-//               onChange={() => {}}
-//               type="text"
-//               placeholder="Search.."
-//               name="search"
-//             />
-//             <button type="submit">
-//               <i className="fa fa-search"></i>
-//             </button>
-//           </form>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Admin;
