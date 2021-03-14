@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import {
@@ -7,11 +7,6 @@ import {
   Dropdown,
   FormControl,
 } from "react-bootstrap";
-import Container from "../../components/Container";
-// import SearchForm from "../../components/SearchForm";
-import SearchResults from "../../components/SearchResults";
-import Alert from "../../components/Alert";
-import API from "../../utils/API";
 
 function SearchForm(props) {
   return (
@@ -44,26 +39,3 @@ function SearchForm(props) {
 }
 
 export default SearchForm;
-
-{
-  /* <div className="dropdown">
-          <button onClick={myFunction} className="dropbtn">
-            Dropdown
-          </button>
-          <div id="myDropdown" className="dropdown-content show">
-            <input
-              type="text"
-              placeholder="Search.."
-              id="myInput"
-              onKeyUp={filterFunction}
-            />
-            <a href="#about">About</a>
-            <a href="#base">Base</a>
-            <a href="#blog">Blog</a>
-            <a href="#contact">Contact</a>
-            <a href="#custom">Custom</a>
-            <a href="#support">Support</a>
-            <a href="#tools">Tools</a>
-          </div>
-        </div> */
-}

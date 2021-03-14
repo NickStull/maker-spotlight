@@ -41,19 +41,6 @@ function Search() {
         setResultsArr(res);
       });
     }
-    // console.log("search group: ", searchGroup);
-    // API.getUsers(search)
-    //   .then((res) => {
-    //     if (res.data.length === 0) {
-    //       throw new Error("No results found.");
-    //     }
-    //     if (res.data.status === "error") {
-    //       throw new Error(res.data.message);
-    //     }
-    //     setTitle(res.data[1][0]);
-    //     setUrl(res.data[3][0]);
-    //   })
-    //   .catch((err) => setError(err));
   }, [maker, user, advertiser]);
 
   const searchFunc = (query) => {
@@ -63,10 +50,8 @@ function Search() {
       setSearchGroup(emptyQuery);
     } else {
       let tempArray = resultsArr.data.filter((person) => {
-        return (
-          person.firstName.search(new RegExp(query, "i")) !== -1 ||
-          person.lastName.search(new RegExp(query, "i")) !== -1
-        );
+        let fullName = person.firstName + " " + person.lastName;
+        return fullName.search(new RegExp(query, "i")) !== -1;
       });
       console.log("temp ARRRAY: ", tempArray);
       setSearchGroup(tempArray);
@@ -146,92 +131,3 @@ function Search() {
 }
 
 export default Search;
-
-{
-  /* <button>Makers</button>
-<button>Advertisers</button>
-<button>Users</button> */
-}
-
-// import React, { Component } from "react";
-// import SearchForm from "./SearchForm";
-// import ResultList from "./ResultList";
-// import API from "../utils/API";
-
-// class SearchResultContainer extends Component {
-//   state = {
-//     search: "",
-//     results: []
-//   };
-
-//   // When this component mounts, search the Giphy API for pictures of kittens
-//   componentDidMount() {
-//     this.searchGiphy("kittens");
-//   }
-
-//   searchGiphy = query => {
-//     API.search(query)
-//       .then(res => this.setState({ results: res.data.data }))
-//       .catch(err => console.log(err));
-//   };
-
-//   handleInputChange = event => {
-//     const name = event.target.name;
-//     const value = event.target.value;
-//     this.setState({
-//       [name]: value
-//     });
-//   };
-
-//   // When the form is submitted, search the Giphy API for `this.state.search`
-//   handleFormSubmit = event => {
-//     event.preventDefault();
-//     this.searchGiphy(this.state.search);
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <SearchForm
-//           search={this.state.search}
-//           handleFormSubmit={this.handleFormSubmit}
-//           handleInputChange={this.handleInputChange}
-//         />
-//         <ResultList results={this.state.results} />
-//       </div>
-//     );
-//   }
-// }
-
-// export default SearchResultContainer;
-
-// const Admin = () => {
-//   const [maker, setMaker] = useState({
-//     search: "",
-//     results: [],
-//   });
-//   const [username, setUsername] = useState();
-
-//   const makerSearch = () => {};
-//   return (
-//     <>
-//       <div className="topnav">
-//         <div className="search-container">
-//           <form action="/action_page.php">
-//             <input
-//               onChange={() => {}}
-//               type="text"
-//               placeholder="Search.."
-//               name="search"
-//             />
-//             <button type="submit">
-//               <i className="fa fa-search"></i>
-//             </button>
-//           </form>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Admin;
