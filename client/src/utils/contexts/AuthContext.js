@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { auth } from '../../firebase'
-import API from "../../utils/API";
+import API from "../API";
 
 const AuthContext = createContext()
 
@@ -10,7 +10,7 @@ const useAuth = () => useContext(AuthContext)
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
-  const [userAccountInfo, setUserAccountInfo] = useState();
+  const [accountInfo, setAccountInfo] = useState();
 
   const signup = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password)
@@ -24,28 +24,12 @@ const AuthProvider = ({ children }) => {
     return auth.signOut();
   }
 
-  //use firebase id to get user info from mongodb
-  const getCurrentUserInfo = async (userInfo) => {
-    console.log('CURRENT USER', userInfo);
-    // let dbResults;
-    // try {
-    //   dbResults = await API.getUser(currentUser.uid);
-    // } catch (err) {
-    //   console.error(err);
-    // } finally {
-    //   console.log('USER INFO RETURNED', dbResults);
-    // setUserAccountInfo(dbResults);
-    // }
-  };
-
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      console.log('USER INSIDE UNSUBSCRIBE', user);
+    const unsubscribe = auth.onAuthStateChanged( async (user) => {
       setCurrentUser(user);
-      getCurrentUserInfo(user);
+      let userInfo = await API.getUser(user.uid);
+      setAccountInfo(userInfo.data)
       setLoading(false);
-
-
     })
 
     return unsubscribe
@@ -53,7 +37,7 @@ const AuthProvider = ({ children }) => {
 
   const value = {
     currentUser,
-    userAccountInfo,
+    accountInfo,
     login,
     signup,
     logout
