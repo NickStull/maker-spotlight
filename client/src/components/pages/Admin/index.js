@@ -74,6 +74,7 @@ function Search() {
 
   const userOnClick = (event) => {
     setUserId(event.target.id);
+<<<<<<< HEAD
     setEditToggle(false);
     console.log(userId);
     API.getUser(userId)
@@ -82,13 +83,19 @@ function Search() {
         console.log(res);
         setEditUser(res);
       });
+=======
+    console.log(editToggle);
+    editToggle === true ? setEditToggle(false) : setEditToggle(true);
+>>>>>>> main
   };
 
   return (
     (
       <div>
         <Container style={{ minHeight: "100vh" }}>
-          <h1 className="text-center">Search for a User</h1>
+          <h1 className={editToggle ? "text-center" : "text-center vanish"}>
+            Search for a User
+          </h1>
           <Alert
             type="danger"
             style={{ opacity: error ? 1 : 0, marginBottom: 10 }}
@@ -96,6 +103,7 @@ function Search() {
             {error}
           </Alert>
           <SearchForm
+            editToggle={editToggle}
             handleInputChange={handleInputChange}
             results={search}
             handleRadioButton={handleRadioButton}
@@ -103,6 +111,7 @@ function Search() {
           {searchGroup.length > 0 ? (
             searchGroup.map((item) => (
               <SearchResults
+                editToggle={editToggle}
                 title={
                   item.firstName + " " + item.lastName + " Email: " + item.email
                 }

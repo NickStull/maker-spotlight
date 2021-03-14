@@ -1,4 +1,4 @@
-* {
+/* * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -11,9 +11,9 @@ h1{
 
 h2{
  font-size: 1.5em;
-}
+} */
 
-button {
+/* button {
 	padding: .5em 1.25em;
 	display: inline;
 	background-color: transparent;
@@ -24,4 +24,4 @@ button {
 }
 button:hover {
 	border: 2px solid black;
-}
+} */
