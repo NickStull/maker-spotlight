@@ -119,7 +119,9 @@ function Search() {
     (
       <div>
         <Container style={{ minHeight: "100vh" }}>
-          <h1 className="text-center">Search for a User</h1>
+          <h1 className={editToggle ? "text-center" : "text-center vanish"}>
+            Search for a User
+          </h1>
           <Alert
             type="danger"
             style={{ opacity: error ? 1 : 0, marginBottom: 10 }}
@@ -127,6 +129,7 @@ function Search() {
             {error}
           </Alert>
           <SearchForm
+            editToggle={editToggle}
             handleInputChange={handleInputChange}
             results={search}
             handleRadioButton={handleRadioButton}
@@ -134,6 +137,7 @@ function Search() {
           {searchGroup.length > 0 ? (
             searchGroup.map((item) => (
               <SearchResults
+                editToggle={editToggle}
                 title={
                   item.firstName + " " + item.lastName + " Email: " + item.email
                 }
