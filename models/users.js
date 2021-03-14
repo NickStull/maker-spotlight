@@ -76,6 +76,12 @@ const UsersSchema = new Schema({
     default: ""
   },
 
+  city: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+
   state: {
     type: String,
     trim: true,
