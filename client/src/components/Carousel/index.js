@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
-import { Carousel, Container, Row, Col } from 'react-bootstrap/Carousel';
+import { Carousel, Container, Row, Col } from 'react-bootstrap';
 import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
 import API from "../../utils/API";
 import './carousel.css'

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
-import { Carousel, Row, Col, Container } from 'react-bootstrap/Carousel';
+import { Carousel, Row, Col, Container } from 'react-bootstrap';
 import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
 import API from "../../utils/API";
 import './voting.css'
 
 const Voting = () => {
 
-	const [featuredImagesState, setFeaturedImagesState] = useState([testImage1]);
-	const [index, setIndex] = useState(0);
+	const [votedState, setVotedState] = useState(false);
 
 	useEffect(() => {
 		getUserInfo();
@@ -23,12 +22,13 @@ const Voting = () => {
 			console.error(err);
 		} finally {
 			console.log('CANDIDATES', dbResults);
-			setFeaturedImagesState(dbResults.data[0].images)
+			// setFeaturedImagesState(dbResults.data[0].images)
 		}
 	};
 
 	return (
 		<Container fluid >
+			<h1>Voting Page</h1>
 
 		</Container>
 	)
