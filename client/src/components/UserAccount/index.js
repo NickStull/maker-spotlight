@@ -1,35 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Form, Button, Card } from 'react-bootstrap';
 import { useAuth } from '../../utils/contexts/AuthContext';
-import API from '../../utils/API';
 
 const UserAccount = () => {
   const { accountInfo } = useAuth();
-  // const [currentUserAccount, setCurrentUserAccount] = useState();
-
-  //check to see if user is logged in via context provider
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     getUserName();
-  //   }
-  // }, [currentUser]);
-
-  //use firebase id to get user info from mongodb
-  // const getUserName = async () => {
-  //   // console.log('CURRENT USER', currentUser.uid);
-  //   let dbResults;
-  //   try {
-  //     dbResults = await API.getUser(currentUser.uid);
-  //   } catch (err) {
-  //     console.error(err);
-  //   } finally {
-  //     setCurrentUserAccount({
-  //       firstName: dbResults.data.firstName,
-  //       lastName: dbResults.data.lastName,
-  //       email: dbResults.data.email
-  //     });
-  //   }
-  // };
 
   return (
     <>
