@@ -15,12 +15,12 @@ import API from "../../utils/API";
 
 function SearchForm(props) {
   return (
-    <>
+    <div className={props.editToggle ? null : "vanish"}>
       <InputGroup className="mb-3">
         <DropdownButton
           as={InputGroup.Prepend}
           variant="outline-secondary"
-          title="Dropdown"
+          title={props.menuState}
           id="input-group-dropdown-1"
         >
           <Dropdown.Item onClick={props.handleRadioButton} id="user">
@@ -33,24 +33,13 @@ function SearchForm(props) {
             Advertisers
           </Dropdown.Item>
         </DropdownButton>
-        <FormControl aria-describedby="basic-addon1" />
+        <FormControl
+          aria-describedby="basic-addon1"
+          value={props.search}
+          onChange={props.handleInputChange}
+        />
       </InputGroup>
-
-      <form className={props.editToggle ? "search" : "vanish search"}>
-        <div className="form-group">
-          <input
-            value={props.search}
-            onChange={props.handleInputChange}
-            name="term"
-            list="term"
-            type="text"
-            className="form-control"
-            placeholder="Search by Name"
-            id="term"
-          />
-        </div>
-      </form>
-    </>
+    </div>
   );
 }
 

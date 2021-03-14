@@ -17,6 +17,7 @@ function Search() {
   const [resultsArr, setResultsArr] = useState([]);
   const [userId, setUserId] = useState("");
   const [editToggle, setEditToggle] = useState(true);
+  const [menuState, setMenuState] = useState("User Type");
 
   useEffect(() => {
     if (!search) {
@@ -82,14 +83,17 @@ function Search() {
       setMaker(true);
       setUser(false);
       setAdvertiser(false);
+      setMenuState("Makers");
     } else if (event.target.id === "advertiser") {
       setMaker(false);
       setUser(false);
       setAdvertiser(true);
+      setMenuState("Advertisers");
     } else if (event.target.id === "user") {
       setMaker(false);
       setUser(true);
       setAdvertiser(false);
+      setMenuState("Users");
     }
   };
 
@@ -115,6 +119,7 @@ function Search() {
             {error}
           </Alert>
           <SearchForm
+            menuState={menuState}
             editToggle={editToggle}
             handleInputChange={handleInputChange}
             results={search}
