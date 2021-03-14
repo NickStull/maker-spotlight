@@ -19,6 +19,11 @@
   padding: 1em 2em;
 }
 
+.pageHeader h1 {
+  color: white;
+  font-family: 'Chisel', serif;
+}
+
 .headerDiv {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,5 +36,6 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   color: white;
+  font-family: 'Chisel', serif;
 }
 /*# sourceMappingURL=header.css.map */
