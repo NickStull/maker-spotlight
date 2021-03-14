@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Form, Col, Button } from 'react-bootstrap';
+import API from "../../utils/API";
 
 function AdminEdit(props) {
   // let address = (!props.user.data.address || props.user.data.address === "") ? "1234 Main St" : props.user.data.address
@@ -68,7 +69,16 @@ function AdminEdit(props) {
       bioText: bioTemp
     }
     
-    // console.log(userEdit);
+    console.log(userEdit);
+    API.editUser(userEdit)
+      .then(
+        results => {
+          props.setEditToggle(true);
+          // props.setSearch("");
+          // console.log(results);
+        }
+      )
+      .catch(err => console.log(err));
   }
 
   return (

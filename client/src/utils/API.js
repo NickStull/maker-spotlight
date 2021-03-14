@@ -37,6 +37,11 @@ export default {
     console.log("getUserByName hit with", name);
     return axios.get("/api/users/name/" + name);
   },
+
+  editUser: function (userData) {
+    return axios.put("/api/users/" + userData.userId, userData);
+  }
+
 };
 
 // // Gets all posts
