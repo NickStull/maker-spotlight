@@ -8,6 +8,7 @@ const useAuth = () => useContext(AuthContext)
 
 const AuthProvider = ({children}) => {
   const [currentUser, setCurrentUser] = useState()
+  // const [accountInfo, setAccountInfo] = useState()
   const [loading, setLoading] = useState(true)
 
   const signup = (email, password) => {
@@ -25,6 +26,9 @@ const AuthProvider = ({children}) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user)
+      //API 
+      //var=object
+      //setAccountInfo(var)
       setLoading(false)
     })
 
@@ -32,6 +36,7 @@ const AuthProvider = ({children}) => {
   }, [])
 
   const value = {
+    // accountInfo,
     currentUser,
     login,
     signup,

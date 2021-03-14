@@ -64,7 +64,7 @@ const Signup = () => {
           {currentUser && currentUser.email}
           {error && <div>{error}</div>}
           <Form className="form" onSubmit={handleSubmit}>
-          <Form.Group controlId="formBasicFirst">
+            <Form.Group controlId="formBasicFirst">
               <Form.Label>First Name</Form.Label>
               <Form.Control 
                 name="firstName"
