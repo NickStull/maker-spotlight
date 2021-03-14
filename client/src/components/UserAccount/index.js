@@ -1,14 +1,28 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Button, Card } from 'react-bootstrap';
 import { useAuth } from '../../utils/contexts/AuthContext';
+import API from "../../utils/API"
 
 const UserAccount = () => {
-  const { accountInfo } = useAuth();
-  let user
+  const { currentUser } = useAuth();
+  const [user, setUser] = useState();
 
   useEffect(() => {
-    user = accountInfo
-  })
+    if (currentUser) {
+      getUser();
+    }
+  }, []);
+
+  const getUser = async () => {
+    let dbResults;
+    try {
+      dbResults = await API.getUser(currentUser.uid);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setUser(dbResults.data);
+    }
+  };
 
   return (
     <>
@@ -22,7 +36,7 @@ const UserAccount = () => {
               <Form.Control 
                 name="firstName"
                 type="text" 
-                value={ user.firstName } 
+                defaultValue={ user.firstName } 
                 // ref={firstNameRef}
                 required
               />
@@ -32,7 +46,7 @@ const UserAccount = () => {
               <Form.Control 
                 name="lastName"
                 type="text" 
-                // value={ accountInfo.lastName }  
+                value={ user.lastName }  
                 // ref={lastNameRef}
                 required
               />
@@ -42,9 +56,16 @@ const UserAccount = () => {
               <Form.Control 
                 name="email"
                 type="email" 
-                // value={ accountInfo.email } 
+                value={ currentUser.email } 
                 // ref={emailRef}
                 required
+              />
+            </Form.Group>
+            <Form.Group >
+              <Form.Check type="switch"
+                          label="Wants to be featured" 
+                          id="want-to-switch"
+                          // defaultChecked={ props.user.data.wantTo } 
               />
             </Form.Group>
             <Button className="w-100" variant="primary" type="submit">

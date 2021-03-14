@@ -8,14 +8,14 @@ import './header.css'
 const Header = () => {
 
 	const [loggedInState, setLoggedInState] = useState(false);
-	const { currentUser } = useAuth();
+	const { currentUser, logout } = useAuth();
 
 	//check to see if user is logged in via context provider
 	useEffect(() => {
 		if (currentUser) {
 			setLoggedInState(true);
 		}
-	}, [])
+	}, [currentUser])
 
 	return (
 		<>

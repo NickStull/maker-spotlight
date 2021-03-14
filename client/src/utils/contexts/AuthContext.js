@@ -1,55 +1,124 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
-import { auth } from '../../firebase'
-import API from "../API";
+import React, { useContext, useState, useEffect } from "react"
+import { auth } from "../../firebase"
 
-const AuthContext = createContext()
+const AuthContext = React.createContext()
 
-const useAuth = () => useContext(AuthContext)
+export function useAuth() {
+  return useContext(AuthContext)
+}
 
+export function AuthProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState()
+  const [loading, setLoading] = useState(true)
 
-const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState();
-  const [loading, setLoading] = useState(true);
-  const [accountInfo, setAccountInfo] = useState();
+  function signup(email, password) {
+    return auth.createUserWithEmailAndPassword(email, password)
+  }
 
-  const signup = (email, password) => auth.createUserWithEmailAndPassword(email, password)
-
-
-  const login = (email, password) => {
+  function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password)
   }
 
-  const logout = () => {
-    return auth.signOut();
+  function logout() {
+    return auth.signOut()
+  }
+
+  function resetPassword(email) {
+    return auth.sendPasswordResetEmail(email)
+  }
+
+  function updateEmail(email) {
+    return currentUser.updateEmail(email)
+  }
+
+  function updatePassword(password) {
+    return currentUser.updatePassword(password)
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      setCurrentUser(user);
-      if(currentUser){
-        let userInfo = await API.getUser(user.uid);
-        setAccountInfo(userInfo.data)
-      }
-      setLoading(false);
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      setCurrentUser(user)
+      setLoading(false)
     })
 
     return unsubscribe
   }, [])
 
   const value = {
-    accountInfo,
     currentUser,
-    accountInfo,
     login,
     signup,
-    logout
+    logout,
+    resetPassword,
+    updateEmail,
+    updatePassword
   }
 
   return (
     <AuthContext.Provider value={value}>
-      { !loading && children }
+      {!loading && children}
     </AuthContext.Provider>
   )
 }
 
-export { AuthProvider, useAuth }
+
+
+
+
+
+
+
+// import React, { createContext, useContext, useEffect, useState } from 'react'
+// import { auth } from '../../firebase'
+// import API from "../API";
+
+// const AuthContext = createContext()
+
+// const useAuth = () => useContext(AuthContext)
+
+
+// const AuthProvider = ({ children }) => {
+//   const [currentUser, setCurrentUser] = useState();
+//   const [loading, setLoading] = useState(true);
+//   const [accountInfo, setAccountInfo] = useState();
+
+//   const signup = (email, password) => auth.createUserWithEmailAndPassword(email, password)
+
+
+//   const login = (email, password) => {
+//     return auth.signInWithEmailAndPassword(email, password)
+//   }
+
+//   const logout = () => {
+//     return auth.signOut();
+//   }
+
+//   useEffect(() => {
+//     const unsubscribe = auth.onAuthStateChanged(async (user) => {
+//       setCurrentUser(user);
+//       if(currentUser){
+//         let userInfo = await API.getUser(user.uid);
+//         setAccountInfo(userInfo.data)
+//       }
+//       setLoading(false);
+//     })
+
+//     return unsubscribe
+//   }, [])
+
+//   const value = {
+//     currentUser,
+//     accountInfo,
+//     login,
+//     signup,
+//     logout
+//   }
+
+//   return (
+//     <AuthContext.Provider value={value}>
+//       { !loading && children }
+//     </AuthContext.Provider>
+//   )
+// }
+
+// export { AuthProvider, useAuth }
