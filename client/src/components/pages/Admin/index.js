@@ -4,6 +4,7 @@ import Container from "../../../components/Container";
 import SearchForm from "../../../components/SearchForm";
 import SearchResults from "../../../components/SearchResults";
 import Alert from "../../../components/Alert";
+import AdminEdit from "../../../components/AdminEdit";
 import API from "../../../utils/API";
 
 function Search() {
@@ -17,6 +18,7 @@ function Search() {
   const [resultsArr, setResultsArr] = useState([]);
   const [userId, setUserId] = useState("");
   const [editToggle, setEditToggle] = useState(true);
+  const [editUser, setEditUser] = useState("");
   const [menuState, setMenuState] = useState("User Type");
 
   useEffect(() => {
@@ -42,6 +44,15 @@ function Search() {
       });
     }
   }, [maker, user, advertiser]);
+
+  useEffect(() => {
+    API.getUser(userId)
+    .then((res) => {
+      console.log("-----------------------Information------------------------");
+      console.log(res);
+      setEditUser(res);
+    });
+  }, [userId]);
 
   const searchFunc = (query) => {
     console.log("results Arr:   ", resultsArr);
@@ -84,13 +95,14 @@ function Search() {
 
   const userOnClick = (event) => {
     setUserId(event.target.id);
-    console.log(editToggle);
-    editToggle === true ? setEditToggle(false) : setEditToggle(true);
+    setEditToggle(false);
+    API.getUser(userId)
+      .then((res) => {
+        setEditUser(res);
+      });
   };
 
   return (
-    console.log("search group: ", searchGroup),
-    console.log("title", title),
     (
       <div>
         <Container style={{ minHeight: "100vh" }}>
@@ -124,6 +136,10 @@ function Search() {
           ) : (
             <SearchResults />
           )}
+          { !editToggle && editUser
+            ? <AdminEdit user={ editUser } />
+            : <></>
+          }
         </Container>
       </div>
     )

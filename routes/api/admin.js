@@ -1,19 +1,17 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
 
-// Matches with "/api/users"
+// Matches with "/api/admin"
 router.route("/")
   .get(usersController.findAll)
   .post(usersController.create);
 
-// Matches with "/api/users/:id"
+// Matches with "/api/admin/:id"
 
 router
   .route("/:id")
   .get(usersController.findByFirebaseId)
   .put(usersController.update)
   .delete(usersController.remove);
-
-router.route("/name/:name").get(usersController.getUserByName);
 
 module.exports = router;
