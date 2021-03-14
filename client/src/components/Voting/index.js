@@ -37,7 +37,10 @@ const Voting = () => {
 		<Container fluid >
 			<h1>Voting Page</h1>
 			{candidatesState.map((candidate, index) => {
-				return <CandidateProfile />
+				return <CandidateProfile
+					fullName={`${candidate.firstName} ${candidate.lastName}`}
+					bioText={candidate.bioText}
+					key={index} />
 			})}
 		</Container>
 	)

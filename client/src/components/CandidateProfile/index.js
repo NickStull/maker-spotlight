@@ -5,14 +5,12 @@ import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinar
 import API from "../../utils/API";
 import './candidateProfile.css'
 
-const CandidateProfile = () => {
-
-
+const CandidateProfile = ({ fullName, bioText }) => {
 
 	return (
 		<Container fluid >
-			<h3>Test</h3>
-			{/* <h3>{firstName}</h3> */}
+			<h3>{fullName}</h3>
+			<p>{bioText}</p>
 		</Container>
 	)
 }
