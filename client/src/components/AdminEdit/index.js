@@ -26,7 +26,7 @@ function AdminEdit(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('-------------------in the submit---------------------');
+    // console.log('-------------------in the submit---------------------');
     // console.log(adminRef.current.value);
     console.log(currentVotesRef.current.value);
     let firstNameTemp = firstNameRef.current.value ? firstNameRef.current.value : props.user.data.firstName;
@@ -35,7 +35,16 @@ function AdminEdit(props) {
     let currentVotesTemp = currentVotesRef.current.value ? currentVotesRef.current.value : props.user.data.currentVotes;
     let totalVotesTemp = totalVotesRef.current.value ? totalVotesRef.current.value : props.user.data.currentVotes;
     let businessNameTemp = businessNameRef.current.value ? businessNameRef.current.value : props.user.data.businessName;
-    
+    let address1Temp = address1Ref.current.value ? address1Ref.current.value : props.user.data.address;
+    let address2Temp = address2Ref.current.value ? address2Ref.current.value : props.user.data.address2;
+    let cityTemp = cityRef.current.value ? cityRef.current.value : props.user.data.city;
+    let stateTemp = stateRef.current.value ? stateRef.current.value : props.user.data.state;
+    stateTemp = stateTemp === "Choose..." ? "" : stateTemp;
+    let zipCodeTemp = zipCodeRef.current.value ? zipCodeRef.current.value : props.user.data.zipCode;
+    let phoneTemp = phoneRef.current.value ? phoneRef.current.value : props.user.data.phoneNumber;
+    let websiteTemp = websiteRef.current.value ? websiteRef.current.value : props.user.data.website;
+    let bioTemp = bioRef.current.value ? bioRef.current.value : props.user.data.bioText;
+  
     let userEdit = {
       userId: idRef.current.placeholder,
       firstName: firstNameTemp,
@@ -45,12 +54,21 @@ function AdminEdit(props) {
       voted: votedRef.current.checked,
       wantTo: wantToRef.current.checked,
       candidate: candidateRef.current.checked,
+      active: activeRef.current.checked,
       currentVotes: parseInt(currentVotesTemp),
       totalVotes: parseInt(totalVotesTemp),
       businessName: businessNameTemp,
+      address: address1Temp,
+      address2: address2Temp,
+      city: cityTemp,
+      state: stateTemp,
+      zipCode: zipCodeTemp,
+      phoneNumber: phoneTemp,
+      website: websiteTemp,
+      bioText: bioTemp
     }
     
-    console.log(userEdit);
+    // console.log(userEdit);
   }
 
   return (

@@ -89,8 +89,9 @@ const UsersSchema = new Schema({
   },
 
   zipCode: {
-    type: Number,
+    type: String,
     trim: true,
+    default: ""
   },
 
   phoneNumber: {
