@@ -4,32 +4,32 @@ import { useAuth } from '../../utils/contexts/AuthContext';
 import API from '../../utils/API';
 
 const UserAccount = () => {
-  const { currentUser } = useAuth();
-  const [currentUserAccount, setCurrentUserAccount] = useState();
+  const { accountInfo } = useAuth();
+  // const [currentUserAccount, setCurrentUserAccount] = useState();
 
   //check to see if user is logged in via context provider
-  useEffect(() => {
-    if (currentUser) {
-      getUserName();
-    }
-  }, [currentUser]);
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     getUserName();
+  //   }
+  // }, [currentUser]);
 
   //use firebase id to get user info from mongodb
-  const getUserName = async () => {
-    // console.log('CURRENT USER', currentUser.uid);
-    let dbResults;
-    try {
-      dbResults = await API.getUser(currentUser.uid);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setCurrentUserAccount({
-        firstName: dbResults.data.firstName,
-        lastName: dbResults.data.lastName,
-        email: dbResults.data.email
-      });
-    }
-  };
+  // const getUserName = async () => {
+  //   // console.log('CURRENT USER', currentUser.uid);
+  //   let dbResults;
+  //   try {
+  //     dbResults = await API.getUser(currentUser.uid);
+  //   } catch (err) {
+  //     console.error(err);
+  //   } finally {
+  //     setCurrentUserAccount({
+  //       firstName: dbResults.data.firstName,
+  //       lastName: dbResults.data.lastName,
+  //       email: dbResults.data.email
+  //     });
+  //   }
+  // };
 
   return (
     <>
@@ -43,7 +43,7 @@ const UserAccount = () => {
               <Form.Control 
                 name="firstName"
                 type="text" 
-                // value={ currentUserAccount.firstName } 
+                value={ accountInfo.firstName } 
                 // ref={firstNameRef}
                 required
               />
@@ -53,7 +53,7 @@ const UserAccount = () => {
               <Form.Control 
                 name="lastName"
                 type="text" 
-                // value={ currentUserAccount.lastName }  
+                value={ accountInfo.lastName }  
                 // ref={lastNameRef}
                 required
               />
@@ -63,7 +63,7 @@ const UserAccount = () => {
               <Form.Control 
                 name="email"
                 type="email" 
-                // value={ currentUserAccount.email } 
+                value={ accountInfo.email } 
                 // ref={emailRef}
                 required
               />
