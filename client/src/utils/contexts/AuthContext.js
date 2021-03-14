@@ -1,14 +1,16 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { auth } from '../../firebase'
+import API from "../API";
 
 const AuthContext = createContext()
 
 const useAuth = () => useContext(AuthContext)
 
 
-const AuthProvider = ({children}) => {
-  const [currentUser, setCurrentUser] = useState()
-  const [loading, setLoading] = useState(true)
+const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true);
+  const [accountInfo, setAccountInfo] = useState();
 
   const signup = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password)
@@ -23,9 +25,11 @@ const AuthProvider = ({children}) => {
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      setCurrentUser(user)
-      setLoading(false)
+    const unsubscribe = auth.onAuthStateChanged( async (user) => {
+      setCurrentUser(user);
+      let userInfo = await API.getUser(user.uid);
+      setAccountInfo(userInfo.data)
+      setLoading(false);
     })
 
     return unsubscribe
@@ -33,6 +37,7 @@ const AuthProvider = ({children}) => {
 
   const value = {
     currentUser,
+    accountInfo,
     login,
     signup,
     logout

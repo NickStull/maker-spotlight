@@ -18,7 +18,11 @@ function Search() {
   const [resultsArr, setResultsArr] = useState([]);
   const [userId, setUserId] = useState("");
   const [editToggle, setEditToggle] = useState(true);
+<<<<<<< HEAD
   const [editUser, setEditUser] = useState("");
+=======
+  const [menuState, setMenuState] = useState("User Type");
+>>>>>>> main
 
   useEffect(() => {
     if (!search) {
@@ -60,10 +64,8 @@ function Search() {
       setSearchGroup(emptyQuery);
     } else {
       let tempArray = resultsArr.data.filter((person) => {
-        return (
-          person.firstName.search(new RegExp(query, "i")) !== -1 ||
-          person.lastName.search(new RegExp(query, "i")) !== -1
-        );
+        let fullName = person.firstName + " " + person.lastName;
+        return fullName.search(new RegExp(query, "i")) !== -1;
       });
       console.log("temp ARRRAY: ", tempArray);
       setSearchGroup(tempArray);
@@ -76,9 +78,22 @@ function Search() {
   };
 
   const handleRadioButton = (event) => {
-    setMaker(document.getElementById("maker").checked);
-    setUser(document.getElementById("user").checked);
-    setAdvertiser(document.getElementById("advertiser").checked);
+    if (event.target.id === "maker") {
+      setMaker(true);
+      setUser(false);
+      setAdvertiser(false);
+      setMenuState("Makers");
+    } else if (event.target.id === "advertiser") {
+      setMaker(false);
+      setUser(false);
+      setAdvertiser(true);
+      setMenuState("Advertisers");
+    } else if (event.target.id === "user") {
+      setMaker(false);
+      setUser(true);
+      setAdvertiser(false);
+      setMenuState("Users");
+    }
   };
 
   const userOnClick = (event) => {
@@ -107,6 +122,7 @@ function Search() {
             {error}
           </Alert>
           <SearchForm
+            menuState={menuState}
             editToggle={editToggle}
             handleInputChange={handleInputChange}
             results={search}
@@ -141,92 +157,3 @@ function Search() {
 }
 
 export default Search;
-
-{
-  /* <button>Makers</button>
-<button>Advertisers</button>
-<button>Users</button> */
-}
-
-// import React, { Component } from "react";
-// import SearchForm from "./SearchForm";
-// import ResultList from "./ResultList";
-// import API from "../utils/API";
-
-// class SearchResultContainer extends Component {
-//   state = {
-//     search: "",
-//     results: []
-//   };
-
-//   // When this component mounts, search the Giphy API for pictures of kittens
-//   componentDidMount() {
-//     this.searchGiphy("kittens");
-//   }
-
-//   searchGiphy = query => {
-//     API.search(query)
-//       .then(res => this.setState({ results: res.data.data }))
-//       .catch(err => console.log(err));
-//   };
-
-//   handleInputChange = event => {
-//     const name = event.target.name;
-//     const value = event.target.value;
-//     this.setState({
-//       [name]: value
-//     });
-//   };
-
-//   // When the form is submitted, search the Giphy API for `this.state.search`
-//   handleFormSubmit = event => {
-//     event.preventDefault();
-//     this.searchGiphy(this.state.search);
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <SearchForm
-//           search={this.state.search}
-//           handleFormSubmit={this.handleFormSubmit}
-//           handleInputChange={this.handleInputChange}
-//         />
-//         <ResultList results={this.state.results} />
-//       </div>
-//     );
-//   }
-// }
-
-// export default SearchResultContainer;
-
-// const Admin = () => {
-//   const [maker, setMaker] = useState({
-//     search: "",
-//     results: [],
-//   });
-//   const [username, setUsername] = useState();
-
-//   const makerSearch = () => {};
-//   return (
-//     <>
-//       <div className="topnav">
-//         <div className="search-container">
-//           <form action="/action_page.php">
-//             <input
-//               onChange={() => {}}
-//               type="text"
-//               placeholder="Search.."
-//               name="search"
-//             />
-//             <button type="submit">
-//               <i className="fa fa-search"></i>
-//             </button>
-//           </form>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Admin;
