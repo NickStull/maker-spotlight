@@ -66,3 +66,7 @@ form.search button[type="submit"] {
 .show {
   display: block;
 }
+
+.vanish {
+  display: none;
+}
