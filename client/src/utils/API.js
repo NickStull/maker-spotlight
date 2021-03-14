@@ -34,6 +34,11 @@ export default {
     console.log("getUserByName hit with", name);
     return axios.get("/api/users/name/" + name);
   },
+
+  getAdmin: function () {
+    console.log("getAdmin hit baby");
+    return axios.get("/api/admin");
+  },
 };
 
 // // Gets all posts

@@ -12,8 +12,9 @@ function Search() {
   const [title, setTitle] = useState([]);
   const [error, setError] = useState("");
   const [maker, setMaker] = useState(false);
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(true);
   const [advertiser, setAdvertiser] = useState(false);
+  const [admin, setAdmin] = useState(false);
   const [searchGroup, setSearchGroup] = useState([]);
   const [resultsArr, setResultsArr] = useState([]);
   const [userId, setUserId] = useState("");
@@ -42,12 +43,17 @@ function Search() {
         setSearchGroup(res);
         setResultsArr(res);
       });
+    } else if (admin === true) {
+      console.log("searching for admin");
+      API.getAdmin().then((res) => {
+        setSearchGroup(res);
+        setResultsArr(res);
+      });
     }
-  }, [maker, user, advertiser]);
+  }, [maker, user, advertiser, admin]);
 
   useEffect(() => {
-    API.getUser(userId)
-    .then((res) => {
+    API.getUser(userId).then((res) => {
       console.log("-----------------------Information------------------------");
       console.log(res);
       setEditUser(res);
@@ -79,70 +85,73 @@ function Search() {
       setMaker(true);
       setUser(false);
       setAdvertiser(false);
+      setAdmin(false);
       setMenuState("Makers");
     } else if (event.target.id === "advertiser") {
       setMaker(false);
       setUser(false);
       setAdvertiser(true);
+      setAdmin(false);
       setMenuState("Advertisers");
     } else if (event.target.id === "user") {
       setMaker(false);
       setUser(true);
       setAdvertiser(false);
+      setAdmin(false);
       setMenuState("Users");
+    } else if (event.target.id === "admin") {
+      setMaker(false);
+      setUser(false);
+      setAdvertiser(false);
+      setAdmin(true);
+      setMenuState("Admin");
     }
   };
 
   const userOnClick = (event) => {
     setUserId(event.target.id);
     setEditToggle(false);
-    API.getUser(userId)
-      .then((res) => {
-        setEditUser(res);
-      });
+    API.getUser(userId).then((res) => {
+      setEditUser(res);
+    });
   };
 
   return (
-    (
-      <div>
-        <Container style={{ minHeight: "100vh" }}>
-          <h1 className={editToggle ? "text-center" : "text-center vanish"}>
-            Search for a User
-          </h1>
-          <Alert
-            type="danger"
-            style={{ opacity: error ? 1 : 0, marginBottom: 10 }}
-          >
-            {error}
-          </Alert>
-          <SearchForm
-            menuState={menuState}
-            editToggle={editToggle}
-            handleInputChange={handleInputChange}
-            results={search}
-            handleRadioButton={handleRadioButton}
-          />
-          {searchGroup.length > 0 ? (
-            searchGroup.map((item) => (
-              <SearchResults
-                editToggle={editToggle}
-                title={
-                  item.firstName + " " + item.lastName + " Email: " + item.email
-                }
-                id={item.userId}
-                userOnClick={userOnClick}
-              />
-            ))
-          ) : (
-            <SearchResults />
-          )}
-          { !editToggle && editUser
-            ? <AdminEdit user={ editUser } />
-            : <></>
-          }
-        </Container>
-      </div>
-    )
+    <div>
+      <Container style={{ minHeight: "100vh" }}>
+        <h1 className={editToggle ? "text-center" : "text-center vanish"}>
+          Search for a User
+        </h1>
+        <Alert
+          type="danger"
+          style={{ opacity: error ? 1 : 0, marginBottom: 10 }}
+        >
+          {error}
+        </Alert>
+        <SearchForm
+          menuState={menuState}
+          editToggle={editToggle}
+          handleInputChange={handleInputChange}
+          results={search}
+          handleRadioButton={handleRadioButton}
+        />
+        {searchGroup.length > 0 ? (
+          searchGroup.map((item) => (
+            <SearchResults
+              editToggle={editToggle}
+              title={
+                item.firstName + " " + item.lastName + " Email: " + item.email
+              }
+              id={item.userId}
+              userOnClick={userOnClick}
+            />
+          ))
+        ) : (
+          <SearchResults />
+        )}
+        {!editToggle && editUser ? <AdminEdit user={editUser} /> : <></>}
+      </Container>
+    </div>
   );
 }
 
