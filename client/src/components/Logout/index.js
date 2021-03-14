@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Button, Alert } from 'react-bootstrap';
+import { Dropdown, Alert } from 'react-bootstrap';
 import { useAuth } from '../../utils/contexts/AuthContext'
 
 const Logout = () => {
@@ -21,9 +21,7 @@ const Logout = () => {
 
 	return (
 		<>
-			<Button variant="link" onClick={handleLogout}>
-					Log out
-			</Button>
+      <Dropdown.Item href="#/action-2" onClick={handleLogout}>Log out</Dropdown.Item>
       {error && <Alert variant="danger">{error}</Alert>}
 		</>
 	)

@@ -4,9 +4,9 @@ import Imgur from '../ImgurTest';
 
 const Home = () => {
   return (
-      <>
-        <Imgur />
-      </>
+      <div>
+        Maker Component Here
+      </div>
   )
 }
 
