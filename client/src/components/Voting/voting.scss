@@ -1,0 +1,29 @@
+.caption {
+  background-color: #050505aa;
+  padding: 2em;
+  border-radius: 1em;
+}
+
+.carouselWrapper {
+  max-width: 900px;
+  margin: 1em;
+}
+
+.carouselCaption {
+  background-color: #360d0daa;
+  margin: -2.5em 2em 2em 2em;
+  color: white;
+  border-radius: 2em;
+  padding: 1em 2em 2em 2em;
+  position: relative;
+  z-index: 2;
+}
+.carouselImg {
+  position: relative;
+  z-index: -1;
+}
+
+.containerFluid {
+  display: flex;
+  justify-content: center;
+}
