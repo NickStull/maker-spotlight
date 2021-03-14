@@ -4,7 +4,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Image, CloudinaryContext, Transformation } from 'cloudinary-react';
+import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
 import API from "../../utils/API";
 import './carousel.css'
 
@@ -60,8 +60,8 @@ const CarouselViewer = () => {
 	};
 
 	return (
-		<Container fluid>
-			<Row>
+		<Container fluid className='containerFluid'>
+			<Row className='carouselWrapper'>
 				<Carousel activeIndex={index} onSelect={handleSelect}>
 					{featuredImagesState.map(
 						(image, index) => {
@@ -71,14 +71,11 @@ const CarouselViewer = () => {
 										<Image
 											publicId={image}
 											className="d-block w-100 carouselImg"
-											// src="holder.js/800x400?text=First slide&bg=373940"
 											alt="First slide"
-										// aspect-ratio="3:2" 
-										// width="1200"
-										// height="900"
-										// mode="Pad"
+											width="900" height="600" background="auto" crop="pad"
 										>
-											{/* <Transformation aspect-ratio="3:2" mode="pad" /> */}
+											{/* <Transformation rawTransformation="h_150,w_150,c_fill,e_sepia,r_20" /> */}
+											<Placeholder type="blur" />
 										</Image>
 									</CloudinaryContext>
 									{/* <Carousel.Caption>

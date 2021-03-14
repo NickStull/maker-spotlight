@@ -3,6 +3,7 @@ import axios from "axios";
 export default {
   // Gets all posts
   getUsers: function () {
+    console.log("Axios getUsers hit");
     return axios.get("/api/users");
   },
   // Saves new user to db

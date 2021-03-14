@@ -34,9 +34,8 @@ const UsersSchema = new Schema({
   },
 
   voted: {
-    type: String,
-    trim: true,
-    default: ""
+    type: Boolean,
+    default: false
   },
 
   wantTo: {
@@ -60,6 +59,36 @@ const UsersSchema = new Schema({
   },
 
   businessName: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+
+  address: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+
+  address2: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+
+  city: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+
+  state: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+
+  zipCode: {
     type: String,
     trim: true,
     default: ""
