@@ -111,6 +111,8 @@ function Search() {
   const userOnClick = (event) => {
     setUserId(event.target.id);
     setEditToggle(false);
+    setSearch("");
+    console.log("search: ", search);
     API.getUser(userId).then((res) => {
       setEditUser(res);
     });
@@ -149,7 +151,11 @@ function Search() {
         ) : (
           <SearchResults />
         )}
-        {!editToggle && editUser ? <AdminEdit user={editUser} /> : <></>}
+        {!editToggle && editUser ? (
+          <AdminEdit user={editUser} setEditToggle={setEditToggle} />
+        ) : (
+          <></>
+        )}
       </Container>
     </div>
   );
