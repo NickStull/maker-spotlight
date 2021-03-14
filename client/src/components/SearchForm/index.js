@@ -24,6 +24,9 @@ function SearchForm(props) {
           <Dropdown.Item onClick={props.handleRadioButton} id="maker">
             Makers
           </Dropdown.Item>
+          <Dropdown.Item onClick={props.handleRadioButton} id="admin">
+            Admin
+          </Dropdown.Item>
           <Dropdown.Item onClick={props.handleRadioButton} id="advertiser">
             Advertisers
           </Dropdown.Item>
