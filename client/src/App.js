@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Imgur from "./components/ImgurTest";
 import Admin from "./components/pages/Admin/index";
 import "bootstrap/dist/css/bootstrap.min.css";
+import UserAccount from "./components/UserAccount";
 
 function App() {
   return (
@@ -17,10 +18,9 @@ function App() {
       <Router>
         <AuthProvider>
           <Header />
-          <SignupButton />
-          <Route exact path="/admin" component={Admin} />
           <Route exact path="/" component={Home} />
-          <Route path="/signup" component={Signup} />
+          <Route exact path="/account" component={UserAccount} />
+          <Route exact path="/admin" component={Admin} />
         </AuthProvider>
       </Router>
     </>
