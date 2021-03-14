@@ -30,6 +30,11 @@ export default {
     return axios.get("/api/advertisers");
   },
 
+  getCandidates: function () {
+    console.log("candidates hit");
+    return axios.get("/api/candidates");
+  },
+
   getUserByName: function (name) {
     console.log("getUserByName hit with", name);
     return axios.get("/api/users/name/" + name);

@@ -1,12 +1,14 @@
 import React from 'react';
 import CarouselViewer from '../Carousel';
+import Voting from '../Voting'
 
 const Home = () => {
   return (
     <>
-      <CarouselViewer />
+
       <div>
-        Maker Component Here
+        {/* <CarouselViewer /> */}
+        <Voting />
       </div>
     </>
   )

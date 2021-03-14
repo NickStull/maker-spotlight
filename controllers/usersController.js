@@ -8,6 +8,12 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
 
+  findCandidates: function (req, res) {
+    db.Users.find({ candidate: true })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+
   create: function (req, res) {
     console.log("-------------------Posting-------------------------");
     db.Users.create(req.body)

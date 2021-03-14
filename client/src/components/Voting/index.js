@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
-import Carousel from 'react-bootstrap/Carousel';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Carousel, Row, Col, Container } from 'react-bootstrap/Carousel';
 import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
 import API from "../../utils/API";
 import './voting.css'
@@ -21,13 +18,12 @@ const Voting = () => {
 	const getUserInfo = async () => {
 		let dbResults;
 		try {
-			dbResults = await API.getUsers();
+			dbResults = await API.getCandidates();
 		} catch (err) {
 			console.error(err);
 		} finally {
-			console.log('ALL USERS', dbResults.data);
+			console.log('CANDIDATES', dbResults);
 			setFeaturedImagesState(dbResults.data[0].images)
-			// updateState();
 		}
 	};
 
