@@ -5,6 +5,7 @@ import "./style.css";
 
 function MakerBio() {
   
+  
   // function getInfo() {
   //   console.log(userEdit);
   //   API.getUser(userEdit)
