@@ -1,15 +1,4 @@
 const db = require("../models");
-const mailchimp = require("@mailchimp/mailchimp_marketing");
-
-mailchimp.setConfig({
-  apiKey: "be516ac0aef805319df4bc6ab45220d6-us1",
-  server: "us1",
-});
-
-// async function run() {
-//   const response = await mailchimp.ping.get();
-//   console.log(response);
-// }
 
 const run = async () => {
   const response = await mailchimp.lists.addListMember("cfb63d742d", {
@@ -19,72 +8,6 @@ const run = async () => {
   console.log(response);
 };
 
-// const mailchimp = require("@mailchimp/mailchimp_marketing");
-// const client = require("mailchimp-marketing");
-
-// mailchimp.setConfig({
-//   apiKey: "be516ac0aef805319df4bc6ab45220d6-us1",
-//   server: "us1",
-// });
-
-// client.setConfig({
-//   apiKey: "be516ac0aef805319df4bc6ab45220d6-us1",
-//   server: "us1",
-// });
-
-// const run = async () => {
-//   const response = await client.authorizedApps.get("app_id");
-//   console.log(response);
-// };
-
-// run();
-
-// async function callPing() {
-//   const response = await mailchimp.ping.get();
-//   console.log("response: ", response);
-// }
-
-// const event = {
-//   name: "JS Developers Meetupzz",
-// };
-
-// const footerContactInfo = {
-//   company: "Maker Spotlight",
-//   address1: "675 Ponce de Leon Ave NE",
-//   address2: "Suite 5000",
-//   city: "Atlanta",
-//   state: "GA",
-//   zip: "30308",
-//   country: "US",
-// };
-
-// const campaignDefaults = {
-//   from_name: "Gettin' Together",
-//   from_email: "derekbardini@gmail.com",
-//   subject: "JS Developers Meetupzz",
-//   language: "EN_US",
-// };
-
-// async function run() {
-//   const response = await mailchimp.lists
-//     .createList({
-//       name: event.name,
-//       contact: footerContactInfo,
-//       permission_reminder: "permission_reminder",
-//       email_type_option: true,
-//       campaign_defaults: campaignDefaults,
-//     })
-//     .then((response) => {
-//       console.log(response);
-//       console.log(
-//         `Successfully created an audience. The audience id is ${response.id}.`
-//       );
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// }
-// Defining methods for the postsController
 module.exports = {
   findAll: function (req, res) {
     db.Users.find(req.query)
@@ -136,7 +59,6 @@ module.exports = {
   },
 
   findAdmin: function (req, res) {
-    // callPing();
     console.log("admin hit");
     db.Users.find({ admin: true })
       .then((dbModel) => res.json(dbModel))
@@ -144,7 +66,6 @@ module.exports = {
   },
 
   findMakers: function (req, res) {
-    run();
     console.log("A backend maker");
     db.Users.find({ wantTo: true })
       .then((dbModel) => res.json(dbModel))
