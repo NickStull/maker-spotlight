@@ -8,7 +8,7 @@ export default {
   },
   // Saves new user to db
   saveUser: function (postData) {
-    console.log("saveuser")
+    console.log("saveuser");
     return axios.post("/api/users", postData);
   },
 
@@ -46,9 +46,10 @@ export default {
     return axios.put("/api/users/" + userData.userId, userData);
   },
 
-  subscribe: function(userData) {
+  subscribe: function (userData) {
+    console.log("subscribe hit");
     return axios.post("/api/subscribe/", userData);
-  }
+  },
 };
 
 // // Gets all posts
