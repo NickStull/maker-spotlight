@@ -1,9 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Form, Button, Card, Container } from 'react-bootstrap';
 import { useAuth } from '../../utils/contexts/AuthContext';
 import API from "../../utils/API"
 
 const UserAccount = () => {
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const emailRef = useRef();
+  const wantToRef = useRef();
+  const businessNameRef = useRef();
+  const address1Ref = useRef();
+  const address2Ref = useRef();
+  const cityRef = useRef();
+  const stateRef = useRef();
+  const zipCodeRef = useRef();
+  const phoneRef = useRef();
+  const websiteRef = useRef();
+  const bioRef = useRef();
+
   const { currentUser } = useAuth();
   const [user, setUser] = useState();
 
@@ -42,7 +56,7 @@ const UserAccount = () => {
                       name="firstName"
                       type="text" 
                       defaultValue={ user.firstName } 
-                      // ref={firstNameRef}
+                      ref={firstNameRef}
                       required
                     />
                   </Form.Group>
@@ -52,7 +66,7 @@ const UserAccount = () => {
                       name="lastName"
                       type="text" 
                       value={ user.lastName }  
-                      // ref={lastNameRef}
+                      ref={lastNameRef}
                       required
                     />
                   </Form.Group>
@@ -62,15 +76,17 @@ const UserAccount = () => {
                       name="email"
                       type="email" 
                       value={ currentUser.email } 
-                      // ref={emailRef}
+                      ref={emailRef}
                       required
                     />
                   </Form.Group>
                   <Form.Group >
-                    <Form.Check type="switch"
-                                label="Wants to be featured" 
-                                id="want-to-switch"
-                                // defaultChecked={ props.user.data.wantTo } 
+                    <Form.Check 
+                      type="switch"
+                      label="Wants to be featured" 
+                      id="want-to-switch"
+                      ref={wantToRef}
+                      defaultChecked={ user.wantTo } 
                     />
                   </Form.Group>
                   <Button className="w-100" variant="primary" type="submit">
