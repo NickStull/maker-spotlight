@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 // import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
 import { Row, Col, Container, Button } from 'react-bootstrap';
-import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
+// import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
 // import API from "../../utils/API";
 import './candidateProfile.css'
 
-const CandidateProfile = ({ firstName, lastName, bioText, location, business, webAddress, key, image, handleShow }) => {
+const CandidateProfile = ({ firstName, lastName, bioText, location, business, webAddress, id, handleShow }) => {
 
 	const [displayModalState, setDisplayModalState] = useState(false);
 
@@ -28,13 +28,13 @@ const CandidateProfile = ({ firstName, lastName, bioText, location, business, we
 					<a href={webAddress} target="blank">{webAddress}</a>
 					<p>{location}</p>
 					{/* <Button onClick={() => vote(id)}>Vote for {firstName}</Button> */}
-					<Button onClick={() => handleShow({ fullName: `${firstName} ${lastName}`, firebaseId: key })}>Vote for {firstName}</Button>
+					<Button onClick={() => handleShow({ fullName: `${firstName} ${lastName}`, userId: id })}>Vote for {firstName}</Button>
 				</Col>
-				<Col sm='auto'>
+				{/* <Col sm='auto'>
 					<CloudinaryContext cloudName="makerspotlight col-1">
 						<Image publicId={image} />
 					</CloudinaryContext>
-				</Col>
+				</Col> */}
 			</Row>
 			<p>{bioText}</p>
 

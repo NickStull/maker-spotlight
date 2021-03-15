@@ -8,7 +8,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/makerspotlight"
 const usersSeed = [
   {
     userId: "L2FxlNluqIZVeOA1t5dXU1och6C3",
-    firebaseId: "1",
     firstName: "Nick",
     lastName: "Stull",
     email: "nick@gmail.com",
@@ -39,7 +38,6 @@ const usersSeed = [
   },
   {
     userId: "d28jGwxVdZXYOQGzS6NbxkB3ddP2",
-    firebaseId: "2",
     firstName: "Derek",
     lastName: "Bardini",
     email: "derekbardini@gmail.com",
@@ -69,7 +67,6 @@ const usersSeed = [
   },
   {
     userId: "u5irgyagz7YT5m77Zsx8Mb51Ngs2",
-    firebaseId: "3",
     firstName: "Tim",
     lastName: "Martin",
     email: "timmartin13@gmail.com",
@@ -99,7 +96,6 @@ const usersSeed = [
   },
   {
     userId: "x5YnUFqsuZdmBDhPuxUc4bziVoP2",
-    firebaseId: "4",
     firstName: "Hector",
     lastName: "Fernandez",
     email: "hector@email.com",

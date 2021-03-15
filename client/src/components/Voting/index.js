@@ -18,22 +18,55 @@ const Voting = () => {
 
 	const submitVote = () => {
 		setShow(false);
+		findMaker()
+			.then(updateMakerVoteTotals)
+			.then(updateMakerWithNewVoteTotals)
 		//make API call to update maker with vote using key from userChoiceState
 	};
 
-	const voteForMaker = async () => {
-		// console.log('CURRENT USER', currentUser.uid);
-		let makerId = userChoiceState
-		let dbResults;
+	const findMaker = async () => {
+		let makerInfo;
 		try {
-			dbResults = await API.updateUser(makerId);
+			makerInfo = await API.getUser(userChoiceState.userId);
 		} catch (err) {
 			console.error(err);
 		} finally {
-			// console.log(dbResults);
-			// setCurrentUserName(dbResults.data.firstName);
+			return makerInfo;
 		}
-	};
+	}
+	const updateMakerVoteTotals = (makerInfo) => {
+		let updatedCurrentVotes = makerInfo.currentVotes++;
+		let updatedTotalVotes = makerInfo.totalVotes++;
+		let updatedMakerInfo = {
+			...makerInfo,
+			currentVotes: updatedCurrentVotes,
+			totalVotes: updatedTotalVotes
+		}
+		return updatedMakerInfo;
+	}
+
+	const updateMakerWithNewVoteTotals = async (updatedMakerInfo) => {
+		let makerVotedFor;
+		try {
+			makerVotedFor = await API.updateUser(updatedMakerInfo.uid, updatedMakerInfo);
+		} catch (err) {
+			console.error(err);
+		} finally {
+			return makerVotedFor;
+		}
+	}
+
+	// const updateVoteTotals = async () => {
+	// 	let makerId =
+	// 		let dbResults;
+	// 	try {
+	// 		dbResults = await API.editUser(makerId);
+	// 	} catch (err) {
+	// 		console.error(err);
+	// 	} finally {
+	// 		setCurrentUserName(dbResults.data.firstName);
+	// 	}
+	// };
 
 	const handleShow = (makerInfo) => {
 		setUserChoiceState(makerInfo);
@@ -73,7 +106,7 @@ const Voting = () => {
 			<Container fluid >
 				<h2>Vote for the Next Featured Bladesmith</h2>
 				<p>Select the craftsmen you would like to see featured in the next profile</p>
-				{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, firebaseId, images }) => {
+				{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, userId, images }) => {
 					return <CandidateProfile
 						firstName={firstName}
 						lastName={lastName}
@@ -85,24 +118,27 @@ const Voting = () => {
 						// vote={vote}
 						handleShow={handleShow}
 						setUserChoiceState={setUserChoiceState}
-						key={firebaseId} />
-
+						id={userId}
+						key={userId} />
 				})}
 			</Container>
-			<Modal show={show} onHide={handleClose}>
-				<Modal.Header closeButton>
-					<Modal.Title>Modal heading</Modal.Title>
-				</Modal.Header>
-				<Modal.Body>You have chosen {userChoiceState.fullName} to be featured in the next spotlight.</Modal.Body>
-				<Modal.Footer>
-					<Button variant="secondary" onClick={handleClose}>
-						Choose Another Bladesmith
+			{show ?
+				<Modal show={show} onHide={handleClose}>
+					<Modal.Header closeButton>
+						<Modal.Title>Modal heading</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>You have chosen {userChoiceState.fullName} to be featured in the next spotlight.</Modal.Body>
+					<Modal.Footer>
+						<Button variant="secondary" onClick={handleClose}>
+							Choose Another Bladesmith
           </Button>
-					<Button variant="primary" onClick={submitVote}>
-						Submit Your Vote
+						<Button variant="primary" onClick={submitVote}>
+							Submit Your Vote
           </Button>
-				</Modal.Footer>
-			</Modal>
+					</Modal.Footer>
+				</Modal>
+				: <></>
+			}
 		</>
 	)
 }
