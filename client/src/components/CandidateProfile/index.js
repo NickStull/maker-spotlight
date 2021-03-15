@@ -20,8 +20,8 @@ const CandidateProfile = ({ firstName, lastName, bioText, location, business, we
 	}
 
 	return (
-		<Container fluid className="profile">
-			<Row fluid className='header'>
+		<Container className="profile fluid">
+			<Row className='header fluid'>
 				<Col className='headerInfo'>
 					<h3>{`${firstName} ${lastName}`}</h3>
 					<h4>{business}</h4>

@@ -10,27 +10,36 @@ import './voting.css'
 const Voting = () => {
 
 	const { currentUser } = useAuth();
-	const [votedState, setVotedState] = useState(false);
-	const [votedForState, setVotedForState] = useState();
+	const [userInfoState, setUserInfoState] = useState();
+	// const [votedForState, setVotedForState] = useState();
 	const [candidatesInfoState, setCandidatesInfoState] = useState([]);
 	const [userChoiceState, setUserChoiceState] = useState();
 	const [show, setShow] = useState(false);
 
 	useEffect(() => {
-		console.log('current user', currentUser);
-		console.log('CANDIDATES STATE', candidatesInfoState);
+		// console.log('current user', currentUser);
+		// console.log('CANDIDATES STATE', candidatesInfoState);
 		if (candidatesInfoState.length === 0) {
-			getCandidates()
-			findUserInfo()
+			getCandidates();
+			findUserInfo();
 		}
 	}, [candidatesInfoState])
 
 	const handleClose = () => setShow(false);
 
 	const findUserInfo = async () => {
-		let userInfo;
-		userInfo = await API.getUser()
-
+		// console.log('finding user info function called');
+		let resultsUserInfo;
+		try {
+			await API.getUser(currentUser.uid)
+				.then((response) => {
+					console.log('response', response);
+					setUserInfoState(response.data)
+				})
+		} catch (err) {
+			console.error(err);
+		}
+		setTimeout(console.log('USER INFOR TIMEOUT', userInfoState), 2000)
 	}
 
 	const submitVote = () => {
@@ -38,7 +47,6 @@ const Voting = () => {
 		findMaker()
 			.then(updateMakerVoteTotals)
 			.then(updateMakerWithNewVoteTotals)
-		//make API call to update maker with vote using key from userChoiceState
 	};
 
 	const findMaker = async () => {
@@ -56,13 +64,13 @@ const Voting = () => {
 	const updateMakerVoteTotals = (makerInfo) => {
 		let updatedCurrentVotes = makerInfo.currentVotes + 1;
 		let updatedTotalVotes = makerInfo.totalVotes + 1;
-		console.log('updated current vote total', updatedCurrentVotes);
+		// console.log('updated current vote total', updatedCurrentVotes);
 		let updatedMakerInfo = {
 			...makerInfo,
 			currentVotes: updatedCurrentVotes,
 			totalVotes: updatedTotalVotes
 		}
-		console.log('updated maker info', updatedMakerInfo);
+		// console.log('updated maker info', updatedMakerInfo);
 		return updatedMakerInfo;
 	}
 
@@ -122,6 +130,7 @@ const Voting = () => {
 		<>
 			<Container fluid >
 				<h2>Vote for the Next Featured Bladesmith</h2>
+				{/* <h1>{userInfoState.firstName}</h1> */}
 				<p>Select the craftsmen you would like to see featured in the next profile</p>
 				{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, userId, images }) => {
 					return <CandidateProfile
