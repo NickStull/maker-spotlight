@@ -25,3 +25,8 @@ h2{
 button:hover {
 	border: 2px solid black;
 } */
+
+body{
+	scrollbar-width: thin;
+	overflow-y: auto,
+}
