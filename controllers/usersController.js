@@ -30,7 +30,7 @@ module.exports = {
   },
 
   update: function (req, res) {
-    db.Users.findOneAndUpdate({ _id: req.params.id }, req.body)
+    db.Users.findOneAndUpdate({ userId: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
@@ -47,6 +47,20 @@ module.exports = {
       "yes the route is hit!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     );
     db.Users.findOne({ firstName: req.params.name })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+
+  findAdmin: function (req, res) {
+    console.log("I'll give you admin access to my backend baby");
+    db.Users.find({ admin: true })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+
+  findMakers: function (req, res) {
+    console.log("A backend maker");
+    db.Users.find({ wantTo: true })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
