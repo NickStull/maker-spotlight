@@ -9,13 +9,13 @@ import API from "../../utils/API";
 import './carousel.css'
 
 
-import testImage1 from './testImages/testKnifeImg1.jpeg'
+// import testImage1 from './testImages/testKnifeImg1.jpeg'
 // import testImage2 from './testImages/testKnifeImg2.webp'
 // import testImage3 from './testImages/testKnifeImg3.jpeg'
 
 const CarouselViewer = () => {
 
-	const [featuredImagesState, setFeaturedImagesState] = useState([testImage1]);
+	const [featuredImagesState, setFeaturedImagesState] = useState([]);
 	const [index, setIndex] = useState(0);
 
 	useEffect(() => {

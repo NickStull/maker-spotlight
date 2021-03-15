@@ -32,6 +32,7 @@ const HeaderDropdown = () => {
   return (
     <DropdownButton className="dropdown" id="dropdown-basic-button" title={`Welcome, ${currentUserName}!`}>
       <Dropdown.Item href="/account">Edit Account</Dropdown.Item>
+      {/* <Dropdown.Item href="/logout">Log out</Dropdown.Item> */}
       <Logout />
     </DropdownButton>
   );
