@@ -45,10 +45,11 @@ export default {
   },
 
   editUser: function (userData) {
+    console.log('editing user');
     return axios.put("/api/users/" + userData.userId, userData);
   },
 
-  subscribe: function(userData) {
+  subscribe: function (userData) {
     return axios.post("/api/subscribe/", userData);
   }
 };

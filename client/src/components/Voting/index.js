@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useAuth } from "../../utils/contexts/AuthContext";
 // import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
-import { Row, Col, Container, Modal, Button } from 'react-bootstrap';
+import { Container, Modal, Button } from 'react-bootstrap';
 // import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
 import CandidateProfile from '../CandidateProfile'
 import API from "../../utils/API";
@@ -8,13 +9,29 @@ import './voting.css'
 
 const Voting = () => {
 
+	const { currentUser } = useAuth();
 	const [votedState, setVotedState] = useState(false);
 	const [votedForState, setVotedForState] = useState();
 	const [candidatesInfoState, setCandidatesInfoState] = useState([]);
 	const [userChoiceState, setUserChoiceState] = useState();
 	const [show, setShow] = useState(false);
 
+	useEffect(() => {
+		console.log('current user', currentUser);
+		console.log('CANDIDATES STATE', candidatesInfoState);
+		if (candidatesInfoState.length === 0) {
+			getCandidates()
+			findUserInfo()
+		}
+	}, [candidatesInfoState])
+
 	const handleClose = () => setShow(false);
+
+	const findUserInfo = async () => {
+		let userInfo;
+		userInfo = await API.getUser()
+
+	}
 
 	const submitVote = () => {
 		setShow(false);
@@ -25,36 +42,43 @@ const Voting = () => {
 	};
 
 	const findMaker = async () => {
-		let makerInfo;
+		let makerInfoResults;
 		try {
-			makerInfo = await API.getUser(userChoiceState.userId);
+			makerInfoResults = await API.getUser(userChoiceState.userId);
 		} catch (err) {
 			console.error(err);
 		} finally {
+			// console.log('maker info', makerInfo);
+			let makerInfo = makerInfoResults.data;
 			return makerInfo;
 		}
 	}
 	const updateMakerVoteTotals = (makerInfo) => {
-		let updatedCurrentVotes = makerInfo.currentVotes++;
-		let updatedTotalVotes = makerInfo.totalVotes++;
+		let updatedCurrentVotes = makerInfo.currentVotes + 1;
+		let updatedTotalVotes = makerInfo.totalVotes + 1;
+		console.log('updated current vote total', updatedCurrentVotes);
 		let updatedMakerInfo = {
 			...makerInfo,
 			currentVotes: updatedCurrentVotes,
 			totalVotes: updatedTotalVotes
 		}
+		console.log('updated maker info', updatedMakerInfo);
 		return updatedMakerInfo;
 	}
 
 	const updateMakerWithNewVoteTotals = async (updatedMakerInfo) => {
+		// console.log('updating vote totals');
 		let makerVotedFor;
 		try {
-			makerVotedFor = await API.updateUser(updatedMakerInfo.uid, updatedMakerInfo);
+			makerVotedFor = await API.editUser(updatedMakerInfo);
 		} catch (err) {
 			console.error(err);
 		} finally {
 			return makerVotedFor;
 		}
 	}
+
+	const changeUserStatusToHasVoted = async () => { }
 
 	// const updateVoteTotals = async () => {
 	// 	let makerId =
@@ -73,13 +97,6 @@ const Voting = () => {
 		setShow(true);
 		console.log('selected maker', makerInfo);
 	};
-
-	useEffect(() => {
-		console.log('CANDIDATES STATE', candidatesInfoState);
-		if (candidatesInfoState.length === 0) {
-			getCandidates()
-		}
-	}, [candidatesInfoState])
 
 	//use firebase id to get user info from mongodb
 	const getCandidates = async () => {
