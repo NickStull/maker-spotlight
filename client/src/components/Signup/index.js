@@ -40,6 +40,7 @@ const Signup = () => {
         email: emailRef.current.value
       }
       await API.saveUser(newUser)
+      await API.subscribe(newUser)
         .then(() => {
           handleClose()
           window.location.reload()
