@@ -8,6 +8,7 @@ export default {
   },
   // Saves new user to db
   saveUser: function (postData) {
+    console.log("saveuser")
     return axios.post("/api/users", postData);
   },
 
