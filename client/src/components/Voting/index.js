@@ -38,6 +38,7 @@ const Voting = () => {
 	const handleShow = (makerInfo) => {
 		setUserChoiceState(makerInfo);
 		setShow(true);
+		console.log('selected maker', makerInfo);
 	};
 
 	useEffect(() => {
@@ -72,7 +73,7 @@ const Voting = () => {
 			<Container fluid >
 				<h2>Vote for the Next Featured Bladesmith</h2>
 				<p>Select the craftsmen you would like to see featured in the next profile</p>
-				{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, _id, images }) => {
+				{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, firebaseId, images }) => {
 					return <CandidateProfile
 						firstName={firstName}
 						lastName={lastName}
@@ -84,7 +85,7 @@ const Voting = () => {
 						// vote={vote}
 						handleShow={handleShow}
 						setUserChoiceState={setUserChoiceState}
-						key={_id} />
+						key={firebaseId} />
 
 				})}
 			</Container>
@@ -92,7 +93,7 @@ const Voting = () => {
 				<Modal.Header closeButton>
 					<Modal.Title>Modal heading</Modal.Title>
 				</Modal.Header>
-				<Modal.Body>You have chosen {userChoiceState} to be featured in the next spotlight.</Modal.Body>
+				<Modal.Body>You have chosen {userChoiceState.fullName} to be featured in the next spotlight.</Modal.Body>
 				<Modal.Footer>
 					<Button variant="secondary" onClick={handleClose}>
 						Choose Another Bladesmith

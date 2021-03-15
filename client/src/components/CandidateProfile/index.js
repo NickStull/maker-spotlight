@@ -5,7 +5,7 @@ import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinar
 // import API from "../../utils/API";
 import './candidateProfile.css'
 
-const CandidateProfile = ({ firstName, lastName, bioText, location, business, webAddress, key, image, handleShow, setUserChoiceState }) => {
+const CandidateProfile = ({ firstName, lastName, bioText, location, business, webAddress, key, image, handleShow }) => {
 
 	const [displayModalState, setDisplayModalState] = useState(false);
 
@@ -28,7 +28,7 @@ const CandidateProfile = ({ firstName, lastName, bioText, location, business, we
 					<a href={webAddress} target="blank">{webAddress}</a>
 					<p>{location}</p>
 					{/* <Button onClick={() => vote(id)}>Vote for {firstName}</Button> */}
-					<Button onClick={() => handleShow({ fullName: `${firstName} ${lastName}`, id: key })}>Vote for {firstName}</Button>
+					<Button onClick={() => handleShow({ fullName: `${firstName} ${lastName}`, firebaseId: key })}>Vote for {firstName}</Button>
 				</Col>
 				<Col sm='auto'>
 					<CloudinaryContext cloudName="makerspotlight col-1">
