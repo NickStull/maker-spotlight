@@ -10,6 +10,7 @@ const Home = () => {
         {/* <CarouselViewer /> */}
         <Voting />
       </div>
+      <CarouselViewer />
     </>
   )
 }

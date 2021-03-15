@@ -26,6 +26,7 @@ const Login = () => {
     } finally {
         if(!error){
           handleClose()
+          window.location.reload()
         }
     }
     setLoading(false)

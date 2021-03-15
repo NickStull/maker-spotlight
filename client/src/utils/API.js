@@ -8,6 +8,7 @@ export default {
   },
   // Saves new user to db
   saveUser: function (postData) {
+    console.log("saveuser")
     return axios.post("/api/users", postData);
   },
 
@@ -38,10 +39,14 @@ export default {
     return axios.get("/api/users/name/" + name);
   },
 
+  getAdmin: function () {
+    console.log("getAdmin hit baby");
+    return axios.get("/api/admin");
+  },
+
   editUser: function (userData) {
     return axios.put("/api/users/" + userData.userId, userData);
-  }
-
+  },
 };
 
 // // Gets all posts

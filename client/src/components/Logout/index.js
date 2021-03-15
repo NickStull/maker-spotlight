@@ -12,8 +12,7 @@ const Logout = () => {
     setError('')
 
     try {
-      await logout()
-      window.location.reload(false);
+      await logout();
     } catch {
       setError('Failed to log out');
     }
@@ -21,7 +20,7 @@ const Logout = () => {
 
 	return (
 		<>
-      <Dropdown.Item href="#/action-2" onClick={handleLogout}>Log out</Dropdown.Item>
+      <Dropdown.Item href="/" onClick={handleLogout}>Log out</Dropdown.Item>
       {error && <Alert variant="danger">{error}</Alert>}
 		</>
 	)
