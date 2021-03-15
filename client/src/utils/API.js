@@ -47,6 +47,10 @@ export default {
   editUser: function (userData) {
     return axios.put("/api/users/" + userData.userId, userData);
   },
+
+  subscribe: function(userData) {
+    return axios.post("/api/subscribe/", userData);
+  }
 };
 
 // // Gets all posts
