@@ -5,11 +5,8 @@ const newsLettersRoutes = require("./newsletters");
 const makersRoutes = require("./makers");
 const advertisersRoutes = require("./advertisers");
 const adminRoutes = require("./admin");
-<<<<<<< HEAD
 const candidatesRoutes = require("./candidates");
-=======
 // const subscribeRoutes = require("./subscribe");
->>>>>>> main
 
 // Post routes
 router.use("/users", usersRoutes);
