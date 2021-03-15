@@ -1,23 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
+// import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
-import API from "../../utils/API";
+// import API from "../../utils/API";
 import './candidateProfile.css'
 
-const CandidateProfile = ({ firstName, lastName, bioText, location, business, webAddress, id, image, vote }) => {
+const CandidateProfile = ({ firstName, lastName, bioText, location, business, webAddress, key, image, handleShow, setUserChoiceState }) => {
+
+	const [displayModalState, setDisplayModalState] = useState(false);
+
+	useEffect(() => {
+
+	}, [displayModalState])
+
+	const findMaker = (makerId) => {
+		console.log('MAKER ID', makerId);
+
+		// setUserChoiceState(event.value);
+	}
 
 	return (
 		<Container fluid className="profile">
 			<Row fluid className='header'>
 				<Col className='headerInfo'>
-					<Row>
-						<h3>{`${firstName} ${lastName} - `}</h3>
-						<h4> {business}</h4>
-					</Row>
+					<h3>{`${firstName} ${lastName}`}</h3>
+					<h4>{business}</h4>
 					<a href={webAddress} target="blank">{webAddress}</a>
 					<p>{location}</p>
-					<Button value={id} onClick={vote()}>Vote for {firstName}</Button>
+					{/* <Button onClick={() => vote(id)}>Vote for {firstName}</Button> */}
+					<Button onClick={() => handleShow({ fullName: `${firstName} ${lastName}`, id: key })}>Vote for {firstName}</Button>
 				</Col>
 				<Col>
 					<CloudinaryContext cloudName="makerspotlight">
