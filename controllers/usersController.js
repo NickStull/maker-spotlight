@@ -1,4 +1,15 @@
 const db = require("../models");
+const mailchimp = require("@mailchimp/mailchimp_marketing");
+
+mailchimp.setConfig({
+  apiKey: "be516ac0aef805319df4bc6ab45220d6-us1",
+  server: "us1",
+});
+
+async function callPing() {
+  const response = await mailchimp.ping.get();
+  console.log(response);
+}
 
 // Defining methods for the postsController
 module.exports = {
@@ -60,6 +71,7 @@ module.exports = {
 
   findMakers: function (req, res) {
     console.log("A backend maker");
+    callPing();
     db.Users.find({ wantTo: true })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
