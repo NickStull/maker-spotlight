@@ -10,7 +10,7 @@ const usersSeed = [
     userId: "L2FxlNluqIZVeOA1t5dXU1och6C3",
     firstName: "Nick",
     lastName: "Stull",
-    email: "nick@gmail.com",
+    email: "stull.nicholas@gmail.com",
     images: [
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615657705/testKnifeImg4.png',
       'https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg3_jdecau.jpg',
