@@ -37,6 +37,7 @@ export default {
 
   getAdmin: function () {
     console.log("getAdmin hit baby");
+
     return axios.get("/api/admin");
   },
 
