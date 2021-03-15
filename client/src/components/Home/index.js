@@ -5,9 +5,6 @@ const Home = () => {
   return (
     <>
       <CarouselViewer />
-      <div>
-        Maker Component Here
-      </div>
     </>
   )
 }

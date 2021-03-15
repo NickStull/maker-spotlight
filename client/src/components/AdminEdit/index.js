@@ -116,6 +116,7 @@ function AdminEdit(props) {
           type="email" 
           ref={ emailRef }
           placeholder={ props.user.data.email } 
+          readOnly
         />
       </Form.Group>
       <br></br>

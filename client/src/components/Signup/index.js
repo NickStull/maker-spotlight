@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, Spinner } from 'react';
 import { Form, Button, Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import API from '../../utils/API';
 import { useAuth } from '../../utils/contexts/AuthContext';
 import Home from '../Home';
@@ -20,6 +20,8 @@ const Signup = () => {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
+  const history = useHistory();
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -37,13 +39,15 @@ const Signup = () => {
         lastName: lastNameRef.current.value,
         email: emailRef.current.value
       }
-      await API.saveUser(newUser);
+      await API.saveUser(newUser)
+      await API.subscribe(newUser)
+        .then(() => {
+          handleClose()
+          window.location.reload()
+        }
+        );
     } catch {
       setError('Failed to create an account')
-    } finally {
-      if(!error){
-        handleClose()
-      }
     }
     setLoading(false)
   }
