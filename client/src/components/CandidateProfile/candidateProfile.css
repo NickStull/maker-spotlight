@@ -1,9 +1,23 @@
-.containerFluid {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.header {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.header img {
+  height: 170px;
+  border-radius: .25em;
+}
+
+.header h3 {
+  display: inline;
+  margin: 0;
+}
+
+.header h4 {
+  display: inline-block;
+  margin: 0;
+  padding-top: 3px;
+  bottom: 0;
 }
 /*# sourceMappingURL=candidateProfile.css.map */

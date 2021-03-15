@@ -3,25 +3,26 @@
 	margin: 0;
 	box-sizing: border-box;
 	font-size: 100%;
-}
+} */
 
 h1{
- font-size: 2em;
+	font-family: ;
 }
 
 h2{
  font-size: 1.5em;
-} */
+}
 
-/* button {
+button {
 	padding: .5em 1.25em;
 	display: inline;
-	background-color: transparent;
+	background-color: #360d0d;
 	border: 1.5px solid;
 	border-radius: .125em;
 	box-sizing: border-box;
+	color: white;
 
 }
 button:hover {
 	border: 2px solid black;
-} */
+}

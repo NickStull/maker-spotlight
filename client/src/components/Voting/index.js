@@ -9,14 +9,16 @@ import './voting.css'
 const Voting = () => {
 
 	const [votedState, setVotedState] = useState(false);
-	const [candidatesState, setCandidatesState] = useState([]);
+	const [votedForState, setVotedForState] = useState();
+	const [candidatesInfoState, setCandidatesInfoState] = useState([]);
+	const [userChoiceState, setUserChoiceState] = useState("");
 
 	useEffect(() => {
-		console.log('CANDIDATES STATE', candidatesState);
-		if (candidatesState.length === 0) {
+		console.log('CANDIDATES STATE', candidatesInfoState);
+		if (candidatesInfoState.length === 0) {
 			getCandidates()
 		}
-	}, [candidatesState])
+	}, [candidatesInfoState])
 
 	//use firebase id to get user info from mongodb
 	const getCandidates = async () => {
@@ -28,21 +30,31 @@ const Voting = () => {
 			console.error(err);
 		} finally {
 			// console.log('CANDIDATES', dbResults);
-			setCandidatesState(dbResults.data);
-			console.log('CANDIDATES STATE', candidatesState);
+			setCandidatesInfoState(dbResults.data);
+			console.log('CANDIDATES STATE', candidatesInfoState);
 		}
 	};
+
+	const vote = (event) => {
+		console.log(event);
+		// setUserChoiceState(event.value);
+	}
 
 	return (
 		<Container fluid >
 			<h2>Vote for the Next Featured Bladesmith</h2>
 			<p>Select the craftsmen you would like to see featured in the next profile</p>
-			{candidatesState.map((candidate, index) => {
+			{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, _id, images }, index) => {
 				return <CandidateProfile
-					fullName={`${candidate.firstName} ${candidate.lastName}`}
-					bioText={candidate.bioText}
+					firstName={firstName}
+					lastName={lastName}
+					bioText={bioText}
 					location={`${city}, ${state}`}
-					key={index} />
+					business={businessName}
+					webAddress={website}
+					image={images[0]}
+					id={_id} />
+				vote = { vote }
 			})}
 		</Container>
 	)

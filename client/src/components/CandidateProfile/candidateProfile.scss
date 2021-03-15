@@ -1,7 +1,23 @@
 
 
-.containerFluid {
-  display: flex;
-  justify-content: center;
+.header {
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: center;
+  align-items: baseline;
+  img{
+    height: 170px;
+    border-radius: .25em;
+  }
+  h3 {
+    display: inline;
+    margin: 0;
+  }
+  h4 {
+    display: inline-block;
+    margin: 0;
+    padding-top: 3px;
+    bottom: 0;
+  }
 }
 // test

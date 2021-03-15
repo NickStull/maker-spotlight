@@ -7,7 +7,6 @@ const Home = () => {
     <>
 
       <div>
-        <h1>Home Component</h1>
         {/* <CarouselViewer /> */}
         <Voting />
       </div>
