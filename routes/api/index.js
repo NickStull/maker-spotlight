@@ -15,10 +15,7 @@ router.use("/newsletters", newsLettersRoutes);
 router.use("/makers", makersRoutes);
 router.use("/advertisers", advertisersRoutes);
 router.use("/admin", adminRoutes);
-<<<<<<< HEAD
 router.use("/candidates", candidatesRoutes);
-=======
 // router.use("/subscribe", subscribeRoutes);
->>>>>>> main
 
 module.exports = router;
