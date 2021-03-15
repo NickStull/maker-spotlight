@@ -30,8 +30,8 @@ const CandidateProfile = ({ firstName, lastName, bioText, location, business, we
 					{/* <Button onClick={() => vote(id)}>Vote for {firstName}</Button> */}
 					<Button onClick={() => handleShow({ fullName: `${firstName} ${lastName}`, id: key })}>Vote for {firstName}</Button>
 				</Col>
-				<Col>
-					<CloudinaryContext cloudName="makerspotlight">
+				<Col sm='auto'>
+					<CloudinaryContext cloudName="makerspotlight col-1">
 						<Image publicId={image} />
 					</CloudinaryContext>
 				</Col>

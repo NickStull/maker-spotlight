@@ -21,6 +21,20 @@ const Voting = () => {
 		//make API call to update maker with vote using key from userChoiceState
 	};
 
+	const voteForMaker = async () => {
+		// console.log('CURRENT USER', currentUser.uid);
+		let makerId = userChoiceState
+		let dbResults;
+		try {
+			dbResults = await API.updateUser(makerId);
+		} catch (err) {
+			console.error(err);
+		} finally {
+			// console.log(dbResults);
+			// setCurrentUserName(dbResults.data.firstName);
+		}
+	};
+
 	const handleShow = (makerInfo) => {
 		setUserChoiceState(makerInfo);
 		setShow(true);
