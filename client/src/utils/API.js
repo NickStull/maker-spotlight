@@ -54,6 +54,11 @@ export default {
     // console.log("subscribe hit");
     return axios.post("/api/subscribe", userData);
   },
+
+  getNewsletter: function () {
+    console.log("issue hit");
+    return axios.get("/api/newsletters");
+  }
 };
 
 // // Gets all posts
