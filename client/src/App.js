@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Admin from "./components/pages/Admin/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UserAccount from "./components/UserAccount";
+import Voting from "./components/Voting";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/account" component={UserAccount} />
           <Route exact path="/admin" component={Admin} />
+          <Route exact path="/vote" component={Voting} />
           {/* <Route exact path="/logout" component={Logout} /> */}
         </AuthProvider>
       </Router>

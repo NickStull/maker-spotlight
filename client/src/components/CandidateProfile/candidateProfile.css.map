@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAKE,OALK,CAKL,GAAG,CAAA;EACD,MAAM,EAAE,KAAK;EACb,aAAa,EAAE,KAAK;CAGrB;;AAVH,AAWE,OAXK,CAWL,EAAE,CAAC;EAED,MAAM,EAAE,CAAC;CACV;;AAdH,AAeE,OAfK,CAeL,EAAE,CAAC;EAED,MAAM,EAAE,CAAC;EAET,MAAM,EAAE,CAAC;CACV;;AAEH,AACE,WADS,CACT,CAAC,CAAA;EACC,aAAa,EAAE,CAAC;CACjB",
+    "sources": [
+        "candidateProfile.scss"
+    ],
+    "names": [],
+    "file": "candidateProfile.css"
+}

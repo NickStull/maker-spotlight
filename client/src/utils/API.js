@@ -13,7 +13,6 @@ export default {
   },
 
   getUser: function (id) {
-    console.log("Axios getUser hit with ", id);
     return axios.get("/api/users/" + id);
   },
 
@@ -31,6 +30,10 @@ export default {
     return axios.get("/api/advertisers");
   },
 
+  getCandidates: function () {
+    return axios.get("/api/candidates");
+  },
+
   getUserByName: function (name) {
     console.log("getUserByName hit with", name);
     return axios.get("/api/users/name/" + name);
@@ -43,7 +46,7 @@ export default {
   },
 
   editUser: function (userData) {
-    console.log("hit edit user")
+    // console.log('editing user', userData);
     return axios.put("/api/users/" + userData.userId, userData);
   },
 
