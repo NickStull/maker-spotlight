@@ -18,29 +18,32 @@ const UserAccount = () => {
   const websiteRef = useRef();
   const bioRef = useRef();
 
-  const { currentUser } = useAuth();
+  const { currentUser, userInfo } = useAuth();
   const [user, setUser] = useState();
 
   useEffect(() => {
     if (currentUser) {
-      getUser();
+      console.log(userInfo)
+      // getUser();
     }
   }, []);
 
-  const getUser = async () => {
-    let dbResults;
-    try {
-      dbResults = await API.getUser(currentUser.uid);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setUser(dbResults.data);
-    }
-  };
-
+  // const getUser = async () => {
+  //   let dbResults;
+  //   try {
+  //     dbResults = await API.getUser(currentUser.uid);
+  //     if(dbResults){
+  //       setUser(dbResults.data);
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+    
+  // };
+  
   return (
     <>
-      {user  
+      {userInfo  
         ?<Container className="d-flex mt-4 justify-content-center" style={{ minHeight: "100vh" }} >
           <div className="w-100" style={{ maxWidth: "400px" }}>
             <Card>
@@ -53,7 +56,7 @@ const UserAccount = () => {
                     <Form.Control 
                       name="firstName"
                       type="text" 
-                      defaultValue={ user.firstName } 
+                      defaultValue={ userInfo.firstName } 
                       ref={firstNameRef}
                       required
                     />
@@ -63,7 +66,7 @@ const UserAccount = () => {
                     <Form.Control 
                       name="lastName"
                       type="text" 
-                      value={ user.lastName }  
+                      value={ userInfo.lastName }  
                       ref={lastNameRef}
                       required
                     />
@@ -78,7 +81,7 @@ const UserAccount = () => {
                       required
                     />
                   </Form.Group>
-                  <Form.Group >
+                  {/* <Form.Group >
                     <Form.Check 
                       type="switch"
                       label="Wants to be featured" 
@@ -218,7 +221,7 @@ const UserAccount = () => {
                       ref={ bioRef } 
                       placeholder={ user.bioText } 
                     />
-                  </Form.Group>
+                  </Form.Group> */}
                   <Button className="w-100" variant="primary" type="submit">
                     Save
                   </Button>

@@ -1,6 +1,5 @@
 const db = require("../models");
 
-// Defining methods for the postsController
 module.exports = {
   findAll: function (req, res) {
     db.Users.find(req.query)
@@ -52,7 +51,7 @@ module.exports = {
   },
 
   findAdmin: function (req, res) {
-    console.log("I'll give you admin access to my backend baby");
+    console.log("admin hit");
     db.Users.find({ admin: true })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
