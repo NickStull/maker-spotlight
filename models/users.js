@@ -34,8 +34,8 @@ const UsersSchema = new Schema({
   },
 
   voted: {
-    type: Boolean,
-    default: false
+    type: Number,
+    default: 0
   },
 
   wantTo: {

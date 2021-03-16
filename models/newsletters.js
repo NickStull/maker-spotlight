@@ -39,6 +39,36 @@ const NewsLettersSchema = new Schema({
     default: ""
   },
 
+  address: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+
+  address2: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+
+  city: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+
+  state: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+
+  zipCode: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+  
   phoneNumber: {
     type: String,
     trim: true,
