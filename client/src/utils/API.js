@@ -3,12 +3,12 @@ import axios from "axios";
 export default {
   // Gets all posts
   getUsers: function () {
-    console.log("Axios getUsers hit");
+    // console.log("Axios getUsers hit");
     return axios.get("/api/users");
   },
   // Saves new user to db
   saveUser: function (postData) {
-    console.log("saveuser");
+    // console.log("saveuser");
     return axios.post("/api/users", postData);
   },
 
@@ -21,12 +21,12 @@ export default {
   },
 
   getMakers: function () {
-    console.log("getmakers hit baby");
+    // console.log("getmakers hit baby");
     return axios.get("/api/makers");
   },
 
   getAdvertisers: function () {
-    console.log("getAdvert hit");
+    // console.log("getAdvert hit");
     return axios.get("/api/advertisers");
   },
 
@@ -35,12 +35,12 @@ export default {
   },
 
   getUserByName: function (name) {
-    console.log("getUserByName hit with", name);
+    // console.log("getUserByName hit with", name);
     return axios.get("/api/users/name/" + name);
   },
 
   getAdmin: function () {
-    console.log("getAdmin hit baby");
+    // console.log("getAdmin hit baby");
 
     return axios.get("/api/admin");
   },
@@ -51,7 +51,7 @@ export default {
   },
 
   subscribe: function (userData) {
-    console.log("subscribe hit");
+    // console.log("subscribe hit");
     return axios.post("/api/subscribe", userData);
   },
 

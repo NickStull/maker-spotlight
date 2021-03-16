@@ -62,18 +62,24 @@ const CarouselViewer = () => {
 				<Carousel activeIndex={index} onSelect={handleSelect}>
 					{featuredImagesState.map(
 						(image, index) => {
+							console.log('image url', image);
 							return (
 								<Carousel.Item key={index}>
 									<CloudinaryContext cloudName="makerspotlight">
 										<Image
 											publicId={image}
+											// publicId='https://res.cloudinary.com/makerspotlight/image/upload/c_pad,h_800,w_800/v1615655489/testKnifeImg1_gzlddh.jpg'
 											className="d-block w-100 carouselImg"
 											alt="First slide"
-											width="900" height="600" background="auto" crop="pad"
+											// width="300"
+											// height="300"
+											background="auto" crop="pad"
 										>
-											{/* <Transformation rawTransformation="h_150,w_150,c_fill,e_sepia,r_20" /> */}
-											<Placeholder type="blur" />
 										</Image>
+										{/* <Image publicId={image} >
+											<Transformation width="300" height="300" background="white" crop="pad" />
+											<Transformation border="10px_solid_red" />
+										</Image> */}
 									</CloudinaryContext>
 									{/* <Carousel.Caption>
 									<section className='caption'>
@@ -101,3 +107,7 @@ export default CarouselViewer;
 		src={image.src}
 		alt="Slide"
 	/> */}
+
+
+// https://res.cloudinary.com/makerspotlight/image/upload/v1615655489/testKnifeImg2_hhbvdz.webp
+// https://res.cloudinary.com/makerspotlight/image/upload/c_pad,h_800,w_800/v1615655489/testKnifeImg1_gzlddh.jpg
