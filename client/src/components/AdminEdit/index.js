@@ -45,14 +45,16 @@ function AdminEdit(props) {
     let phoneTemp = phoneRef.current.value ? phoneRef.current.value : props.user.data.phoneNumber;
     let websiteTemp = websiteRef.current.value ? websiteRef.current.value : props.user.data.website;
     let bioTemp = bioRef.current.value ? bioRef.current.value : props.user.data.bioText;
-  
+    let votedTemp = votedRef.current.value ? bioRef.current.value : props.user.data.voted;
+
+
     let userEdit = {
       userId: idRef.current.placeholder,
       firstName: firstNameTemp,
       lastName: lastNameTemp,
       email: emailTemp,
       admin: adminRef.current.checked,
-      voted: votedRef.current.checked,
+      voted: votedTemp,
       wantTo: wantToRef.current.checked,
       candidate: candidateRef.current.checked,
       active: activeRef.current.checked,
@@ -160,19 +162,15 @@ function AdminEdit(props) {
           />
         </Form.Group>
       </Form.Row>
-
-      <Form.Row>
-        <Form.Group as={Col} id="formGridVoted">
-            <Form.Check type="switch"
-                        ref={ votedRef } 
-                        label="Voted" 
-                        id="voted-switch"
-                        defaultChecked={ props.user.data.voted } 
-            />
-        </Form.Group>
-      </Form.Row>
       
       <Form.Row>
+        <Form.Group as={Col} controlId="formGridVoted">
+          <Form.Label>Voted (-1 = No)</Form.Label>
+          <Form.Control 
+            ref={ votedRef }
+            placeholder={ props.user.data.voted } 
+          />
+        </Form.Group>
         <Form.Group as={Col} controlId="formGridCurrentVotes">
           <Form.Label>Current Votes</Form.Label>
           <Form.Control 
