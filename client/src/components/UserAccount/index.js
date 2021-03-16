@@ -113,7 +113,7 @@ const UserAccount = () => {
                   <Form.Group >
                     <Form.Check 
                       type="switch"
-                      label="Wants to be featured" 
+                      label="I want to be featured!" 
                       id="want-to-switch"
                       ref={wantToRef}
                       defaultChecked={ userInfo.wantTo } 
