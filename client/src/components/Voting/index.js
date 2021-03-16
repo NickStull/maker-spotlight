@@ -131,7 +131,7 @@ const Voting = () => {
 			<Container fluid >
 				<h2>Vote for the Next Featured Bladesmith</h2>
 				<p>Select the craftsmen you would like to see featured in the next profile</p>
-				{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, userId, images }) => {
+				{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, userId, images }, index) => {
 					return <CandidateProfile
 						firstName={firstName}
 						lastName={lastName}
@@ -144,6 +144,7 @@ const Voting = () => {
 						handleShow={handleShow}
 						setUserChoiceState={setUserChoiceState}
 						id={userId}
+						arrayPosition={index}
 						key={userId} />
 				})}
 			</Container>

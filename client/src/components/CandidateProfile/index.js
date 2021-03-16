@@ -5,7 +5,7 @@ import { Row, Col, Container, Button } from 'react-bootstrap';
 // import API from "../../utils/API";
 import './candidateProfile.css'
 
-const CandidateProfile = ({ firstName, lastName, bioText, location, business, webAddress, id, handleShow }) => {
+const CandidateProfile = ({ firstName, lastName, bioText, location, business, webAddress, id, handleShow, arrayPosition }) => {
 
 	const [displayModalState, setDisplayModalState] = useState(false);
 
@@ -30,7 +30,8 @@ const CandidateProfile = ({ firstName, lastName, bioText, location, business, we
 					{context.userinfo.voted === -1 ?
 						<Button onClick={() => handleShow({ fullName: `${firstName} ${lastName}`, userId: id })}>Vote for {firstName}</Button>
 						:
-						<Button variant="outline-secondary" {}>{firstName} got your vote</Button>}
+						//will need to update current user voted with context provider user information
+						<Button variant="outline-secondary" {currentUser.voted == { arrayPosition }}>{firstName} got your vote</Button>}
 				</Col>
 				{/* <Col sm='auto'>
 					<CloudinaryContext cloudName="makerspotlight col-1">
