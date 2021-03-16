@@ -10,18 +10,32 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 1em 2em;
-	h1{
-		color: white;
-		font-family: 'Chisel', serif;
+	margin-bottom: 1em;
+	h5{
+		color: black;
+		margin-bottom: 0;
+		font-family: 'Cinzel', serif;
 	}
 }
 
+.logo {
+	color: white;
+	font-family: 'Cinzel', serif !important;
+	font-weight: 700;
+	margin-bottom: 0;
+	:hover{
+		color: white;
+		text-decoration: none;
+	}
+}
 .headerDiv {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	color: white;
-	font-family: 'Chisel', serif;
+	font-family: 'Cinzel', serif;
+	font-weight: 700;
 }
+
 
 

@@ -37,14 +37,21 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
+  function updateUserInfo() {
+    API.getUser(currentUser.uid)
+      .then((response) => {
+        setUserInfo(response.data)
+      })
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async user => {
       setCurrentUser(user)
-      if(user){
+      if (user) {
         await API.getUser(user.uid)
           .then((response) => {
             setUserInfo(response.data)
-          }) 
+          })
       }
       setLoading(false)
     })
@@ -55,6 +62,7 @@ export function AuthProvider({ children }) {
   const value = {
     currentUser,
     userInfo,
+    updateUserInfo,
     login,
     signup,
     logout,

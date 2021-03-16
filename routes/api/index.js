@@ -5,6 +5,7 @@ const newsLettersRoutes = require("./newsletters");
 const makersRoutes = require("./makers");
 const advertisersRoutes = require("./advertisers");
 const adminRoutes = require("./admin");
+const candidatesRoutes = require("./candidates");
 const subscribeRoutes = require("./subscribe.js");
 
 // Post routes
@@ -14,6 +15,7 @@ router.use("/newsletters", newsLettersRoutes);
 router.use("/makers", makersRoutes);
 router.use("/advertisers", advertisersRoutes);
 router.use("/admin", adminRoutes);
+router.use("/candidates", candidatesRoutes);
 router.use("/subscribe", subscribeRoutes);
 
 module.exports = router;
