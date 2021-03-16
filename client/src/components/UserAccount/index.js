@@ -6,7 +6,6 @@ import API from "../../utils/API"
 const UserAccount = () => {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
-  const emailRef = useRef();
   const wantToRef = useRef();
   const businessNameRef = useRef();
   const address1Ref = useRef();
@@ -28,18 +27,43 @@ const UserAccount = () => {
     }
   }, []);
 
-  // const getUser = async () => {
-  //   let dbResults;
-  //   try {
-  //     dbResults = await API.getUser(currentUser.uid);
-  //     if(dbResults){
-  //       setUser(dbResults.data);
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    let firstNameTemp = firstNameRef.current.value ? firstNameRef.current.value : userInfo.firstName;
+    let lastNameTemp = lastNameRef.current.value ? lastNameRef.current.value : userInfo.lastName;
+    let businessNameTemp = businessNameRef.current.value ? businessNameRef.current.value : userInfo.businessName;
+    let address1Temp = address1Ref.current.value ? address1Ref.current.value : userInfo.address;
+    let address2Temp = address2Ref.current.value ? address2Ref.current.value : userInfo.address2;
+    let cityTemp = cityRef.current.value ? cityRef.current.value : userInfo.city;
+    let stateTemp = stateRef.current.value ? stateRef.current.value : userInfo.state;
+    stateTemp = stateTemp === "Choose..." ? "" : stateTemp;
+    let zipCodeTemp = zipCodeRef.current.value ? zipCodeRef.current.value : userInfo.zipCode;
+    let phoneTemp = phoneRef.current.value ? phoneRef.current.value : userInfo.phoneNumber;
+    let websiteTemp = websiteRef.current.value ? websiteRef.current.value : userInfo.website;
+    let bioTemp = bioRef.current.value ? bioRef.current.value : userInfo.bioText;
     
-  // };
+
+    let userEdit = {
+      userId: userInfo.userId,
+      firstName: firstNameTemp,
+      lastName: lastNameTemp,
+      wantTo: wantToRef.current.checked,
+      businessName: businessNameTemp,
+      address: address1Temp,
+      address2: address2Temp,
+      city: cityTemp,
+      state: stateTemp,
+      zipCode: zipCodeTemp,
+      phoneNumber: phoneTemp,
+      website: websiteTemp,
+      bioText: bioTemp
+    }
+    
+    console.log(userEdit);
+
+    await API.editUser(userEdit)
+      .catch(err => console.log(err));
+  }
   
   return (
     <>
@@ -50,7 +74,7 @@ const UserAccount = () => {
               <Card.Body>
                 <h2 className="text-center mb-4">Edit Account Info</h2>
 
-                <Form className="form">
+                <Form className="form" onSubmit={handleSubmit}>
                   <Form.Group controlId="formBasicFirst">
                     <Form.Label>First Name</Form.Label>
                     <Form.Control 
@@ -71,40 +95,29 @@ const UserAccount = () => {
                       required
                     />
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control 
-                      name="email"
-                      type="email" 
-                      value={ currentUser.email } 
-                      ref={emailRef}
-                      required
-                    />
-                  </Form.Group>
-                  {/* <Form.Group >
+                  <Form.Group >
                     <Form.Check 
                       type="switch"
                       label="Wants to be featured" 
                       id="want-to-switch"
                       ref={wantToRef}
-                      defaultChecked={ user.wantTo } 
+                      defaultChecked={ userInfo.wantTo } 
                     />
                   </Form.Group>
                   <Form.Group controlId="formGridBusiness">
                     <Form.Label>Business Name</Form.Label>
                     <Form.Control 
                       ref={ businessNameRef }
-                      placeholder={ user.businessName } 
+                      placeholder={ userInfo.businessName } 
                     />
                   </Form.Group>
-
                   <Form.Row>
                     <Col xs={8}>
                       <Form.Group controlId="formGridAddress1">
                         <Form.Label>Address</Form.Label>
                         <Form.Control 
                           ref={ address1Ref } 
-                          placeholder={ user.address } 
+                          placeholder={ userInfo.address } 
                         />
                       </Form.Group>
                     </Col>
@@ -113,7 +126,7 @@ const UserAccount = () => {
                         <Form.Label>Address 2</Form.Label>
                         <Form.Control 
                           ref={ address2Ref } 
-                          placeholder={ user.address2 } 
+                          placeholder={ userInfo.address2 } 
                         />
                       </Form.Group>
                     </Col> 
@@ -123,7 +136,7 @@ const UserAccount = () => {
                       <Form.Label>City</Form.Label>
                       <Form.Control 
                         ref={ cityRef }
-                        placeholder={ user.city } 
+                        placeholder={ userInfo.city } 
                       />
                     </Form.Group>
 
@@ -192,7 +205,7 @@ const UserAccount = () => {
                       <Form.Label>Zip</Form.Label>
                       <Form.Control 
                         ref={ zipCodeRef }
-                        placeholder={ user.zipCode } 
+                        placeholder={ userInfo.zipCode } 
                       />
                     </Form.Group>
                   </Form.Row>
@@ -201,7 +214,7 @@ const UserAccount = () => {
                     <Form.Label>Phone</Form.Label>
                     <Form.Control 
                       ref={ phoneRef }
-                      placeholder={ user.phoneNumber } 
+                      placeholder={ userInfo.phoneNumber } 
                     />
                   </Form.Group>
 
@@ -209,7 +222,7 @@ const UserAccount = () => {
                     <Form.Label>Website</Form.Label>
                     <Form.Control 
                       ref={ websiteRef }
-                      placeholder={ user.website } 
+                      placeholder={ userInfo.website } 
                     />
                   </Form.Group>
 
@@ -219,9 +232,9 @@ const UserAccount = () => {
                       as="textarea" 
                       rows={5}
                       ref={ bioRef } 
-                      placeholder={ user.bioText } 
+                      placeholder={ userInfo.bioText } 
                     />
-                  </Form.Group> */}
+                  </Form.Group>
                   <Button className="w-100" variant="primary" type="submit">
                     Save
                   </Button>

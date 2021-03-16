@@ -43,6 +43,7 @@ export default {
   },
 
   editUser: function (userData) {
+    console.log("hit edit user")
     return axios.put("/api/users/" + userData.userId, userData);
   },
 
