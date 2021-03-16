@@ -9,7 +9,7 @@ import './voting.css'
 
 const Voting = () => {
 
-	const { currentUser } = useAuth();
+	const { userInfo } = useAuth();
 	const [userInfoState, setUserInfoState] = useState();
 	// const [votedForState, setVotedForState] = useState();
 	const [candidatesInfoState, setCandidatesInfoState] = useState([]);
