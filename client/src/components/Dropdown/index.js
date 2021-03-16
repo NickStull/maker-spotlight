@@ -6,36 +6,44 @@ import { DropdownButton, Dropdown } from "react-bootstrap"
 import Logout from "../Logout";
 
 const HeaderDropdown = () => {
-  const { currentUser } = useAuth();
+  const { userInfo, currentUser } = useAuth();
   const [currentUserName, setCurrentUserName] = useState();
 
   //check to see if user is logged in via context provider
   useEffect(() => {
-    if (currentUser) {
-      getUserName();
-    }
-  }, []);
+    // if (currentUser) {
+    //   getUserName();
+    // }
+  }, [userInfo]);
 
   //use firebase id to get user info from mongodb
-  const getUserName = async () => {
-    // console.log('CURRENT USER', currentUser.uid);
-    let dbResults;
-    try {
-      dbResults = await API.getUser(currentUser.uid);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setCurrentUserName(dbResults.data.firstName);
-    }
-  };
+  // const getUserName = async () => {
+  //   let dbResults;
+  //   try {
+  //     dbResults = await API.getUser(currentUser.uid);
+  //   } catch (err) {
+  //     console.error(err);
+  //   } finally {
+  //     setCurrentUserName(dbResults.data.firstName);
+  //   }
+  // };
 
   return (
-    <DropdownButton className="dropdown" id="dropdown-basic-button" title={`Welcome, ${currentUserName}!`}>
-      <Dropdown.Item href="/account">Edit Account</Dropdown.Item>
-      {/* <Dropdown.Item href="/logout">Log out</Dropdown.Item> */}
-      <Logout />
-    </DropdownButton>
+    <>
+      {console.log(userInfo)}
+      {userInfo ?
+        <DropdownButton className="dropdown" id="dropdown-basic-button" title={`Welcome, ${userInfo.firstName}!`}>
+          <Dropdown.Item href="/account">Edit Account</Dropdown.Item>
+          <Logout />
+        </DropdownButton >
+        : <>{console.log(userInfo)}</>
+      }
+    </>
   );
-};
+
+}
 
 export default HeaderDropdown;
+
+{/* <Dropdown.Item href="/logout">Log out</Dropdown.Item> */ }
+

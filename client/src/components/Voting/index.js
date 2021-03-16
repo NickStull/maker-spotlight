@@ -9,7 +9,7 @@ import './voting.css'
 
 const Voting = () => {
 
-	const { userInfo } = useAuth();
+	const { userInfo, currentUser, updateUserInfo } = useAuth();
 	const [userInfoState, setUserInfoState] = useState();
 	// const [votedForState, setVotedForState] = useState();
 	const [candidatesInfoState, setCandidatesInfoState] = useState([]);
@@ -44,9 +44,10 @@ const Voting = () => {
 	const submitVote = () => {
 		setShow(false);
 		findMaker()
-			.then(updateMakerVoteTotals)
+			.then(updateMakerVoteTotalsObject)
 			.then(updateMakerWithNewVoteTotals)
 			.then(updateUserWithVoteChoice)
+			.catch((err) => console.log(err))
 	};
 
 	const findMaker = async () => {
@@ -61,7 +62,7 @@ const Voting = () => {
 			return makerInfo;
 		}
 	}
-	const updateMakerVoteTotals = (makerInfo) => {
+	const updateMakerVoteTotalsObject = (makerInfo) => {
 		let updatedCurrentVotes = makerInfo.currentVotes + 1;
 		let updatedTotalVotes = makerInfo.totalVotes + 1;
 		// console.log('updated current vote total', updatedCurrentVotes);
@@ -93,12 +94,15 @@ const Voting = () => {
 		console.log('user info passed to database', updatedUserInfo);
 		let resultsUserInfo;
 		try {
-			resultsUserInfo = await API.editUser(updatedUserInfo)
+			await API.editUser(updatedUserInfo)
+				.then((results) => {
+					console.log('users vote choice recorded', results);
+					updateUserInfo();
+					console.log("revised user info", userInfo);
+					return results.data;
+				})
 		} catch (err) {
 			console.error(err);
-		} finally {
-			console.log('users vote choice recorded', resultsUserInfo.data);
-			return resultsUserInfo;
 		}
 	}
 
@@ -123,59 +127,61 @@ const Voting = () => {
 		}
 	};
 
-
-	return (
-		<>
-			<Container fluid >
-				<h2>Candiates for the Next Spotlight</h2>
-				{userInfo.voted === -1 ?
-					<>
-						<h3>Vote for the Next Featured Bladesmith</h3>
-						<p>Select the craftsmen you would like to see featured in the next profile.</p>
-					</>
-					:
-					<h5>Thanks for helping us choose the next featured craftsmen!</h5>
+	if (userInfo) {
+		return (
+			<>
+				<Container fluid >
+					<h2>Candiates for the Next Spotlight</h2>
+					{userInfo.voted === -1 ?
+						<>
+							<h3>Vote for the Next Featured Bladesmith</h3>
+							<p>Select the craftsmen you would like to see featured in the next profile.</p>
+						</>
+						:
+						<h5>Thanks for helping us choose the next featured craftsmen!</h5>
+					}
+					<Row>
+						{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, userId, images }, index) => {
+							return <CandidateProfile
+								firstName={firstName}
+								lastName={lastName}
+								bioText={bioText}
+								location={`${city}, ${state}`}
+								business={businessName}
+								webAddress={website}
+								image={images[0]}
+								// vote={vote}
+								handleShow={handleShow}
+								setUserChoiceState={setUserChoiceState}
+								id={userId}
+								arrayPosition={index}
+								key={userId} />
+						})}
+					</Row>
+				</Container>
+				{show ?
+					<Modal show={show} onHide={handleClose}>
+						<Modal.Header closeButton>
+							<Modal.Title>You have made a great choice!</Modal.Title>
+						</Modal.Header>
+						<Modal.Body>You have chosen {userChoiceState.fullName} to be featured in the next spotlight.</Modal.Body>
+						<Modal.Footer>
+							<Button variant="secondary" onClick={handleClose}>
+								Choose Another Bladesmith
+          </Button>
+							<Button variant="primary" onClick={submitVote}>
+								Submit Your Vote
+          </Button>
+						</Modal.Footer>
+					</Modal>
+					: <></>
 				}
-				<Row>
-					{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, userId, images }, index) => {
-						return <CandidateProfile
-							firstName={firstName}
-							lastName={lastName}
-							bioText={bioText}
-							location={`${city}, ${state}`}
-							business={businessName}
-							webAddress={website}
-							image={images[0]}
-							// vote={vote}
-							handleShow={handleShow}
-							setUserChoiceState={setUserChoiceState}
-							id={userId}
-							arrayPosition={index}
-							key={userId} />
-					})}
-				</Row>
+			</>
+		)
+	} else { return (<></>) };
 
-			</Container>
-			{show ?
-				<Modal show={show} onHide={handleClose}>
-					<Modal.Header closeButton>
-						<Modal.Title>You have made a great choice!</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>You have chosen {userChoiceState.fullName} to be featured in the next spotlight.</Modal.Body>
-					<Modal.Footer>
-						<Button variant="secondary" onClick={handleClose}>
-							Choose Another Bladesmith
-          </Button>
-						<Button variant="primary" onClick={submitVote}>
-							Submit Your Vote
-          </Button>
-					</Modal.Footer>
-				</Modal>
-				: <></>
-			}
-		</>
-	)
+
 }
 
 export default Voting;
-
+// test

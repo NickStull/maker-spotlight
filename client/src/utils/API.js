@@ -46,7 +46,7 @@ export default {
   },
 
   editUser: function (userData) {
-    console.log('editing user');
+    // console.log('editing user', userData);
     return axios.put("/api/users/" + userData.userId, userData);
   },
 

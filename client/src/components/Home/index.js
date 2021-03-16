@@ -6,10 +6,6 @@ import MakerBio from '../MakerBio';
 const Home = () => {
   return (
     <>
-      <div>
-        {/* <CarouselViewer /> */}
-        <Voting />
-      </div>
       <MakerBio />
       <CarouselViewer />
     </>

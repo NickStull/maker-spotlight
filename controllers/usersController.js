@@ -35,7 +35,7 @@ module.exports = {
   },
 
   update: function (req, res) {
-    console.log('controller is updating record');
+    console.log('controller is updating record', req.params.id);
     db.Users.findOneAndUpdate({ userId: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

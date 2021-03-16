@@ -15,6 +15,7 @@ const CandidateProfile = ({ firstName, lastName, bioText, location, business, we
 	}, [displayModalState])
 
 	return (
+
 		<Col>
 			<Card className="text-center">
 				<Card.Header>
