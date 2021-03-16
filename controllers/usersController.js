@@ -1,12 +1,12 @@
 const db = require("../models");
 
-const run = async () => {
-  const response = await mailchimp.lists.addListMember("cfb63d742d", {
-    email_address: "Stull.nicholas@gmail.com",
-    status: "pending",
-  });
-  console.log(response);
-};
+// const run = async () => {
+//   const response = await mailchimp.lists.addListMember("cfb63d742d", {
+//     email_address: "Stull.nicholas@gmail.com",
+//     status: "pending",
+//   });
+//   console.log(response);
+// };
 
 module.exports = {
   findAll: function (req, res) {
