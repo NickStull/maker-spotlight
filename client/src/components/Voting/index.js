@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../utils/contexts/AuthContext";
-// import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
 import { Container, Modal, Button, Row } from 'react-bootstrap';
-// import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
 import CandidateProfile from '../CandidateProfile'
 import API from "../../utils/API";
 import './voting.css'
 
 const Voting = () => {
 
-	const { userInfo, currentUser, updateUserInfo } = useAuth();
-	const [userInfoState, setUserInfoState] = useState();
+	const { userInfo, updateUserInfo } = useAuth();
 	// const [votedForState, setVotedForState] = useState();
 	const [candidatesInfoState, setCandidatesInfoState] = useState([]);
 	const [userChoiceState, setUserChoiceState] = useState();
@@ -24,22 +21,28 @@ const Voting = () => {
 		}
 	}, [candidatesInfoState])
 
+	const getCandidates = async () => {
+		console.log('GET CANDIDATES CALLED');
+		let dbResults;
+		try {
+			dbResults = await API.getCandidates();
+		} catch (err) {
+			console.error(err);
+		} finally {
+			// console.log('CANDIDATES', dbResults);
+			setCandidatesInfoState(dbResults.data);
+			// console.log('CANDIDATES STATE', candidatesInfoState);
+		}
+	};
+
+	//modal controls
 	const handleClose = () => setShow(false);
 
-	// const findUserInfo = async () => {
-	// 	// console.log('finding user info function called');
-	// 	let resultsUserInfo;
-	// 	try {
-	// 		await API.getUser(currentUser.uid)
-	// 			.then((response) => {
-	// 				console.log('response', response);
-	// 				setUserInfoState(response.data)
-	// 			})
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 	}
-	// 	setTimeout(console.log('USER INFOR TIMEOUT', userInfoState), 2000)
-	// }
+	const handleShow = (makerInfo) => {
+		setUserChoiceState(makerInfo);
+		setShow(true);
+		console.log('selected maker', makerInfo);
+	};
 
 	const submitVote = () => {
 		setShow(false);
@@ -62,6 +65,7 @@ const Voting = () => {
 			return makerInfo;
 		}
 	}
+
 	const updateMakerVoteTotalsObject = (makerInfo) => {
 		let updatedCurrentVotes = makerInfo.currentVotes + 1;
 		let updatedTotalVotes = makerInfo.totalVotes + 1;
@@ -88,44 +92,23 @@ const Voting = () => {
 	}
 
 	const updateUserWithVoteChoice = async () => {
-		console.log('users choice', userChoiceState.makersArrayIndex.arrayPosition);
+		// console.log('users choice', userChoiceState.makersArrayIndex.arrayPosition);
 		let usersVoteChoice = userChoiceState.makersArrayIndex.arrayPosition;
 		let updatedUserInfo = { ...userInfo, voted: usersVoteChoice }
-		console.log('user info passed to database', updatedUserInfo);
+		// console.log('user info passed to database', updatedUserInfo);
 		let resultsUserInfo;
 		try {
 			await API.editUser(updatedUserInfo)
 				.then((results) => {
 					console.log('users vote choice recorded', results);
 					updateUserInfo();
-					console.log("revised user info", userInfo);
+					// console.log("revised user info", userInfo);
 					return results.data;
 				})
 		} catch (err) {
 			console.error(err);
 		}
 	}
-
-
-	const handleShow = (makerInfo) => {
-		setUserChoiceState(makerInfo);
-		setShow(true);
-		console.log('selected maker', makerInfo);
-	};
-
-	const getCandidates = async () => {
-		console.log('GET CANDIDATES CALLED');
-		let dbResults;
-		try {
-			dbResults = await API.getCandidates();
-		} catch (err) {
-			console.error(err);
-		} finally {
-			// console.log('CANDIDATES', dbResults);
-			setCandidatesInfoState(dbResults.data);
-			console.log('CANDIDATES STATE', candidatesInfoState);
-		}
-	};
 
 	if (userInfo) {
 		return (
@@ -179,8 +162,6 @@ const Voting = () => {
 			</>
 		)
 	} else { return (<></>) };
-
-
 }
 
 export default Voting;
