@@ -4,17 +4,35 @@ import HeaderDropdown from "../Dropdown";
 import Login from "../Login";
 import Signup from "../Signup";
 import "./header.css";
+import API from "../../utils/API";
+import AdminButton from "../AdminButton";
 
 const Header = () => {
   const [loggedInState, setLoggedInState] = useState(false);
   const { currentUser, logout } = useAuth();
+  const [isAdmin, setIsAdmin] = useState(false);
 
   //check to see if user is logged in via context provider
   useEffect(() => {
     if (currentUser) {
       setLoggedInState(true);
+      console.log("we fo sho logged in");
+      getUserName();
     }
   }, []);
+
+  const getUserName = async () => {
+    // console.log('CURRENT USER', currentUser.uid);
+    let dbResults;
+    try {
+      dbResults = await API.getUser(currentUser.uid);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      console.log("isAdmin: ", dbResults.data.admin);
+      setIsAdmin(dbResults.data.admin);
+    }
+  };
 
   return (
     <>
@@ -24,7 +42,14 @@ const Header = () => {
         </a>
         {/* display dropdown button based on loggedInState */}
         {loggedInState ? (
-          <HeaderDropdown />
+          isAdmin ? (
+            <>
+              <AdminButton />
+              <HeaderDropdown />
+            </>
+          ) : (
+            <HeaderDropdown />
+          )
         ) : (
           <>
             <Signup />
