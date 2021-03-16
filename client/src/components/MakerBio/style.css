@@ -1,0 +1,4 @@
+ /* !important is needed sometimes */
+div::-webkit-scrollbar {
+  width: 12px !important;
+}
