@@ -27,8 +27,10 @@ const CandidateProfile = ({ firstName, lastName, bioText, location, business, we
 					<h4>{business}</h4>
 					<a href={webAddress} target="blank">{webAddress}</a>
 					<p>{location}</p>
-					{/* <Button onClick={() => vote(id)}>Vote for {firstName}</Button> */}
-					<Button onClick={() => handleShow({ fullName: `${firstName} ${lastName}`, userId: id })}>Vote for {firstName}</Button>
+					{context.userinfo.voted === -1 ?
+						<Button onClick={() => handleShow({ fullName: `${firstName} ${lastName}`, userId: id })}>Vote for {firstName}</Button>
+						:
+						<Button variant="outline-secondary" {}>{firstName} got your vote</Button>}
 				</Col>
 				{/* <Col sm='auto'>
 					<CloudinaryContext cloudName="makerspotlight col-1">

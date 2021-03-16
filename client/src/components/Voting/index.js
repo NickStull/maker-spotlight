@@ -130,7 +130,6 @@ const Voting = () => {
 		<>
 			<Container fluid >
 				<h2>Vote for the Next Featured Bladesmith</h2>
-				{/* <h1>{userInfoState.firstName}</h1> */}
 				<p>Select the craftsmen you would like to see featured in the next profile</p>
 				{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, userId, images }) => {
 					return <CandidateProfile
