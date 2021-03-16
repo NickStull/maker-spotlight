@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../utils/contexts/AuthContext";
 // import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
-import { Container, Modal, Button } from 'react-bootstrap';
+import { Container, Modal, Button, Row } from 'react-bootstrap';
 // import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
 import CandidateProfile from '../CandidateProfile'
 import API from "../../utils/API";
@@ -102,17 +102,6 @@ const Voting = () => {
 		}
 	}
 
-	// const updateVoteTotals = async () => {
-	// 	let makerId =
-	// 		let dbResults;
-	// 	try {
-	// 		dbResults = await API.editUser(makerId);
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 	} finally {
-	// 		setCurrentUserName(dbResults.data.firstName);
-	// 	}
-	// };
 
 	const handleShow = (makerInfo) => {
 		setUserChoiceState(makerInfo);
@@ -120,7 +109,6 @@ const Voting = () => {
 		console.log('selected maker', makerInfo);
 	};
 
-	//use firebase id to get user info from mongodb
 	const getCandidates = async () => {
 		console.log('GET CANDIDATES CALLED');
 		let dbResults;
@@ -135,37 +123,43 @@ const Voting = () => {
 		}
 	};
 
-	// const vote = (event) => {
-	// 	console.log('voting event', event);
-	// 	setUserChoiceState(event.value);
-	// }
 
 	return (
 		<>
 			<Container fluid >
-				<h2>Vote for the Next Featured Bladesmith</h2>
-				<p>Select the craftsmen you would like to see featured in the next profile</p>
-				{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, userId, images }, index) => {
-					return <CandidateProfile
-						firstName={firstName}
-						lastName={lastName}
-						bioText={bioText}
-						location={`${city}, ${state}`}
-						business={businessName}
-						webAddress={website}
-						image={images[0]}
-						// vote={vote}
-						handleShow={handleShow}
-						setUserChoiceState={setUserChoiceState}
-						id={userId}
-						arrayPosition={index}
-						key={userId} />
-				})}
+				<h2>Candiates for the Next Spotlight</h2>
+				{userInfo.voted === -1 ?
+					<>
+						<h3>Vote for the Next Featured Bladesmith</h3>
+						<p>Select the craftsmen you would like to see featured in the next profile.</p>
+					</>
+					:
+					<h3>Thanks for helping us choose the next featured craftsmen!</h3>
+				}
+				<Row>
+					{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, userId, images }, index) => {
+						return <CandidateProfile
+							firstName={firstName}
+							lastName={lastName}
+							bioText={bioText}
+							location={`${city}, ${state}`}
+							business={businessName}
+							webAddress={website}
+							image={images[0]}
+							// vote={vote}
+							handleShow={handleShow}
+							setUserChoiceState={setUserChoiceState}
+							id={userId}
+							arrayPosition={index}
+							key={userId} />
+					})}
+				</Row>
+
 			</Container>
 			{show ?
 				<Modal show={show} onHide={handleClose}>
 					<Modal.Header closeButton>
-						<Modal.Title>Modal heading</Modal.Title>
+						<Modal.Title>You have made a great choice!</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>You have chosen {userChoiceState.fullName} to be featured in the next spotlight.</Modal.Body>
 					<Modal.Footer>
