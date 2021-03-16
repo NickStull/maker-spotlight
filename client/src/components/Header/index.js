@@ -37,7 +37,7 @@ const Header = () => {
 
   return (
     <>
-      {console.log("current user", currentUser)}
+      {/* {console.log("current user", currentUser)} */}
       <header className="pageHeader">
         <a href="/" className="logo">
           <h3 className="logo">Bladesmith Spotlight</h3>
