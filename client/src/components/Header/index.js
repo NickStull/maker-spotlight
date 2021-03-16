@@ -30,14 +30,14 @@ const Header = () => {
     } catch (err) {
       console.error(err);
     } finally {
-      console.log("isAdmin: ", dbResults.data.admin);
+      // console.log("isAdmin: ", dbResults.data.admin);
       setIsAdmin(dbResults.data.admin);
     }
   };
 
   return (
     <>
-      {console.log("current user", currentUser)}
+      {/* {console.log("current user", currentUser)} */}
       <header className="pageHeader">
         <a href="/" className="logo">
           <h3 className="logo">Bladesmith Spotlight</h3>
