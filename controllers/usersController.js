@@ -14,7 +14,7 @@ module.exports = {
   },
 
   create: function (req, res) {
-    console.log("-------------------Posting-------------------------");
+    // console.log("-------------------Posting-------------------------");
     db.Users.create(req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
@@ -28,14 +28,14 @@ module.exports = {
   // },
 
   findByFirebaseId: function (req, res) {
-    console.log("ID route hit herere");
+    // console.log("ID route hit herere");
     db.Users.findOne({ userId: req.params.id })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
 
   update: function (req, res) {
-    console.log('controller is updating record', req.params.id);
+    // console.log('controller is updating record', req.params.id);
     db.Users.findOneAndUpdate({ userId: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
@@ -49,23 +49,23 @@ module.exports = {
   },
 
   getUserByName: function (req, res) {
-    console.log(
-      "yes the route is hit!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    );
+    // console.log(
+    //   // "yes the route is hit!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    // );
     db.Users.findOne({ firstName: req.params.name })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
 
   findAdmin: function (req, res) {
-    console.log("admin hit");
+    // console.log("admin hit");
     db.Users.find({ admin: true })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
 
   findMakers: function (req, res) {
-    console.log("A backend maker");
+    // console.log("A backend maker");
     db.Users.find({ wantTo: true })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
