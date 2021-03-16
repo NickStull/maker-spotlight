@@ -46,7 +46,7 @@ export default {
   },
 
   subscribe: function(userData) {
-    return axios.post("/api/subscribe/", userData);
+    return axios.post("/api/subscribe", userData);
   }
 };
 

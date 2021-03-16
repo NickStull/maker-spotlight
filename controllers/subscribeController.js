@@ -1,5 +1,8 @@
 
-// module.exports = {
-//   create: console.log("hit route")
-//   // create: function here
-// }
+
+module.exports = {
+  create: function (req, res) {
+    console.log("-------------------Subscribe-------------------------");
+  }
+  // create: function here
+}

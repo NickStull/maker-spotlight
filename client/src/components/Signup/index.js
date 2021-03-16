@@ -65,7 +65,6 @@ const Signup = () => {
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {currentUser && currentUser.email}
           {error && <div>{error}</div>}
           <Form className="form" onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicFirst">
