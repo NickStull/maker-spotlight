@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
+import { useAuth } from '../../utils/contexts/AuthContext';
 import { Carousel, Container, Row, Col } from 'react-bootstrap';
-import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
+import { Image, CloudinaryContext, Transformation } from 'cloudinary-react';
 import API from "../../utils/API";
 import './carousel.css'
 
@@ -12,59 +12,39 @@ import './carousel.css'
 
 const CarouselViewer = () => {
 
+	const { newsletterInfo } = useAuth()
+
 	const [featuredImagesState, setFeaturedImagesState] = useState([]);
-	const [index, setIndex] = useState(0);
+	const [indexState, setIndexState] = useState(0);
 
 	useEffect(() => {
-		getUserInfo();
+		if (!featuredImagesState) {
+			setCarouselImages()
+		}
 	}, [])
 
-	// function setDummyImages() {
-	// 	setFeaturedImages([
-	// 		{
-	// 			src: './testImages/testKnifeImg1.jpeg',
-	// 			caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloribus vel a, modi quidem, enim eveniet aliquid delectus molestias corrupti quo in earum blanditiis maxime. Hic inventore ducimus magni sed.'
-	// 		},
-	// 		{
-	// 			src: './testImages/testKnifeImg2.jpeg',
-	// 			caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloribus vel a, modi quidem, enim eveniet aliquid delectus molestias corrupti quo in earum blanditiis maxime. Hic inventore ducimus magni sed.'
-	// 		},
-	// 		{
-	// 			src: './testImages/testKnifeImg3.jpeg',
-	// 			caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloribus vel a, modi quidem, enim eveniet aliquid delectus molestias corrupti quo in earum blanditiis maxime. Hic inventore ducimus magni sed.'
-	// 		},
-	// 	])
-	// }
 
-	//use firebase id to get user info from mongodb
-	const getUserInfo = async () => {
-		let dbResults;
-		try {
-			dbResults = await API.getUsers();
-		} catch (err) {
-			console.error(err);
-		} finally {
-			// console.log('ALL USERS', dbResults.data);
-			setFeaturedImagesState(dbResults.data[0].images)
-			// updateState();
-		}
+	const setCarouselImages = () => {
+		let images = newsletterInfo.photos;
+		setFeaturedImagesState(images);
+		console.log(featuredImagesState);
 	};
 
 
 	// handles the advancing of the slides
 	const handleSelect = (selectedIndex, e) => {
-		setIndex(selectedIndex);
+		setIndexState(selectedIndex);
 	};
 
 	return (
 		<Container fluid className='containerFluid'>
 			<Row className='carouselWrapper'>
-				<Carousel activeIndex={index} onSelect={handleSelect}>
+				<Carousel activeIndex={indexState} onSelect={handleSelect}>
 					{featuredImagesState.map(
-						(image, index) => {
+						(image, indexState) => {
 							console.log('image url', image);
 							return (
-								<Carousel.Item key={index}>
+								<Carousel.Item key={indexState}>
 									<CloudinaryContext cloudName="makerspotlight">
 										<Image
 											publicId={image}

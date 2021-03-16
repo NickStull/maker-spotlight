@@ -30,7 +30,7 @@ const Header = () => {
     } catch (err) {
       console.error(err);
     } finally {
-      console.log("isAdmin: ", dbResults.data.admin);
+      // console.log("isAdmin: ", dbResults.data.admin);
       setIsAdmin(dbResults.data.admin);
     }
   };
