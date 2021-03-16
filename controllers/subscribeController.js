@@ -12,9 +12,8 @@ module.exports = {
     let email = req.body.email;
     let firstName = req.body.firstName;
     let lastName = req.body.lastName;
-    const response = await mailchimp.lists.addListMember(
-      process.env.CHIMP_LIST,
-      {
+    const response = await mailchimp.lists
+      .addListMember(process.env.CHIMP_LIST, {
         email_address: email,
         merge_fields: {
           FNAME: firstName,
@@ -24,8 +23,13 @@ module.exports = {
           BIRTHDAY: "",
         },
         status: "pending",
-      }
-    );
-    console.log(response);
+      })
+      .then((results) => {
+        console.log("we be having results! ", results);
+        res.json(results);
+      })
+      .catch((err) => {
+        console.log("we be havin errors :( ", err);
+      });
   },
 };
