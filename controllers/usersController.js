@@ -1,13 +1,5 @@
 const db = require("../models");
 
-const run = async () => {
-  const response = await mailchimp.lists.addListMember("cfb63d742d", {
-    email_address: "Stull.nicholas@gmail.com",
-    status: "pending",
-  });
-  console.log(response);
-};
-
 module.exports = {
   findAll: function (req, res) {
     db.Users.find(req.query)
@@ -50,23 +42,18 @@ module.exports = {
   },
 
   getUserByName: function (req, res) {
-    console.log(
-      "yes the route is hit!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    );
     db.Users.findOne({ firstName: req.params.name })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
 
   findAdmin: function (req, res) {
-    console.log("admin hit");
     db.Users.find({ admin: true })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
 
   findMakers: function (req, res) {
-    console.log("A backend maker");
     db.Users.find({ wantTo: true })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
