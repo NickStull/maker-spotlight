@@ -21,32 +21,32 @@ const Voting = () => {
 		// console.log('CANDIDATES STATE', candidatesInfoState);
 		if (candidatesInfoState.length === 0) {
 			getCandidates();
-			findUserInfo();
 		}
 	}, [candidatesInfoState])
 
 	const handleClose = () => setShow(false);
 
-	const findUserInfo = async () => {
-		// console.log('finding user info function called');
-		let resultsUserInfo;
-		try {
-			await API.getUser(currentUser.uid)
-				.then((response) => {
-					console.log('response', response);
-					setUserInfoState(response.data)
-				})
-		} catch (err) {
-			console.error(err);
-		}
-		setTimeout(console.log('USER INFOR TIMEOUT', userInfoState), 2000)
-	}
+	// const findUserInfo = async () => {
+	// 	// console.log('finding user info function called');
+	// 	let resultsUserInfo;
+	// 	try {
+	// 		await API.getUser(currentUser.uid)
+	// 			.then((response) => {
+	// 				console.log('response', response);
+	// 				setUserInfoState(response.data)
+	// 			})
+	// 	} catch (err) {
+	// 		console.error(err);
+	// 	}
+	// 	setTimeout(console.log('USER INFOR TIMEOUT', userInfoState), 2000)
+	// }
 
 	const submitVote = () => {
 		setShow(false);
 		findMaker()
 			.then(updateMakerVoteTotals)
 			.then(updateMakerWithNewVoteTotals)
+			.then(updateUserWithVoteChoice)
 	};
 
 	const findMaker = async () => {
@@ -86,7 +86,21 @@ const Voting = () => {
 		}
 	}
 
-	const changeUserStatusToHasVoted = async () => { }
+	const updateUserWithVoteChoice = async () => {
+		console.log('users choice', userChoiceState.makersArrayIndex.arrayPosition);
+		let usersVoteChoice = userChoiceState.makersArrayIndex.arrayPosition;
+		let updatedUserInfo = { ...userInfo, voted: usersVoteChoice }
+		console.log('user info passed to database', updatedUserInfo);
+		let resultsUserInfo;
+		try {
+			resultsUserInfo = await API.editUser(updatedUserInfo)
+		} catch (err) {
+			console.error(err);
+		} finally {
+			console.log('users vote choice recorded', resultsUserInfo.data);
+			return resultsUserInfo;
+		}
+	}
 
 	// const updateVoteTotals = async () => {
 	// 	let makerId =

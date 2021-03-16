@@ -40,11 +40,11 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async user => {
       setCurrentUser(user)
-      if(user){
+      if (user) {
         await API.getUser(user.uid)
           .then((response) => {
             setUserInfo(response.data)
-          }) 
+          })
       }
       setLoading(false)
     })
