@@ -7,8 +7,9 @@ import Header from "./components/Header";
 import Admin from "./components/pages/Admin/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UserAccount from "./components/UserAccount";
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateAdminRoute from "./components/PrivateRoutes/PrivateAdminRoute";
 import Voting from "./components/Voting";
+import LoginRoute from "./components/PrivateRoutes/LoginRoutes";
 
 function App() {
   return (
@@ -17,9 +18,9 @@ function App() {
         <AuthProvider>
           <Header />
           <Route exact path="/" component={Home} />
-          <Route exact path="/account" component={UserAccount} />
-          <PrivateRoute exact path="/admin" component={Admin} />
-          <Route exact path="/vote" component={Voting} />
+          <LoginRoute exact path="/account" component={UserAccount} />
+          <PrivateAdminRoute exact path="/admin" component={Admin} />
+          <LoginRoute exact path="/vote" component={Voting} />
           {/* <Route exact path="/logout" component={Logout} /> */}
         </AuthProvider>
       </Router>
