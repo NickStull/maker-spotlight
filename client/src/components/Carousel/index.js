@@ -47,7 +47,7 @@ const CarouselViewer = () => {
 		} catch (err) {
 			console.error(err);
 		} finally {
-			console.log('ALL USERS', dbResults.data);
+			// console.log('ALL USERS', dbResults.data);
 			setFeaturedImagesState(dbResults.data[0].images)
 			// updateState();
 		}
