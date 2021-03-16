@@ -134,7 +134,7 @@ const Voting = () => {
 						<p>Select the craftsmen you would like to see featured in the next profile.</p>
 					</>
 					:
-					<h3>Thanks for helping us choose the next featured craftsmen!</h3>
+					<h5>Thanks for helping us choose the next featured craftsmen!</h5>
 				}
 				<Row>
 					{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, userId, images }, index) => {

@@ -20,8 +20,9 @@ const Header = () => {
 	return (
 		<>
 			<header className='pageHeader'>
-				<a href="/">
-					<h1>Bladesmith Spotlight</h1>
+				<a href="/" className='logo'>
+					<h3 className='logo'>Bladesmith Spotlight</h3>
+					<h5>Discover Your Next Obsession</h5>
 				</a>
 				{/* display dropdown button based on loggedInState */}
 				{loggedInState

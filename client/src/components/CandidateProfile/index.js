@@ -14,12 +14,6 @@ const CandidateProfile = ({ firstName, lastName, bioText, location, business, we
 
 	}, [displayModalState])
 
-	const findMaker = (makerId) => {
-		console.log('MAKER ID', makerId);
-
-		// setUserChoiceState(event.value);
-	}
-
 	return (
 		<Col>
 			<Card className="text-center">
