@@ -7,6 +7,12 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
 
+  findCandidates: function (req, res) {
+    db.Users.find({ candidate: true })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+
   create: function (req, res) {
     console.log("-------------------Posting-------------------------");
     db.Users.create(req.body)
@@ -29,6 +35,7 @@ module.exports = {
   },
 
   update: function (req, res) {
+    console.log('controller is updating record', req.params.id);
     db.Users.findOneAndUpdate({ userId: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
