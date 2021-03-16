@@ -17,11 +17,25 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 1em 2em;
+  margin-bottom: 1em;
 }
 
-.pageHeader h1 {
+.pageHeader h5 {
+  color: black;
+  margin-bottom: 0;
+  font-family: 'Cinzel', serif;
+}
+
+.logo {
   color: white;
-  font-family: 'Chisel', serif;
+  font-family: 'Cinzel', serif !important;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.logo :hover {
+  color: white;
+  text-decoration: none;
 }
 
 .headerDiv {
@@ -36,6 +50,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   color: white;
-  font-family: 'Chisel', serif;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
 }
 /*# sourceMappingURL=header.css.map */

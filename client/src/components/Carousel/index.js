@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from '../../utils/contexts/AuthContext';
-import Carousel from 'react-bootstrap/Carousel';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Carousel, Container, Row, Col } from 'react-bootstrap';
 import { Image, CloudinaryContext, Transformation, Placeholder } from 'cloudinary-react';
 import API from "../../utils/API";
 import './carousel.css'
@@ -87,13 +84,13 @@ const CarouselViewer = () => {
 									<figcaption className='carouselCaption'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloribus vel a, modi quidem, enim eveniet aliquid delectus molestias corrupti quo in earum blanditiis maxime. Hic inventore ducimus magni sed.
 								</figcaption>
 								</Carousel.Item>
-
 							)
 						}
 					)}
 				</Carousel>
 			</Row>
 		</Container>
+
 	)
 }
 

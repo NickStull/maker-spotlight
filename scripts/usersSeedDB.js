@@ -23,7 +23,13 @@ const usersSeed = [
     candidate: true,
     currentVotes: 20,
     totalVotes: 100,
-    businessName: 'The Chop Shop',
+    businessName: 'Big Barn Knives',
+    address: 'Somewhere',
+    address2: '',
+    city: 'Hastings',
+    state: 'Minnesota',
+    zipCode: 55033,
+
     phoneNumber: '555 - 555 - 5555',
     website: 'https://www.dawsonknives.com/',
     bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
@@ -47,7 +53,12 @@ const usersSeed = [
     candidate: true,
     currentVotes: 20,
     totalVotes: 100,
-    businessName: 'The Chop Shop',
+    businessName: 'Bladeology',
+    address: 'Somewhere',
+    address2: '',
+    city: 'Springfield',
+    state: 'Illinois',
+    zipCode: 55033,
     phoneNumber: '555 - 555 - 5555',
     website: 'https://www.dawsonknives.com/',
     bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
@@ -71,7 +82,12 @@ const usersSeed = [
     candidate: true,
     currentVotes: 20,
     totalVotes: 100,
-    businessName: 'The Chop Shop',
+    businessName: '',
+    address: 'Somewhere',
+    address2: '',
+    city: 'Minneapolis',
+    state: 'Minnesota',
+    zipCode: 55033,
     phoneNumber: '555 - 555 - 5555',
     website: 'https://www.dawsonknives.com/',
     bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
@@ -92,10 +108,15 @@ const usersSeed = [
     admin: true,
     voted: 2,
     wantTo: true,
-    candidate: true,
+    candidate: false,
     currentVotes: 20,
     totalVotes: 100,
     businessName: 'The Chop Shop',
+    address: 'Somewhere',
+    address2: '',
+    city: 'Minneapolis',
+    state: 'Minnesota',
+    zipCode: 55033,
     phoneNumber: '555 - 555 - 5555',
     website: 'https://www.dawsonknives.com/',
     bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
@@ -158,13 +179,13 @@ const newsLettersSeed = [
 ];
 
 db.Newsletters.remove({})
-.then(() => db.Newsletters.collection.insertMany(newsLettersSeed))
-.then(data => {
-  console.log(data.result.n + " records inserted!");
-  process.exit(0);
-})
-.catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+  .then(() => db.Newsletters.collection.insertMany(newsLettersSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 
