@@ -1,11 +1,11 @@
-import React, { useContext, useState, useEffect } from "react"
-import { auth } from "../../firebase"
-import API from "../API"
+import React, { useContext, useState, useEffect } from "react";
+import { auth } from "../../firebase";
+import API from "../API";
 
-const AuthContext = React.createContext()
+const AuthContext = React.createContext();
 
 export function useAuth() {
-  return useContext(AuthContext)
+  return useContext(AuthContext);
 }
 
 export function AuthProvider({ children }) {
@@ -15,55 +15,58 @@ export function AuthProvider({ children }) {
   const [newsletterInfo, setNewsletterInfo] = useState({})
 
   function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password)
+    return auth.createUserWithEmailAndPassword(email, password);
   }
 
   function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password)
+    return auth.signInWithEmailAndPassword(email, password);
   }
 
   function logout() {
-    return auth.signOut()
+    return auth.signOut();
   }
 
   function resetPassword(email) {
-    return auth.sendPasswordResetEmail(email)
+    return auth.sendPasswordResetEmail(email);
   }
 
   function updateEmail(email) {
-    return currentUser.updateEmail(email)
+    return currentUser.updateEmail(email);
   }
 
   function updatePassword(password) {
-    return currentUser.updatePassword(password)
+    return currentUser.updatePassword(password);
+  }
+
+  function sendUserInfo() {
+    console.log("popopopopopo!!!!!");
+    return userInfo;
   }
 
   function updateUserInfo() {
-    API.getUser(currentUser.uid)
-      .then((response) => {
-        setUserInfo(response.data)
-      })
+    API.getUser(currentUser.uid).then((response) => {
+      setUserInfo(response.data);
+    });
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async user => {
-      setCurrentUser(user)
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      setCurrentUser(user);
       if (user) {
-        await API.getUser(user.uid)
-          .then((response) => {
-            setUserInfo(response.data)
-          })
+        await API.getUser(user.uid).then((response) => {
+          setUserInfo(response.data);
+        });
       }
       setLoading(false)
     })
-    console.log("---------------getting newsletter-------------------");
+
     API.getNewsletter()
       .then((response) => {
         setNewsletterInfo(response.data);
       })
 
-    return unsubscribe
-  }, [])
+    return unsubscribe;
+  }, []);
 
   const value = {
     currentUser,
@@ -75,22 +78,16 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
-  }
+    updatePassword,
+    sendUserInfo,
+  };
 
   return (
     <AuthContext.Provider value={value}>
       {!loading && children}
     </AuthContext.Provider>
-  )
+  );
 }
-
-
-
-
-
-
-
 
 // import React, { createContext, useContext, useEffect, useState } from 'react'
 // import { auth } from '../../firebase'
@@ -100,14 +97,12 @@ export function AuthProvider({ children }) {
 
 // const useAuth = () => useContext(AuthContext)
 
-
 // const AuthProvider = ({ children }) => {
 //   const [currentUser, setCurrentUser] = useState();
 //   const [loading, setLoading] = useState(true);
 //   const [accountInfo, setAccountInfo] = useState();
 
 //   const signup = (email, password) => auth.createUserWithEmailAndPassword(email, password)
-
 
 //   const login = (email, password) => {
 //     return auth.signInWithEmailAndPassword(email, password)
