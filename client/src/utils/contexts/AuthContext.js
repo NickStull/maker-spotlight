@@ -12,6 +12,7 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [userInfo, setUserInfo] = useState()
   const [loading, setLoading] = useState(true)
+  const [newsletterInfo, setNewsletterInfo] = useState({})
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
@@ -55,6 +56,11 @@ export function AuthProvider({ children }) {
       }
       setLoading(false)
     })
+    console.log("---------------getting newsletter-------------------");
+    API.getNewsletter()
+      .then((response) => {
+        setNewsletterInfo(response.data);
+      })
 
     return unsubscribe
   }, [])
@@ -62,6 +68,7 @@ export function AuthProvider({ children }) {
   const value = {
     currentUser,
     userInfo,
+    newsletterInfo,
     updateUserInfo,
     login,
     signup,

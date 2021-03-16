@@ -4,7 +4,8 @@ const newsLettersController = require("../../controllers/newsLettersController")
 // Matches with "/api/users"
 router
   .route("/")
-  .get(newsLettersController.findAll)
+  // .get(newsLettersController.findAll)
+  .get(newsLettersController.getNewsletter)
   .post(newsLettersController.create);
 
 // Matches with "/api/users/:id"
