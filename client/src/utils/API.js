@@ -52,7 +52,7 @@ export default {
 
   subscribe: function (userData) {
     console.log("subscribe hit");
-    return axios.post("/api/subscribe/", userData);
+    return axios.post("/api/subscribe", userData);
   },
 };
 
