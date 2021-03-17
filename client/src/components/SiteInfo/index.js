@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Container, Card, Row, Col } from 'react-bootstrap';
-import "./style.css";
 import { useAuth } from '../../utils/contexts/AuthContext';
 
 function SiteInfo() {
@@ -10,35 +9,14 @@ function SiteInfo() {
   return (
     <Container fluid className='containerFluid mt-4 connected'>
       { !currentUser ?
-        <Card style={{ width: "900px", marginBottom: "20px" }}>
-          <Card.Header style={{ fontSize: "30px", textAlign: "center"}}>The Featured Edge</Card.Header>
-          <div className="row no-gutters">
-            <Card.Body>
-              <Row style={{ alignItems: "center", marginTop: "5px" }}>
-                <Col sm={12} md={6}>
-                <h5>{ newsletterInfo.website }</h5>
-                </Col>
-                <Col sm={12} md={6}>
-                <h5 className="card-title-right">Email: { newsletterInfo.email }</h5>
-                </Col>
-              </Row>
-              <Row style={{ marginTop: "5px" }}>
-                <Col sm={12} md={6}>
-                <h5>Phone: { newsletterInfo.phoneNumber }</h5>
-                </Col>
-                <Col sm={12} md={6}>
-                <h5 className="card-title-right">Address: { newsletterInfo.address }</h5>
-                </Col>
-              </Row>
-              <Row style={{ marginTop: "5px" }}>
-                <Col></Col>
-                <Col sm={12} md={6}>
-                <h5 className="card-title-right" >{ newsletterInfo.city }, { newsletterInfo.state } { newsletterInfo.zipCode }</h5>
-                </Col>
-              </Row>
-            </Card.Body>
+          <div>
+            <Row style={{ alignItems: "center"}}>
+              <Col style={{ textAlign: "center" }}>
+              <p>Featured Edge aims to connect knife artists with enthusiasts of knife artistry. </p>
+              <p>Sign up or Log In to see this week's, and vote for next week's, Featured Edge.</p>
+              </Col>
+            </Row>
           </div>
-        </Card>
         : <> </>
       }
     </Container>
