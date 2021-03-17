@@ -52,5 +52,11 @@ background-color: #29080822;
 	margin-bottom: 1em;
 }
 
+#pageHeader {
+	width: 100%;
+}
 
+.container{
+	max-width: 100%;
+}
 

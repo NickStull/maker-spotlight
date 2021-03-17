@@ -1,11 +1,17 @@
-import React, { useRef, useState, Spinner } from "react";
-import { Form, Button, Modal } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
-import API from "../../utils/API";
-import { useAuth } from "../../utils/contexts/AuthContext";
+import React, { useRef, useState, Spinner } from 'react';
+import { Form, Button, Modal, Container, Row, Col } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
+import API from '../../utils/API';
+import { useAuth } from '../../utils/contexts/AuthContext';
+import Home from '../Home';
+import SignupTextBtn from './SignupTextBtn';
+import './signup.css'
+
+
+
+
 import ExitButton from "../ExitButton";
-import Home from "../Home";
-import "./signup.css";
+
 
 const Signup = () => {
   const [show, setShow] = useState(false);
@@ -57,6 +63,17 @@ const Signup = () => {
 
   return (
     <>
+      <Container>
+        <Row>
+          <Col className="center">
+            <SignupTextBtn className='marginAuto' showSignupModal={handleShow} />
+            <br></br>
+            <Button variant="secondary" id='signupBtn' onClick={handleShow}>
+              <span className='vote'>VOTE</span> for the Next Feature
+          </Button>
+          </Col>
+        </Row>
+      </Container>
       <Button variant="secondary" id="signupBtn" onClick={handleShow}>
         <span className="vote">VOTE</span> for the Next Feature
       </Button>
@@ -168,6 +185,7 @@ const Signup = () => {
             </button>
         </form> */}
       {/* </div> */}
+
     </>
   );
 };

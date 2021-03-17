@@ -1,16 +1,17 @@
 @use '../../styles/variables';
 
 
-.pageHeader {
-	height: 70px;
+#pageHeader {
+	height: 100px;
 	background-color: rgb(112, 24, 24);
 	color: white;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
+	width: 100%;
+	// display: flex;
+	// flex-direction: row;
+	// align-items: center;
+	// justify-content: space-between;
 	padding: 1em 2em;
-	margin-bottom: 2.5em;
+	margin:0em 0em 2.5em 0em;
 	h5{
 		color: black;
 		margin-bottom: 0;
@@ -29,9 +30,9 @@
 	}
 }
 .headerDiv {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	// display: flex;
+	// flex-direction: column;
+	// justify-content: space-between;
 	color: #c2bfb6;
 	font-family: 'Cinzel', serif;
 	font-weight: 700;
@@ -41,6 +42,7 @@
   color: #92969d;
 	font-family: 'Cinzel', serif;
 	font-weight: 400;
+	font-size: 1em;
 
 }
 .signupBtn {
@@ -54,5 +56,35 @@
 	}
 }
 
+.noPaddingNoMargin {
+	margin: 0;
+	padding: 0;
+}
 
+.centerHoriz {
+	justify-content: center;
+}
 
+.voteBtn {
+	background-color: #d0aa25;
+	border-radius: 25px;
+	font-size: .625em;
+	margin: 1em;
+	padding: 1.75em .75em;
+	color: #1c1411;
+	font-weight: 700;
+	width: 4em;
+	height: 4em;
+	border: 1px solid white;
+}
+
+.voted{
+	background-color: transparent;
+	color: #c2bfb6;
+	border: none;
+	font-size: 1em;
+}
+.notVoted{
+	background-color: #d0aa25;
+	color: #1c1411;
+}
