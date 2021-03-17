@@ -3,6 +3,7 @@ import { useAuth } from '../../utils/contexts/AuthContext';
 import { Carousel, Container, Row, Col } from 'react-bootstrap';
 import { Image, CloudinaryContext, } from 'cloudinary-react';
 import './carousel.css'
+import SiteInfo from "../SiteInfo";
 
 const CarouselViewer = () => {
 
@@ -41,7 +42,7 @@ const CarouselViewer = () => {
             )}
           </Carousel>
         </Row>
-        : <> </>
+        : <SiteInfo />
       }
 		</Container>
 
