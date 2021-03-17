@@ -42,7 +42,7 @@ const Header = () => {
           <Col className="noPaddingNoMargin">
             <a href="/" className="logo">
               <h3 className="logo noPaddingNoMargin">Featured Edge</h3>
-              <h5 id='tagLine noPaddingNoMargin'>Find Your Next Obsession</h5>
+              <h5 id='tagLine'>Find Your Next Obsession</h5>
             </a>
           </Col>
           {/* display dropdown button based on loggedInState */}
