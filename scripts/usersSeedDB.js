@@ -32,6 +32,7 @@ const usersSeed = [
 
     phoneNumber: '555 - 555 - 5555',
     website: 'https://www.dawsonknives.com/',
+    bioPicture: "https://snpi.dell.com/snp/images2/300/en-us~AA775126/AA775126.jpg",
     bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
     active: true,
     featured: []
@@ -61,6 +62,7 @@ const usersSeed = [
     zipCode: 55033,
     phoneNumber: '555 - 555 - 5555',
     website: 'https://www.dawsonknives.com/',
+    bioPicture: "https://via.placeholder.com/300",
     bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
     active: true,
     featured: []
@@ -90,6 +92,7 @@ const usersSeed = [
     zipCode: 55033,
     phoneNumber: '555 - 555 - 5555',
     website: 'https://www.dawsonknives.com/',
+    bioPicture: "https://via.placeholder.com/300",
     bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
     active: true,
     featured: []
@@ -119,6 +122,7 @@ const usersSeed = [
     zipCode: 55033,
     phoneNumber: '555 - 555 - 5555',
     website: 'https://www.dawsonknives.com/',
+    bioPicture: "https://via.placeholder.com/300",
     bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
     active: true,
     featured: []
@@ -149,6 +153,7 @@ const newsLettersSeed = [
     zipCode: '32006',
     phoneNumber: '555 - 555 - 5555',
     website: 'https://www.dawsonknives.com/',
+    bioPicture: "https://earthsky.org/upl/2018/07/Sun-Size-Difference-Perihelion2016-Aphelion2017-Mutare-Zimbabwe-Peter-Lowenstein-1-300x300.jpg",
     bioText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.',
     active: true,
 
