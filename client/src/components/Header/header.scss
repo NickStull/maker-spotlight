@@ -65,3 +65,26 @@
 	justify-content: center;
 }
 
+.voteBtn {
+	background-color: #d0aa25;
+	border-radius: 25px;
+	font-size: .625em;
+	margin: 1em;
+	padding: 1.75em .75em;
+	color: #1c1411;
+	font-weight: 700;
+	width: 4em;
+	height: 4em;
+	border: 1px solid white;
+}
+
+.voted{
+	background-color: transparent;
+	color: #c2bfb6;
+	border: none;
+	font-size: 1em;
+}
+.notVoted{
+	background-color: #d0aa25;
+	color: #1c1411;
+}

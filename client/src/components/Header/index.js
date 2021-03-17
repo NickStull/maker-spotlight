@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 import { Container, Row, Col, } from 'react-bootstrap'
 import { useAuth } from "../../utils/contexts/AuthContext";
 import HeaderDropdown from "../Dropdown";
@@ -9,7 +10,7 @@ import API from "../../utils/API";
 
 const Header = () => {
   const [loggedInState, setLoggedInState] = useState(false);
-  const { currentUser, logout } = useAuth();
+  const { currentUser, logout, userInfo } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
 
   //check to see if user is logged in via context provider
@@ -47,6 +48,17 @@ const Header = () => {
           {/* display dropdown button based on loggedInState */}
           {loggedInState ? (
             <Col sm='auto' className="noPaddingNoMargin">
+              <Link to='/vote' className=
+                {userInfo.voted === -1 ?
+                  'voteBtn notVoted'
+                  : 'voteBtn voted'
+                }
+              >
+                {userInfo.voted === -1 ?
+                  'VOTE'
+                  : 'VOTED'
+                }
+              </Link>
               <HeaderDropdown />
             </Col>
           ) : (

@@ -61,7 +61,7 @@ const Signup = () => {
       <Container>
         <Row>
           <Col className="center">
-            <SignupTextBtn showSignupModal={handleShow} />
+            <SignupTextBtn className='marginAuto' showSignupModal={handleShow} />
             <br></br>
             <Button variant="secondary" id='signupBtn' onClick={handleShow}>
               <span className='vote'>VOTE</span> for the Next Feature
