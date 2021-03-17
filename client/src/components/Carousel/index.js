@@ -26,9 +26,9 @@ const CarouselViewer = () => {
 									<Carousel.Item key={indexState}>
 										<CloudinaryContext cloudName="makerspotlight">
 											<Image
-												publicId={image.title}
+												publicId={image.link}
 												className="d-block w-100 carouselImg"
-												alt={image.description}
+												alt={`Knives ${indexState}`}
 												background="auto" crop="pad"
 											/>
 										</CloudinaryContext>
