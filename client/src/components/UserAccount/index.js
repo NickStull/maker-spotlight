@@ -111,7 +111,7 @@ const UserAccount = () => {
         >
           <div className="w-100" style={{ maxWidth: "400px" }}>
             <Card>
-              <ExitButton />
+              <ExitButton url={"/"} />
               <Card.Body>
                 <h2 className="text-center mb-4">Edit Account Info</h2>
 

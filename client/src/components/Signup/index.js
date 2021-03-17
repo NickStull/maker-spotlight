@@ -1,17 +1,13 @@
-import React, { useRef, useState, Spinner } from 'react';
-import { Form, Button, Modal, Container, Row, Col } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
-import API from '../../utils/API';
-import { useAuth } from '../../utils/contexts/AuthContext';
-import Home from '../Home';
-import SignupTextBtn from './SignupTextBtn';
-import './signup.css'
-
-
-
+import React, { useRef, useState, Spinner } from "react";
+import { Form, Button, Modal, Container, Row, Col } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
+import API from "../../utils/API";
+import { useAuth } from "../../utils/contexts/AuthContext";
+import Home from "../Home";
+import SignupTextBtn from "./SignupTextBtn";
+import "./signup.css";
 
 import ExitButton from "../ExitButton";
-
 
 const Signup = () => {
   const [show, setShow] = useState(false);
@@ -66,11 +62,14 @@ const Signup = () => {
       <Container>
         <Row>
           <Col className="center">
-            <SignupTextBtn className='marginAuto' showSignupModal={handleShow} />
+            <SignupTextBtn
+              className="marginAuto"
+              showSignupModal={handleShow}
+            />
             <br></br>
-            <Button variant="secondary" id='signupBtn' onClick={handleShow}>
-              <span className='vote'>VOTE</span> for the Next Feature
-          </Button>
+            <Button variant="secondary" id="signupBtn" onClick={handleShow}>
+              <span className="vote">VOTE</span> for the Next Feature
+            </Button>
           </Col>
         </Row>
       </Container>
@@ -79,7 +78,7 @@ const Signup = () => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <ExitButton />
+        <ExitButton url={"/"} />
         <Modal.Header>
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
@@ -185,7 +184,6 @@ const Signup = () => {
             </button>
         </form> */}
       {/* </div> */}
-
     </>
   );
 };
