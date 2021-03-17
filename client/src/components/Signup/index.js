@@ -60,7 +60,7 @@ const Signup = () => {
     <>
       <Button variant="secondary" id='signupBtn' onClick={handleShow}>
         <span className='vote'>VOTE</span> for the Next Feature
-      </Button>
+          </Button>
       <SignupTextBtn showSignupModal={handleShow} />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

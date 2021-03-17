@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 import { AuthProvider, useAuth } from "../../utils/contexts/AuthContext";
 import HeaderDropdown from "../Dropdown";
@@ -37,29 +38,34 @@ const Header = () => {
 
   return (
     <>
-      {/* {console.log("current user", currentUser)} */}
-      <header className="pageHeader">
-        <a href="/" className="logo">
-          <h3 className="logo">Featured Edge</h3>
-          <h5 id='tagLine'>Find Your Next Obsession</h5>
-        </a>
-        {/* display dropdown button based on loggedInState */}
-        {loggedInState ? (
-          isAdmin ? (
-            <>
-              <AdminButton />
-              <HeaderDropdown />
-            </>
-          ) : (
-            <HeaderDropdown />
-          )
-        ) : (
-          <>
-            <Signup />
-            <Login />
-          </>
-        )}
-      </header>
+      <Container id="pageHeader">
+        <Row>
+          <Col >
+            <a href="/" className="logo">
+              <h3 className="logo">Featured Edge</h3>
+              <h5 id='tagLine'>Find Your Next Obsession</h5>
+            </a>
+          </Col>
+          <Col>
+            {/* display dropdown button based on loggedInState */}
+            {loggedInState ? (
+              isAdmin ? (
+                <>
+                  <AdminButton />
+                  <HeaderDropdown />
+                </>
+              ) : (
+                <HeaderDropdown />
+              )
+            ) : (
+              <>
+                <Signup />
+                <Login />
+              </>
+            )}
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };

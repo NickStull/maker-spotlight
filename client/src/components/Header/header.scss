@@ -1,16 +1,16 @@
 @use '../../styles/variables';
 
 
-.pageHeader {
-	height: 70px;
+#pageHeader {
+	height: 100px;
 	background-color: rgb(112, 24, 24);
 	color: white;
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
+	// flex-direction: row;
+	// align-items: center;
+	// justify-content: space-between;
 	padding: 1em 2em;
-	margin-bottom: 2.5em;
+	margin:0em 0em 2.5em 0em;
 	h5{
 		color: black;
 		margin-bottom: 0;
