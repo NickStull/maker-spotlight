@@ -27,13 +27,7 @@ function MakerInfo() {
                 <h5>Phone: { newsletterInfo.phoneNumber }</h5>
                 </Col>
                 <Col sm={12} md={6}>
-                <h5 className="card-title-right">Address: { newsletterInfo.address }</h5>
-                </Col>
-              </Row>
-              <Row style={{ marginTop: "5px" }}>
-                <Col></Col>
-                <Col sm={12} md={6}>
-                <h5 className="card-title-right" >{ newsletterInfo.city }, { newsletterInfo.state } { newsletterInfo.zipCode }</h5>
+                <h5 className="card-title-right" >{ newsletterInfo.city }, { newsletterInfo.state } </h5>
                 </Col>
               </Row>
             </Card.Body>
