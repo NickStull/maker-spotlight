@@ -1,5 +1,5 @@
 import React, { useRef, useState, Spinner } from 'react';
-import { Form, Button, Modal } from 'react-bootstrap';
+import { Form, Button, Modal, Container, Row, Col } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import API from '../../utils/API';
 import { useAuth } from '../../utils/contexts/AuthContext';
@@ -58,10 +58,16 @@ const Signup = () => {
 
   return (
     <>
-      <Button variant="secondary" id='signupBtn' onClick={handleShow}>
-        <span className='vote'>VOTE</span> for the Next Feature
+      <Container>
+        <Row>
+          <Col>
+            <SignupTextBtn showSignupModal={handleShow} />
+            <Button variant="secondary" id='signupBtn' onClick={handleShow}>
+              <span className='vote'>VOTE</span> for the Next Feature
           </Button>
-      <SignupTextBtn showSignupModal={handleShow} />
+          </Col>
+        </Row>
+      </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Sign Up</Modal.Title>
@@ -168,6 +174,7 @@ const Signup = () => {
             </button>
         </form> */}
       {/* </div> */}
+
     </>
   )
 }

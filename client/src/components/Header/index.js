@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from 'react-bootstrap'
-import { Link } from "react-router-dom";
-import { AuthProvider, useAuth } from "../../utils/contexts/AuthContext";
+import { Container, Row, Col, } from 'react-bootstrap'
+import { useAuth } from "../../utils/contexts/AuthContext";
 import HeaderDropdown from "../Dropdown";
 import Login from "../Login";
 import Signup from "../Signup";
 import "./header.css";
 import API from "../../utils/API";
-import AdminButton from "../AdminButton/AdminButton";
 
 const Header = () => {
   const [loggedInState, setLoggedInState] = useState(false);
@@ -38,57 +36,31 @@ const Header = () => {
 
   return (
     <>
-<<<<<<< HEAD
       <Container id="pageHeader">
         <Row>
-          <Col >
+          <Col>
             <a href="/" className="logo">
               <h3 className="logo">Featured Edge</h3>
               <h5 id='tagLine'>Find Your Next Obsession</h5>
             </a>
           </Col>
-          <Col>
-            {/* display dropdown button based on loggedInState */}
-            {loggedInState ? (
-              isAdmin ? (
-                <>
-                  <AdminButton />
-                  <HeaderDropdown />
-                </>
-              ) : (
-                <HeaderDropdown />
-              )
-            ) : (
-              <>
+          {/* display dropdown button based on loggedInState */}
+          {loggedInState ? (
+            <Col>
+              <HeaderDropdown />
+            </Col>
+          ) : (
+            <>
+              <Col>
                 <Signup />
+              </Col>
+              <Col>
                 <Login />
-              </>
-            )}
-          </Col>
+              </Col>
+            </>
+          )}
         </Row>
       </Container>
-=======
-      {/* {console.log("current user", currentUser)} */}
-      <header className="pageHeader">
-        <a href="/" className="logo">
-          <h3 className="logo">Featured Edge</h3>
-<<<<<<< HEAD
-          <h5 id='tagLine'>Find Your Next Obsession</h5>
-=======
-          <h7 id="tagLine">Find Your Next Obsession</h7>
->>>>>>> 7c54aa6c46fdbc9008225d5b70d6ecb258a40321
-        </a>
-        {/* display dropdown button based on loggedInState */}
-        {loggedInState ? (
-          <HeaderDropdown />
-        ) : (
-          <>
-            <Signup />
-            <Login />
-          </>
-        )}
-      </header>
->>>>>>> main
     </>
   );
 };
