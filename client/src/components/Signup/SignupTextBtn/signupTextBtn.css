@@ -1,0 +1,11 @@
+.signupText {
+  background-color: transparent;
+  border: none;
+  color: #d0aa25;
+  font-size: .825em;
+}
+
+.signupText :hover {
+  color: white;
+}
+/*# sourceMappingURL=signupTextBtn.css.map */

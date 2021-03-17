@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import API from '../../utils/API';
 import { useAuth } from '../../utils/contexts/AuthContext';
 import Home from '../Home';
+import SignupTextBtn from './SignupTextBtn';
 import './signup.css'
 
 const Signup = () => {
@@ -60,7 +61,7 @@ const Signup = () => {
       <Button variant="secondary" id='signupBtn' onClick={handleShow}>
         <span className='vote'>VOTE</span> for the Next Feature
       </Button>
-
+      <SignupTextBtn showSignupModal={handleShow} />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Sign Up</Modal.Title>
