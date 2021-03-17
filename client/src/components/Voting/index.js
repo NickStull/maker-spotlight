@@ -114,16 +114,16 @@ const Voting = () => {
 		return (
 			<>
 				<Container fluid >
-					<h2>Candiates for the Next Spotlight</h2>
+					<h2 className='white'>Candidates for the Next Feature</h2>
 					{userInfo.voted === -1 ?
 						<>
-							<h3>Vote for the Next Featured Bladesmith</h3>
-							<p>Select the craftsmen you would like to see featured in the next profile.</p>
+							<h3 className='cream'>Vote for the Next Featured Blademaker</h3>
+							<p className='cream'>Select the craftsmen you would like to see profiled next.</p>
 						</>
 						:
-						<h5>Thanks for helping us choose the next featured craftsmen!</h5>
+						<h5 className='cream'>Thanks for helping us choose the next featured craftsmen!</h5>
 					}
-					<Row>
+					<Row className='candidateCard'>
 						{candidatesInfoState.map(({ firstName, lastName, bioText, city, state, businessName, website, userId, images }, index) => {
 							return <CandidateProfile
 								firstName={firstName}

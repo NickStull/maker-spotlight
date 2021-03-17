@@ -6,7 +6,7 @@ import Login from "../Login";
 import Signup from "../Signup";
 import "./header.css";
 import API from "../../utils/API";
-import AdminButton from "../AdminButton";
+import AdminButton from "../AdminButton/AdminButton";
 
 const Header = () => {
   const [loggedInState, setLoggedInState] = useState(false);
@@ -40,8 +40,8 @@ const Header = () => {
       {/* {console.log("current user", currentUser)} */}
       <header className="pageHeader">
         <a href="/" className="logo">
-          <h3 className="logo">Bladesmith Spotlight</h3>
-          Discover Your Next Obsession
+          <h3 className="logo">Featured Edge</h3>
+          <h7 id='tagLine'>Find Your Next Obsession</h7>
         </a>
         {/* display dropdown button based on loggedInState */}
         {loggedInState ? (

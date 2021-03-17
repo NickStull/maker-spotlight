@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAC;EACN,KAAK,EAAE,OAAO;CACd",
+    "sources": [
+        "adminEdit.scss"
+    ],
+    "names": [],
+    "file": "adminEdit.css"
+}
