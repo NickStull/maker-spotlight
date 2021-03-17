@@ -118,8 +118,8 @@ function AdminEdit(props) {
 
   return (
     <Form className="editForm" onSubmit={handleSubmit}>
-      <a class="arrow" onClick={back}>
-        Back
+      <a id="arrowId" class="arrow" onClick={back}>
+        <span id="backText">Back</span>
       </a>
       <Form.Group controlId="formGridUserId">
         <Form.Label className="label">User Id</Form.Label>
