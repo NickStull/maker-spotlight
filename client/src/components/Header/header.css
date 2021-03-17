@@ -65,4 +65,10 @@
   width: 80px;
   height: 80px;
 }
+
+@media (min-width: 600px) {
+  .pageHeader {
+    height: 100px;
+  }
+}
 /*# sourceMappingURL=header.css.map */

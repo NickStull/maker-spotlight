@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,eAAe,CAAC;EACd,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;CACxB",
+    "mappings": "AAOA,AAAA,MAAM,CAAC;EACL,KAAK,EAAE,OAAO;CACf;;AAED,AAAA,MAAM,CAAC;EACL,KAAK,EAAE,KAAK;CACb",
     "sources": [
         "voting.scss"
     ],
