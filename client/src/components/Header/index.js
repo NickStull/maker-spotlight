@@ -37,7 +37,7 @@ const Header = () => {
 
   return (
     <>
-      <Container id="pageHeader">
+      <Container fluid id="pageHeader">
         <Row className="noPaddingNoMargin">
           <Col className="noPaddingNoMargin">
             <a href="/" className="logo">
@@ -47,19 +47,24 @@ const Header = () => {
           </Col>
           {/* display dropdown button based on loggedInState */}
           {loggedInState ? (
-            <Col sm='auto' className="noPaddingNoMargin">
-              <Link to='/vote' className=
-                {userInfo.voted === -1 ?
-                  'voteBtn notVoted'
-                  : 'voteBtn voted'
-                }
-              >
-                {userInfo.voted === -1 ?
-                  'VOTE'
-                  : 'VOTED'
-                }
-              </Link>
-              <HeaderDropdown />
+            <Col sm='auto' id='dropdownWrapper' className="noPaddingNoMargin">
+              <Row>
+                <HeaderDropdown />
+              </Row>
+              <Row>
+                <Link to='/vote' id='voteBtn'
+                  className={
+                    userInfo.voted === -1 ?
+                      'notVoted'
+                      : 'voted'
+                  }
+                >
+                  {userInfo.voted === -1 ?
+                    'Vote for the next feature'
+                    : 'View Featured Candidates'
+                  }
+                </Link>
+              </Row>
             </Col>
           ) : (
             <>
