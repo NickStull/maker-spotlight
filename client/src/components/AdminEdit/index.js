@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
-import { Form, Col, Button } from 'react-bootstrap';
+import { Form, Col, Button } from "react-bootstrap";
 import API from "../../utils/API";
-import './adminEdit.css'
+import "./adminEdit.css";
+import "./adminEdit.scss";
 
 function AdminEdit(props) {
   // let address = (!props.user.data.address || props.user.data.address === "") ? "1234 Main St" : props.user.data.address
@@ -27,27 +28,56 @@ function AdminEdit(props) {
   const activeRef = useRef();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // console.log('-------------------in the submit---------------------');
     // console.log(adminRef.current.value);
     console.log(currentVotesRef.current.value);
-    let firstNameTemp = firstNameRef.current.value ? firstNameRef.current.value : props.user.data.firstName;
-    let lastNameTemp = lastNameRef.current.value ? lastNameRef.current.value : props.user.data.lastName;
-    let emailTemp = emailRef.current.value ? emailRef.current.value : props.user.data.email;
-    let currentVotesTemp = currentVotesRef.current.value ? currentVotesRef.current.value : props.user.data.currentVotes;
-    let totalVotesTemp = totalVotesRef.current.value ? totalVotesRef.current.value : props.user.data.currentVotes;
-    let businessNameTemp = businessNameRef.current.value ? businessNameRef.current.value : props.user.data.businessName;
-    let address1Temp = address1Ref.current.value ? address1Ref.current.value : props.user.data.address;
-    let address2Temp = address2Ref.current.value ? address2Ref.current.value : props.user.data.address2;
-    let cityTemp = cityRef.current.value ? cityRef.current.value : props.user.data.city;
-    let stateTemp = stateRef.current.value ? stateRef.current.value : props.user.data.state;
+    let firstNameTemp = firstNameRef.current.value
+      ? firstNameRef.current.value
+      : props.user.data.firstName;
+    let lastNameTemp = lastNameRef.current.value
+      ? lastNameRef.current.value
+      : props.user.data.lastName;
+    let emailTemp = emailRef.current.value
+      ? emailRef.current.value
+      : props.user.data.email;
+    let currentVotesTemp = currentVotesRef.current.value
+      ? currentVotesRef.current.value
+      : props.user.data.currentVotes;
+    let totalVotesTemp = totalVotesRef.current.value
+      ? totalVotesRef.current.value
+      : props.user.data.currentVotes;
+    let businessNameTemp = businessNameRef.current.value
+      ? businessNameRef.current.value
+      : props.user.data.businessName;
+    let address1Temp = address1Ref.current.value
+      ? address1Ref.current.value
+      : props.user.data.address;
+    let address2Temp = address2Ref.current.value
+      ? address2Ref.current.value
+      : props.user.data.address2;
+    let cityTemp = cityRef.current.value
+      ? cityRef.current.value
+      : props.user.data.city;
+    let stateTemp = stateRef.current.value
+      ? stateRef.current.value
+      : props.user.data.state;
     stateTemp = stateTemp === "Choose..." ? "" : stateTemp;
-    let zipCodeTemp = zipCodeRef.current.value ? zipCodeRef.current.value : props.user.data.zipCode;
-    let phoneTemp = phoneRef.current.value ? phoneRef.current.value : props.user.data.phoneNumber;
-    let websiteTemp = websiteRef.current.value ? websiteRef.current.value : props.user.data.website;
-    let bioTemp = bioRef.current.value ? bioRef.current.value : props.user.data.bioText;
-    let votedTemp = votedRef.current.value ? votedRef.current.value : props.user.data.voted;
-
+    let zipCodeTemp = zipCodeRef.current.value
+      ? zipCodeRef.current.value
+      : props.user.data.zipCode;
+    let phoneTemp = phoneRef.current.value
+      ? phoneRef.current.value
+      : props.user.data.phoneNumber;
+    let websiteTemp = websiteRef.current.value
+      ? websiteRef.current.value
+      : props.user.data.website;
+    let bioTemp = bioRef.current.value
+      ? bioRef.current.value
+      : props.user.data.bioText;
+    let votedTemp = votedRef.current.value
+      ? votedRef.current.value
+      : props.user.data.voted;
 
     let userEdit = {
       userId: idRef.current.placeholder,
@@ -69,25 +99,30 @@ function AdminEdit(props) {
       zipCode: zipCodeTemp,
       phoneNumber: phoneTemp,
       website: websiteTemp,
-      bioText: bioTemp
-    }
+      bioText: bioTemp,
+    };
 
     console.log(userEdit);
     API.editUser(userEdit)
-      .then(
-        results => {
-          props.setEditToggle(true);
-          // props.setSearch("");
-          // console.log(results);
-        }
-      )
-      .catch(err => console.log(err));
-  }
+      .then((results) => {
+        props.setEditToggle(true);
+        // props.setSearch("");
+        // console.log(results);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const back = () => {
+    props.setEditToggle(!props.editToggle);
+  };
 
   return (
     <Form className="editForm" onSubmit={handleSubmit}>
+      <a class="arrow" onClick={back}>
+        Back
+      </a>
       <Form.Group controlId="formGridUserId">
-        <Form.Label className='label'>User Id</Form.Label>
+        <Form.Label className="label">User Id</Form.Label>
         <Form.Control
           ref={idRef}
           placeholder={props.user.data.userId}
@@ -97,7 +132,7 @@ function AdminEdit(props) {
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridFirstName">
-          <Form.Label className='label'>First Name</Form.Label>
+          <Form.Label className="label">First Name</Form.Label>
           <Form.Control
             ref={firstNameRef}
             placeholder={props.user.data.firstName}
@@ -105,7 +140,7 @@ function AdminEdit(props) {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridLastName">
-          <Form.Label className='label'>Last Name</Form.Label>
+          <Form.Label className="label">Last Name</Form.Label>
           <Form.Control
             ref={lastNameRef}
             placeholder={props.user.data.lastName}
@@ -114,7 +149,7 @@ function AdminEdit(props) {
       </Form.Row>
 
       <Form.Group controlId="formGridEmail">
-        <Form.Label className='label'>Email</Form.Label>
+        <Form.Label className="label">Email</Form.Label>
         <Form.Control
           type="email"
           ref={emailRef}
@@ -125,8 +160,9 @@ function AdminEdit(props) {
       <br></br>
       <Form.Row>
         <Form.Group as={Col} id="formGridAdmin">
-          <Form.Check type="switch"
-            className='label'
+          <Form.Check
+            type="switch"
+            className="label"
             ref={adminRef}
             label="Admin"
             id="admin-switch"
@@ -135,8 +171,9 @@ function AdminEdit(props) {
         </Form.Group>
 
         <Form.Group as={Col} id="formGridWantTo">
-          <Form.Check type="switch"
-            className='label'
+          <Form.Check
+            type="switch"
+            className="label"
             ref={wantToRef}
             label="Wants to be featured"
             id="want-to-switch"
@@ -147,8 +184,9 @@ function AdminEdit(props) {
 
       <Form.Row>
         <Form.Group as={Col} id="formGridActive">
-          <Form.Check type="switch"
-            className='label'
+          <Form.Check
+            type="switch"
+            className="label"
             ref={activeRef}
             label="Active"
             id="active-switch"
@@ -156,10 +194,10 @@ function AdminEdit(props) {
           />
         </Form.Group>
 
-
         <Form.Group as={Col} id="formGridCandidate">
-          <Form.Check type="switch"
-            className='label'
+          <Form.Check
+            type="switch"
+            className="label"
             ref={candidateRef}
             label="Feature Candidate"
             id="candidate-switch"
@@ -170,14 +208,11 @@ function AdminEdit(props) {
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridVoted">
-          <Form.Label className='label'>Voted (-1 = No)</Form.Label>
-          <Form.Control
-            ref={votedRef}
-            placeholder={props.user.data.voted}
-          />
+          <Form.Label className="label">Voted (-1 = No)</Form.Label>
+          <Form.Control ref={votedRef} placeholder={props.user.data.voted} />
         </Form.Group>
         <Form.Group as={Col} controlId="formGridCurrentVotes">
-          <Form.Label className='label'>Current Votes</Form.Label>
+          <Form.Label className="label">Current Votes</Form.Label>
           <Form.Control
             ref={currentVotesRef}
             placeholder={props.user.data.currentVotes}
@@ -185,7 +220,7 @@ function AdminEdit(props) {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridTotalVotes">
-          <Form.Label className='label'>Total Votes</Form.Label>
+          <Form.Label className="label">Total Votes</Form.Label>
           <Form.Control
             ref={totalVotesRef}
             placeholder={props.user.data.totalVotes}
@@ -194,7 +229,7 @@ function AdminEdit(props) {
       </Form.Row>
       <br></br>
       <Form.Group controlId="formGridBusiness">
-        <Form.Label className='label'>Business Name</Form.Label>
+        <Form.Label className="label">Business Name</Form.Label>
         <Form.Control
           ref={businessNameRef}
           placeholder={props.user.data.businessName}
@@ -204,7 +239,7 @@ function AdminEdit(props) {
       <Form.Row>
         <Col xs={8}>
           <Form.Group controlId="formGridAddress1">
-            <Form.Label className='label'>Address</Form.Label>
+            <Form.Label className="label">Address</Form.Label>
             <Form.Control
               ref={address1Ref}
               placeholder={props.user.data.address}
@@ -213,7 +248,7 @@ function AdminEdit(props) {
         </Col>
         <Col>
           <Form.Group controlId="formGridAddress2">
-            <Form.Label className='label'>Address 2</Form.Label>
+            <Form.Label className="label">Address 2</Form.Label>
             <Form.Control
               ref={address2Ref}
               placeholder={props.user.data.address2}
@@ -223,20 +258,13 @@ function AdminEdit(props) {
       </Form.Row>
       <Form.Row>
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label className='label'>City</Form.Label>
-          <Form.Control
-            ref={cityRef}
-            placeholder={props.user.data.city}
-          />
+          <Form.Label className="label">City</Form.Label>
+          <Form.Control ref={cityRef} placeholder={props.user.data.city} />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridState">
-          <Form.Label className='label'>State</Form.Label>
-          <Form.Control
-            as="select"
-            defaultValue="Choose..."
-            ref={stateRef}
-          >
+          <Form.Label className="label">State</Form.Label>
+          <Form.Control as="select" defaultValue="Choose..." ref={stateRef}>
             <option>Choose...</option>
             <option>Alabama</option>
             <option>Alaska</option>
@@ -292,7 +320,7 @@ function AdminEdit(props) {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label className='label'>Zip</Form.Label>
+          <Form.Label className="label">Zip</Form.Label>
           <Form.Control
             ref={zipCodeRef}
             placeholder={props.user.data.zipCode}
@@ -301,7 +329,7 @@ function AdminEdit(props) {
       </Form.Row>
 
       <Form.Group controlId="formGridPhone">
-        <Form.Label className='label'>Phone</Form.Label>
+        <Form.Label className="label">Phone</Form.Label>
         <Form.Control
           ref={phoneRef}
           placeholder={props.user.data.phoneNumber}
@@ -309,15 +337,12 @@ function AdminEdit(props) {
       </Form.Group>
 
       <Form.Group controlId="formGridWebsite">
-        <Form.Label className='label'>Website</Form.Label>
-        <Form.Control
-          ref={websiteRef}
-          placeholder={props.user.data.website}
-        />
+        <Form.Label className="label">Website</Form.Label>
+        <Form.Control ref={websiteRef} placeholder={props.user.data.website} />
       </Form.Group>
 
       <Form.Group controlId="formGridBio">
-        <Form.Label className='label'>Bio</Form.Label>
+        <Form.Label className="label">Bio</Form.Label>
         <Form.Control
           as="textarea"
           rows={5}
@@ -326,7 +351,7 @@ function AdminEdit(props) {
         />
       </Form.Group>
 
-      <Button variant="secondary" type="submit" className='label'>
+      <Button variant="secondary" type="submit" className="label">
         Submit
       </Button>
       <br></br>
