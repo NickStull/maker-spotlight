@@ -1,0 +1,55 @@
+$softorange: #F4A259;
+$tomatored: #F25C66;
+
+
+
+.close-container{
+  position: relative;
+  float: right;
+  margin-right: 15px;
+  width: 10px;
+  height: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.leftright{
+  height: 4px;
+  width: 25px;
+  position: absolute;
+  margin-top: 10px;
+  background-color:  #d0aa25;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all .3s ease-in;
+}
+
+
+.rightleft{
+  height: 4px;
+  width: 25px;
+  position: absolute;
+  margin-top: 10px;
+  background-color:  #d0aa25;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all .3s ease-in;
+}
+
+.close{
+  margin: 60px 0 0 5px;
+  position: absolute;
+}
+
+.close-container:hover .leftright{
+  transform: rotate(-45deg);
+  background-color: rgb(112, 24, 24);
+}
+.close-container:hover .rightleft{
+  transform: rotate(45deg);
+  background-color: rgb(112, 24, 24);
+}
+.close-container:hover label{
+  opacity: 1;
+}
+

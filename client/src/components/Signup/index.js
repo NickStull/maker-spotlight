@@ -7,6 +7,12 @@ import Home from '../Home';
 import SignupTextBtn from './SignupTextBtn';
 import './signup.css'
 
+
+
+
+import ExitButton from "../ExitButton";
+
+
 const Signup = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -18,43 +24,42 @@ const Signup = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
 
-  const { signup, currentUser } = useAuth()
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const { signup, currentUser } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const history = useHistory();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError('Passwords do not match')
+      return setError("Passwords do not match");
     }
     try {
-      setError('')
-      setLoading(true)
-      console.log("before await")
-      let firebaseSignup = await signup(emailRef.current.value, passwordRef.current.value)
-      console.log("after await")
+      setError("");
+      setLoading(true);
+      console.log("before await");
+      let firebaseSignup = await signup(
+        emailRef.current.value,
+        passwordRef.current.value
+      );
+      console.log("after await");
       let newUser = {
         userId: firebaseSignup.user.uid,
         firstName: firstNameRef.current.value,
         lastName: lastNameRef.current.value,
-        email: emailRef.current.value
-      }
-      await API.saveUser(newUser)
-      await API.subscribe(newUser)
-        .then(() => {
-          handleClose()
-          window.location.reload()
-        }
-        );
+        email: emailRef.current.value,
+      };
+      await API.saveUser(newUser);
+      await API.subscribe(newUser).then(() => {
+        handleClose();
+        window.location.reload();
+      });
     } catch {
-      setError('Failed to create an account')
+      setError("Failed to create an account");
     }
-    setLoading(false)
-  }
-
-
+    setLoading(false);
+  };
 
   return (
     <>
@@ -69,8 +74,13 @@ const Signup = () => {
           </Col>
         </Row>
       </Container>
+      <Button variant="secondary" id="signupBtn" onClick={handleShow}>
+        <span className="vote">VOTE</span> for the Next Feature
+      </Button>
+
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <ExitButton />
+        <Modal.Header>
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -177,6 +187,6 @@ const Signup = () => {
       {/* </div> */}
 
     </>
-  )
-}
+  );
+};
 export default Signup;
