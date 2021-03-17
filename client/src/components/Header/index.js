@@ -41,7 +41,7 @@ const Header = () => {
       <header className="pageHeader">
         <a href="/" className="logo">
           <h3 className="logo">Featured Edge</h3>
-          <h7 id='tagLine'>Find Your Next Obsession</h7>
+          <h5 id='tagLine'>Find Your Next Obsession</h5>
         </a>
         {/* display dropdown button based on loggedInState */}
         {loggedInState ? (
