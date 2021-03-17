@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 import API from "../../utils/API";
 import "./adminEdit.css";
-import "./adminEdit.scss";
 
 function AdminEdit(props) {
   // let address = (!props.user.data.address || props.user.data.address === "") ? "1234 Main St" : props.user.data.address
