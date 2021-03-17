@@ -1,0 +1,21 @@
+#signupBtn {
+  width: 80px;
+  height: 80px;
+  border: 2px solid white;
+  border-radius: 100px;
+  margin-top: 50px;
+  font-size: .75em;
+  background-color: #d0aa25;
+  z-index: 2;
+  color: #1c1411;
+  line-height: 0em;
+}
+
+#signupBtn :hover {
+  color: red;
+}
+
+#signupBtn :hover {
+  color: red;
+}
+/*# sourceMappingURL=signup.css.map */
