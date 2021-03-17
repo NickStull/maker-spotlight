@@ -112,7 +112,7 @@ function Search() {
     setUserId(event.target.id);
     setEditToggle(false);
     setSearch("");
-    console.log("search: ", search);
+    // console.log("search: ", search);
     API.getUser(userId).then((res) => {
       setEditUser(res);
     });
