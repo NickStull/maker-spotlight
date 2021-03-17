@@ -106,6 +106,12 @@ const UsersSchema = new Schema({
     default: ""
   },
 
+  bioPicture: {
+    type: String,
+    trim: true,
+    default: ""
+  },
+  
   bioText: {
     type: String,
     trim: true,
