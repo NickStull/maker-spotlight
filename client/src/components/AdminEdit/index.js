@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { Form, Col, Button } from 'react-bootstrap';
 import API from "../../utils/API";
+import './adminEdit.css'
 
 function AdminEdit(props) {
   // let address = (!props.user.data.address || props.user.data.address === "") ? "1234 Main St" : props.user.data.address
@@ -88,7 +89,7 @@ function AdminEdit(props) {
   return (
     <Form className="editForm" onSubmit={handleSubmit}>
       <Form.Group controlId="formGridUserId">
-        <Form.Label>User Id</Form.Label>
+        <Form.Label className='label'>User Id</Form.Label>
         <Form.Control
           ref={idRef}
           placeholder={props.user.data.userId}
@@ -98,7 +99,7 @@ function AdminEdit(props) {
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridFirstName">
-          <Form.Label>First Name</Form.Label>
+          <Form.Label className='label'>First Name</Form.Label>
           <Form.Control
             ref={firstNameRef}
             placeholder={props.user.data.firstName}
@@ -106,7 +107,7 @@ function AdminEdit(props) {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridLastName">
-          <Form.Label>Last Name</Form.Label>
+          <Form.Label className='label'>Last Name</Form.Label>
           <Form.Control
             ref={lastNameRef}
             placeholder={props.user.data.lastName}
@@ -115,7 +116,7 @@ function AdminEdit(props) {
       </Form.Row>
 
       <Form.Group controlId="formGridEmail">
-        <Form.Label>Email</Form.Label>
+        <Form.Label className='label'>Email</Form.Label>
         <Form.Control
           type="email"
           ref={emailRef}
@@ -127,6 +128,7 @@ function AdminEdit(props) {
       <Form.Row>
         <Form.Group as={Col} id="formGridAdmin">
           <Form.Check type="switch"
+            className='label'
             ref={adminRef}
             label="Admin"
             id="admin-switch"
@@ -136,6 +138,7 @@ function AdminEdit(props) {
 
         <Form.Group as={Col} id="formGridWantTo">
           <Form.Check type="switch"
+            className='label'
             ref={wantToRef}
             label="Wants to be featured"
             id="want-to-switch"
@@ -147,6 +150,7 @@ function AdminEdit(props) {
       <Form.Row>
         <Form.Group as={Col} id="formGridActive">
           <Form.Check type="switch"
+            className='label'
             ref={activeRef}
             label="Active"
             id="active-switch"
@@ -157,6 +161,7 @@ function AdminEdit(props) {
 
         <Form.Group as={Col} id="formGridCandidate">
           <Form.Check type="switch"
+            className='label'
             ref={candidateRef}
             label="Feature Candidate"
             id="candidate-switch"
@@ -167,14 +172,14 @@ function AdminEdit(props) {
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridVoted">
-          <Form.Label>Voted (-1 = No)</Form.Label>
+          <Form.Label className='label'>Voted (-1 = No)</Form.Label>
           <Form.Control
             ref={votedRef}
             placeholder={props.user.data.voted}
           />
         </Form.Group>
         <Form.Group as={Col} controlId="formGridCurrentVotes">
-          <Form.Label>Current Votes</Form.Label>
+          <Form.Label className='label'>Current Votes</Form.Label>
           <Form.Control
             ref={currentVotesRef}
             placeholder={props.user.data.currentVotes}
@@ -182,7 +187,7 @@ function AdminEdit(props) {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridTotalVotes">
-          <Form.Label>Total Votes</Form.Label>
+          <Form.Label className='label'>Total Votes</Form.Label>
           <Form.Control
             ref={totalVotesRef}
             placeholder={props.user.data.totalVotes}
@@ -191,7 +196,7 @@ function AdminEdit(props) {
       </Form.Row>
       <br></br>
       <Form.Group controlId="formGridBusiness">
-        <Form.Label>Business Name</Form.Label>
+        <Form.Label className='label'>Business Name</Form.Label>
         <Form.Control
           ref={businessNameRef}
           placeholder={props.user.data.businessName}
@@ -201,7 +206,7 @@ function AdminEdit(props) {
       <Form.Row>
         <Col xs={8}>
           <Form.Group controlId="formGridAddress1">
-            <Form.Label>Address</Form.Label>
+            <Form.Label className='label'>Address</Form.Label>
             <Form.Control
               ref={address1Ref}
               placeholder={props.user.data.address}
@@ -210,7 +215,7 @@ function AdminEdit(props) {
         </Col>
         <Col>
           <Form.Group controlId="formGridAddress2">
-            <Form.Label>Address 2</Form.Label>
+            <Form.Label className='label'>Address 2</Form.Label>
             <Form.Control
               ref={address2Ref}
               placeholder={props.user.data.address2}
@@ -220,7 +225,7 @@ function AdminEdit(props) {
       </Form.Row>
       <Form.Row>
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>City</Form.Label>
+          <Form.Label className='label'>City</Form.Label>
           <Form.Control
             ref={cityRef}
             placeholder={props.user.data.city}
@@ -228,7 +233,7 @@ function AdminEdit(props) {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>State</Form.Label>
+          <Form.Label className='label'>State</Form.Label>
           <Form.Control
             as="select"
             value= { initState } 
@@ -289,7 +294,7 @@ function AdminEdit(props) {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Zip</Form.Label>
+          <Form.Label className='label'>Zip</Form.Label>
           <Form.Control
             ref={zipCodeRef}
             placeholder={props.user.data.zipCode}
@@ -298,7 +303,7 @@ function AdminEdit(props) {
       </Form.Row>
 
       <Form.Group controlId="formGridPhone">
-        <Form.Label>Phone</Form.Label>
+        <Form.Label className='label'>Phone</Form.Label>
         <Form.Control
           ref={phoneRef}
           placeholder={props.user.data.phoneNumber}
@@ -306,7 +311,7 @@ function AdminEdit(props) {
       </Form.Group>
 
       <Form.Group controlId="formGridWebsite">
-        <Form.Label>Website</Form.Label>
+        <Form.Label className='label'>Website</Form.Label>
         <Form.Control
           ref={websiteRef}
           placeholder={props.user.data.website}
@@ -314,7 +319,7 @@ function AdminEdit(props) {
       </Form.Group>
 
       <Form.Group controlId="formGridBio">
-        <Form.Label>Bio</Form.Label>
+        <Form.Label className='label'>Bio</Form.Label>
         <Form.Control
           as="textarea"
           rows={5}
@@ -323,7 +328,7 @@ function AdminEdit(props) {
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button variant="secondary" type="submit" className='label'>
         Submit
       </Button>
       <br></br>

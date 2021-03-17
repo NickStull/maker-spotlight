@@ -3,14 +3,14 @@
 
 .pageHeader {
 	height: 70px;
-	background-color: brown;
+	background-color: rgb(112, 24, 24);
 	color: white;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 	padding: 1em 2em;
-	margin-bottom: 1em;
+	margin-bottom: 2.5em;
 	h5{
 		color: black;
 		margin-bottom: 0;
@@ -32,9 +32,26 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	color: white;
+	color: #c2bfb6;
 	font-family: 'Cinzel', serif;
 	font-weight: 700;
+	margin-bottom: 1.5em;
+}
+#tagLine {
+  color: #92969d;
+	font-family: 'Cinzel', serif;
+	font-weight: 400;
+
+}
+.signupBtn {
+	width: 80px;
+	height: 80px;
+}
+
+@media (min-width: 600px) {
+  .pageHeader {
+		height: 100px;
+	}
 }
 
 
