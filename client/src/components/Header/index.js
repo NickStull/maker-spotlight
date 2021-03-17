@@ -37,29 +37,29 @@ const Header = () => {
   return (
     <>
       <Container id="pageHeader">
-        <Row>
-          <Col>
+        <Row className="noPaddingNoMargin">
+          <Col className="noPaddingNoMargin">
             <a href="/" className="logo">
-              <h3 className="logo">Featured Edge</h3>
-              <h5 id='tagLine'>Find Your Next Obsession</h5>
+              <h3 className="logo noPaddingNoMargin">Featured Edge</h3>
+              <h5 id='tagLine noPaddingNoMargin'>Find Your Next Obsession</h5>
             </a>
           </Col>
           {/* display dropdown button based on loggedInState */}
           {loggedInState ? (
-            <Col>
+            <Col sm='auto' className="noPaddingNoMargin">
               <HeaderDropdown />
             </Col>
           ) : (
             <>
-              <Col>
-                <Signup />
+              <Col sm="auto" className="noPaddingNoMargin">
+                <Signup className="noPaddingNoMargin" />
               </Col>
-              <Col>
-                <Login />
+              <Col sm="auto" className="noPaddingNoMargin">
+                <Login className="noPaddingNoMargin" />
               </Col>
             </>
           )}
-        </Row>
+        </Row >
       </Container>
     </>
   );

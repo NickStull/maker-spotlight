@@ -5,7 +5,8 @@
 	height: 100px;
 	background-color: rgb(112, 24, 24);
 	color: white;
-	display: flex;
+	width: 100%;
+	// display: flex;
 	// flex-direction: row;
 	// align-items: center;
 	// justify-content: space-between;
@@ -29,9 +30,9 @@
 	}
 }
 .headerDiv {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	// display: flex;
+	// flex-direction: column;
+	// justify-content: space-between;
 	color: #c2bfb6;
 	font-family: 'Cinzel', serif;
 	font-weight: 700;
@@ -55,5 +56,12 @@
 	}
 }
 
+.noPaddingNoMargin {
+	margin: 0;
+	padding: 0;
+}
 
+.centerHoriz {
+	justify-content: center;
+}
 

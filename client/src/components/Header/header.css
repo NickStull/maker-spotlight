@@ -3,9 +3,7 @@
   height: 100px;
   background-color: #701818;
   color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
   padding: 1em 2em;
   margin: 0em 0em 2.5em 0em;
 }
@@ -29,16 +27,6 @@
 }
 
 .headerDiv {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   color: #c2bfb6;
   font-family: 'Cinzel', serif;
   font-weight: 700;
@@ -61,5 +49,16 @@
   .pageHeader {
     height: 100px;
   }
+}
+
+.noPaddingNoMargin {
+  margin: 0;
+  padding: 0;
+}
+
+.centerHoriz {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=header.css.map */

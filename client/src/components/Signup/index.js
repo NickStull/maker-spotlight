@@ -60,8 +60,9 @@ const Signup = () => {
     <>
       <Container>
         <Row>
-          <Col>
+          <Col className="center">
             <SignupTextBtn showSignupModal={handleShow} />
+            <br></br>
             <Button variant="secondary" id='signupBtn' onClick={handleShow}>
               <span className='vote'>VOTE</span> for the Next Feature
           </Button>
