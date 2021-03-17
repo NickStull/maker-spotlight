@@ -1,0 +1,57 @@
+.close-container {
+  position: relative;
+  float: right;
+  margin-right: 15px;
+  width: 10px;
+  height: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.leftright {
+  height: 4px;
+  width: 25px;
+  position: absolute;
+  margin-top: 10px;
+  background-color: #d0aa25;
+  border-radius: 2px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+}
+
+.rightleft {
+  height: 4px;
+  width: 25px;
+  position: absolute;
+  margin-top: 10px;
+  background-color: #d0aa25;
+  border-radius: 2px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+}
+
+.close {
+  margin: 60px 0 0 5px;
+  position: absolute;
+}
+
+.close-container:hover .leftright {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  background-color: #701818;
+}
+
+.close-container:hover .rightleft {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  background-color: #701818;
+}
+
+.close-container:hover label {
+  opacity: 1;
+}
+/*# sourceMappingURL=exitbutton.css.map */
