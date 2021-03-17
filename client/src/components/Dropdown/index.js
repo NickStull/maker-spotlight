@@ -30,7 +30,7 @@ const HeaderDropdown = () => {
 
   return (
     <>
-      {console.log(userInfo)}
+      {/* {console.log(userInfo)} */}
       {userInfo ?
         <DropdownButton className="dropdown" id="dropdown-basic-button" title={`Welcome, ${userInfo.firstName}!`}>
           <Dropdown.Item href="/account">Edit Account</Dropdown.Item>
