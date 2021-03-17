@@ -1,10 +1,17 @@
 import React, { useRef, useState, Spinner } from 'react';
-import { Form, Button, Modal } from 'react-bootstrap';
+import { Form, Button, Modal, Container, Row, Col } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import API from '../../utils/API';
 import { useAuth } from '../../utils/contexts/AuthContext';
 import Home from '../Home';
+import SignupTextBtn from './SignupTextBtn';
 import './signup.css'
+
+
+
+
+import ExitButton from "../ExitButton";
+
 
 const Signup = () => {
   const [show, setShow] = useState(false);
@@ -17,52 +24,63 @@ const Signup = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
 
-  const { signup, currentUser } = useAuth()
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const { signup, currentUser } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const history = useHistory();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError('Passwords do not match')
+      return setError("Passwords do not match");
     }
     try {
-      setError('')
-      setLoading(true)
-      console.log("before await")
-      let firebaseSignup = await signup(emailRef.current.value, passwordRef.current.value)
-      console.log("after await")
+      setError("");
+      setLoading(true);
+      console.log("before await");
+      let firebaseSignup = await signup(
+        emailRef.current.value,
+        passwordRef.current.value
+      );
+      console.log("after await");
       let newUser = {
         userId: firebaseSignup.user.uid,
         firstName: firstNameRef.current.value,
         lastName: lastNameRef.current.value,
-        email: emailRef.current.value
-      }
-      await API.saveUser(newUser)
-      await API.subscribe(newUser)
-        .then(() => {
-          handleClose()
-          window.location.reload()
-        }
-        );
+        email: emailRef.current.value,
+      };
+      await API.saveUser(newUser);
+      await API.subscribe(newUser).then(() => {
+        handleClose();
+        window.location.reload();
+      });
     } catch {
-      setError('Failed to create an account')
+      setError("Failed to create an account");
     }
-    setLoading(false)
-  }
-
-
+    setLoading(false);
+  };
 
   return (
     <>
-      <Button variant="secondary" id='signupBtn' onClick={handleShow}>
-        <span className='vote'>VOTE</span> for the Next Feature
+      <Container>
+        <Row>
+          <Col className="center">
+            <SignupTextBtn className='marginAuto' showSignupModal={handleShow} />
+            <br></br>
+            <Button variant="secondary" id='signupBtn' onClick={handleShow}>
+              <span className='vote'>VOTE</span> for the Next Feature
+          </Button>
+          </Col>
+        </Row>
+      </Container>
+      <Button variant="secondary" id="signupBtn" onClick={handleShow}>
+        <span className="vote">VOTE</span> for the Next Feature
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <ExitButton />
+        <Modal.Header>
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -167,7 +185,8 @@ const Signup = () => {
             </button>
         </form> */}
       {/* </div> */}
+
     </>
-  )
-}
+  );
+};
 export default Signup;
