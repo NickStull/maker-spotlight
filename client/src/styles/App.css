@@ -16,6 +16,9 @@
 .btn-primary :hover {
 	background-color: black !important;
 }
+.btn-secondary{
+color: #1c1411 !important;
+}
 
 a {
 	text-decoration: none;
@@ -46,4 +49,8 @@ background-color: #29080822;
 
 .card {
 	border: 4px solid rgb(112, 24, 24);
+	margin-bottom: 1em;
 }
+
+
+

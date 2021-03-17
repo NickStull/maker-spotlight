@@ -6,7 +6,7 @@ import Login from "../Login";
 import Signup from "../Signup";
 import "./header.css";
 import API from "../../utils/API";
-import AdminButton from "../AdminButton";
+import AdminButton from "../AdminButton/AdminButton";
 
 const Header = () => {
   const [loggedInState, setLoggedInState] = useState(false);

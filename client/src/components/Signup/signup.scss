@@ -8,7 +8,7 @@
   background-color:#d0aa25;
   z-index: 2;
   color: #1c1411;
-  line-height: 0em;
+  line-height: 1em;
   :hover {
     color: red;
   }
@@ -16,4 +16,9 @@
 
 #signupBtn :hover {
 color: red;
+}
+
+.vote {
+  font-size: 1.25em;
+  font-weight: 700;
 }

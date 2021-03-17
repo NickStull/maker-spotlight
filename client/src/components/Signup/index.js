@@ -58,7 +58,7 @@ const Signup = () => {
   return (
     <>
       <Button variant="secondary" id='signupBtn' onClick={handleShow}>
-        Vote for the Next Feature
+        <span className='vote'>VOTE</span> for the Next Feature
       </Button>
 
       <Modal show={show} onHide={handleClose}>
