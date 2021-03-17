@@ -11,12 +11,12 @@ function MakerInfo() {
     <Container fluid className='containerFluid mt-4 connected'>
       { currentUser ?
         <Card style={{ width: "900px", marginBottom: "20px" }}>
-          <Card.Header style={{ fontSize: "30px", textAlign: "center"}}>{ newsletterInfo.businessName }</Card.Header>
+          <Card.Header style={{ fontSize: "30px", textAlign: "center"}}>{ newsletterInfo.businessName === "" ? newsletterInfo.firstName + " " + newsletterInfo.lastName : newsletterInfo.businessName }</Card.Header>
           <div className="row no-gutters">
             <Card.Body>
               <Row style={{ alignItems: "center", marginTop: "5px" }}>
                 <Col sm={12} md={6}>
-                <h5>{ newsletterInfo.website }</h5>
+                <h5><a href={ newsletterInfo.website } target="_blank">{ newsletterInfo.website }</a></h5>
                 </Col>
                 <Col sm={12} md={6}>
                 <h5 className="card-title-right">Email: { newsletterInfo.email }</h5>
