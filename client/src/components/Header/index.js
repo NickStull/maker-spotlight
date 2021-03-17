@@ -41,18 +41,15 @@ const Header = () => {
       <header className="pageHeader">
         <a href="/" className="logo">
           <h3 className="logo">Featured Edge</h3>
+<<<<<<< HEAD
           <h5 id='tagLine'>Find Your Next Obsession</h5>
+=======
+          <h7 id="tagLine">Find Your Next Obsession</h7>
+>>>>>>> 7c54aa6c46fdbc9008225d5b70d6ecb258a40321
         </a>
         {/* display dropdown button based on loggedInState */}
         {loggedInState ? (
-          isAdmin ? (
-            <>
-              <AdminButton />
-              <HeaderDropdown />
-            </>
-          ) : (
-            <HeaderDropdown />
-          )
+          <HeaderDropdown />
         ) : (
           <>
             <Signup />
