@@ -22,18 +22,19 @@ body{
   width: 25px;
   position: absolute;
   margin-top: 10px;
-  background-color: $softorange;
+  background-color:  #d0aa25;
   border-radius: 2px;
   transform: rotate(45deg);
   transition: all .3s ease-in;
 }
+
 
 .rightleft{
   height: 4px;
   width: 25px;
   position: absolute;
   margin-top: 10px;
-  background-color: $softorange;
+  background-color:  #d0aa25;
   border-radius: 2px;
   transform: rotate(-45deg);
   transition: all .3s ease-in;

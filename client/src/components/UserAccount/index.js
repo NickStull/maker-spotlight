@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Form, Button, Card, Container, Col } from "react-bootstrap";
 import { useAuth } from "../../utils/contexts/AuthContext";
 import API from "../../utils/API";
-import "./style.scss";
+import "./style.css";
 
 const UserAccount = () => {
   const firstNameRef = useRef();
