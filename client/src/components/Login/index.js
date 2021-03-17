@@ -39,7 +39,7 @@ const Login = () => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <ExitButton />
+        <ExitButton url={"/"} />
         <Modal.Header>
           <Modal.Title>Log In</Modal.Title>
         </Modal.Header>
