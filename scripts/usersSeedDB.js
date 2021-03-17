@@ -7,7 +7,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/makerspotlight"
 
 const usersSeed = [
   {
-    userId: "L2FxlNluqIZVeOA1t5dXU1och6C3",
+    userId: "dX5wxl9mw7Y2wQ55s2AtIx2DjUN2",
     firstName: "Nick",
     lastName: "Stull",
     email: "stull.nicholas@gmail.com",
