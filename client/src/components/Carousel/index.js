@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from '../../utils/contexts/AuthContext';
 import { Carousel, Container, Row, Col } from 'react-bootstrap';
-import { Image, CloudinaryContext, } from 'cloudinary-react';
+import { Image, CloudinaryContext, Transformation } from 'cloudinary-react';
 import './carousel.css'
 
 const CarouselViewer = () => {
@@ -27,9 +27,11 @@ const CarouselViewer = () => {
 										<Image
 											publicId={image.link}
 											className="d-block w-100 carouselImg"
-											alt="First slide"
-											background="auto" crop="pad"
-										/>
+											alt={image.title}
+										>
+											<Transformation width="300" height="300" background="white" crop="pad" />
+											<Transformation border="2px_solid_black" />
+										</Image>
 									</CloudinaryContext>
 									<figcaption className='carouselCaption'>
 										{image.description}
