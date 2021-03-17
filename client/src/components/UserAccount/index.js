@@ -3,6 +3,7 @@ import { Form, Button, Card, Container, Col } from "react-bootstrap";
 import { useAuth } from "../../utils/contexts/AuthContext";
 import API from "../../utils/API";
 import "./style.css";
+import ExitButton from "../ExitButton";
 
 const UserAccount = () => {
   const firstNameRef = useRef();
@@ -111,11 +112,7 @@ const UserAccount = () => {
         >
           <div className="w-100" style={{ maxWidth: "400px" }}>
             <Card>
-              <a class="close-container" href="/">
-                <div class="leftright"></div>
-                <div class="rightleft"></div>
-              </a>
-
+              <ExitButton />
               <Card.Body>
                 <h2 className="text-center mb-4">Edit Account Info</h2>
 
