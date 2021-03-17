@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from 'react-bootstrap';
+
 const AdminButton = () => {
   return (
     <div>
-      <button>
+      <Button variant='secondary'>
         <Link to="/admin">Admin</Link>
-      </button>
+      </Button>
     </div>
   );
 };
