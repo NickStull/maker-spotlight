@@ -25,6 +25,8 @@ function AdminEdit(props) {
   const bioRef = useRef();
   const activeRef = useRef();
 
+  const initState = props.user.data.state === "" ? "Choose..." : props.user.data.state;
+  console.log(initState);
   const handleSubmit = (e) => {
     e.preventDefault()
     // console.log('-------------------in the submit---------------------');
@@ -229,7 +231,7 @@ function AdminEdit(props) {
           <Form.Label>State</Form.Label>
           <Form.Control
             as="select"
-            defaultValue="Choose..."
+            value= { initState } 
             ref={stateRef}
           >
             <option>Choose...</option>
