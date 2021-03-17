@@ -1,7 +1,7 @@
 @use '../../styles/variables';
 .pageHeader {
   height: 70px;
-  background-color: brown;
+  background-color: #701818;
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17,7 +17,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 1em 2em;
-  margin-bottom: 1em;
+  margin-bottom: 2.5em;
 }
 
 .pageHeader h5 {
@@ -49,8 +49,20 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  color: white;
+  color: #c2bfb6;
   font-family: 'Cinzel', serif;
   font-weight: 700;
+  margin-bottom: 1.5em;
+}
+
+#tagLine {
+  color: #92969d;
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+}
+
+.signupBtn {
+  width: 80px;
+  height: 80px;
 }
 /*# sourceMappingURL=header.css.map */
