@@ -25,7 +25,6 @@ module.exports = {
         status: "pending",
       })
       .then((results) => {
-        console.log("we be having results! ", results);
         res.json(results);
       })
       .catch((err) => {
