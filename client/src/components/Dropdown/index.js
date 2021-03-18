@@ -6,27 +6,10 @@ import { DropdownButton, Dropdown } from "react-bootstrap";
 import Logout from "../Logout";
 
 const HeaderDropdown = () => {
-  const { userInfo, currentUser } = useAuth();
-  const [currentUserName, setCurrentUserName] = useState();
+  const { userInfo } = useAuth();
 
-  //check to see if user is logged in via context provider
   useEffect(() => {
-    // if (currentUser) {
-    //   getUserName();
-    // }
   }, [userInfo]);
-
-  //use firebase id to get user info from mongodb
-  // const getUserName = async () => {
-  //   let dbResults;
-  //   try {
-  //     dbResults = await API.getUser(currentUser.uid);
-  //   } catch (err) {
-  //     console.error(err);
-  //   } finally {
-  //     setCurrentUserName(dbResults.data.firstName);
-  //   }
-  // };
 
   return (
     <>
