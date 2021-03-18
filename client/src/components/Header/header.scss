@@ -6,7 +6,7 @@
 	background-color: rgb(112, 24, 24);
 	width: 100%;
 	padding: 1em 2em .5em 2em;
-	margin:0em 0em 1.75em 0em;
+	margin:0em 0em 1em 0em;
 }
 
 .logo {
@@ -30,6 +30,7 @@
 	font-family: 'Cinzel', serif;
 	font-weight: 400;
 	font-size: 1em;
+	padding-left: 30px;
 }
 #signupBtn {
 	width: 80px;
@@ -80,14 +81,19 @@
 
 @media (max-width: 576px) {
   #pageHeader {
-		max-height: 118px;
-		padding-top: 0em;
-		margin-bottom: 3em;
+		max-height: 130px;
+		// padding-top: 1em;
+		margin-bottom: 2em;
 	}
 	.loginWrapper{
 		margin-top: .75em;
 	}
 	#voteSigninWrapper {
-		justify-content: center;
+		justify-content: flex-end;
 	}
+}
+
+.logoImg{
+	width: 250px;
+	padding-top: .625em;
 }
