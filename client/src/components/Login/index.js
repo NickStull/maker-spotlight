@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../utils/contexts/AuthContext";
 import ExitButton from "../ExitButton";
 import Home from "../Home";
+import './login.css'
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -34,12 +35,12 @@ const Login = () => {
   };
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" className='loginBtn' onClick={handleShow}>
         Log In
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <ExitButton />
+        <ExitButton url={"/"} />
         <Modal.Header>
           <Modal.Title>Log In</Modal.Title>
         </Modal.Header>
