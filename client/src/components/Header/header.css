@@ -11,6 +11,7 @@
   font-family: 'Cinzel', serif !important;
   font-weight: 700;
   margin-bottom: 0;
+  margin-top: .5em;
 }
 
 .logo :hover {
@@ -31,15 +32,14 @@
   font-size: 1em;
 }
 
-.signupBtn {
+#signupBtn {
   width: 80px;
   height: 80px;
 }
 
-.centerHoriz {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+#signupBtnCol {
+  width: 80px !important;
+  height: 80px;
 }
 
 #voteBtn {
@@ -85,5 +85,16 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 170px;
+}
+
+#voteSigninWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 /*# sourceMappingURL=header.css.map */

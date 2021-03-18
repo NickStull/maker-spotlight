@@ -39,7 +39,7 @@ const Header = () => {
   return (
     <>
       <Container fluid id="pageHeader">
-        <Row >
+        <Row>
           <Col>
             <a href="/" className="logo">
               <h3 className="logo noPaddingNoMargin">Featured Edge</h3>
@@ -69,12 +69,12 @@ const Header = () => {
             </Col>
           ) : (
             <>
-              <Col>
-                <Row>
-                  <Col >
+              <Col sm='auto'>
+                <Row id='voteSigninWrapper'>
+                  <Col sm={6} id="signupBtnCol">
                     <Signup id='signUpBtn' />
                   </Col>
-                  <Col className='loginWrapper'>
+                  <Col sm={6} className='loginWrapper'>
                     <Login />
                     <SignupTextBtn />
                   </Col>
