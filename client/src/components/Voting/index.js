@@ -150,8 +150,6 @@ const Voting = () => {
                     location={`${city}, ${state}`}
                     business={businessName}
                     webAddress={website}
-                    image={images[0]}
-                    // vote={vote}
                     handleShow={handleShow}
                     setUserChoiceState={setUserChoiceState}
                     id={userId}
@@ -177,7 +175,7 @@ const Voting = () => {
               <Button variant="secondary" onClick={handleClose}>
                 Choose Another Bladesmith
               </Button>
-              <Button variant="primary" onClick={submitVote}>
+              <Button variant="danger" onClick={submitVote}>
                 Submit Your Vote
               </Button>
             </Modal.Footer>

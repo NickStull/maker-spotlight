@@ -99,7 +99,9 @@ const UserAccount = () => {
 
     console.log(userEdit);
 
-    await API.editUser(userEdit).catch((err) => console.log(err));
+    await API.editUser(userEdit)
+    .then(() => window.location.assign('/'))
+    .catch((err) => console.log(err));
   };
 
   return (

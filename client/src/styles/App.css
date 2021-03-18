@@ -1,5 +1,14 @@
 *{
 	font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.fillWindow {
+	height: 100vh !important;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
 }
 
 .btn-primary {
@@ -36,7 +45,7 @@ border: 1px solid rgb(112, 24, 24);
 background-color: #29080822;
 }
 .card-body{
-	border: px solid brown;
+	border-radius: 1em;
 }
 .card-footer{
 	border: 1px solid rgb(112, 24, 24);
@@ -60,4 +69,3 @@ background-color: #29080822;
 .container{
 	max-width: 100%;
 }
-
