@@ -8,6 +8,7 @@ import Signup from "../Signup";
 import SignupTextBtn from "../SignupTextBtn";
 import "./header.css";
 import API from "../../utils/API";
+import logo from '../../styles/images/featuredEdge.png'
 
 const Header = () => {
   const [loggedInState, setLoggedInState] = useState(false);
@@ -42,7 +43,8 @@ const Header = () => {
         <Row>
           <Col>
             <a href="/" className="logo">
-              <h3 className="logo noPaddingNoMargin">Featured Edge</h3>
+              <img className='logoImg' src={logo} alt="logo" />
+              {/* <h3 className="logo noPaddingNoMargin">Featured Edge</h3> */}
               <h5 id='tagLine'>Find Your Next Obsession</h5>
             </a>
           </Col>
