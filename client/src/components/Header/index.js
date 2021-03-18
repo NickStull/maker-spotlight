@@ -5,6 +5,7 @@ import { useAuth } from "../../utils/contexts/AuthContext";
 import HeaderDropdown from "../Dropdown";
 import Login from "../Login";
 import Signup from "../Signup";
+import SignupTextBtn from "../SignupTextBtn";
 import "./header.css";
 import API from "../../utils/API";
 
@@ -38,8 +39,8 @@ const Header = () => {
   return (
     <>
       <Container fluid id="pageHeader">
-        <Row className="noPaddingNoMargin">
-          <Col className="noPaddingNoMargin">
+        <Row >
+          <Col>
             <a href="/" className="logo">
               <h3 className="logo noPaddingNoMargin">Featured Edge</h3>
               <h5 id='tagLine'>Find Your Next Obsession</h5>
@@ -68,11 +69,16 @@ const Header = () => {
             </Col>
           ) : (
             <>
-              <Col sm="auto" className="noPaddingNoMargin">
-                <Signup className="noPaddingNoMargin" />
-              </Col>
-              <Col sm="auto" className="noPaddingNoMargin">
-                <Login className="noPaddingNoMargin" />
+              <Col>
+                <Row>
+                  <Col >
+                    <Signup id='signUpBtn' />
+                  </Col>
+                  <Col className='loginWrapper'>
+                    <Login />
+                    <SignupTextBtn />
+                  </Col>
+                </Row>
               </Col>
             </>
           )}

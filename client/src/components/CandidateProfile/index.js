@@ -27,6 +27,7 @@ const CandidateProfile = ({ firstName, lastName, bioText, location, business, we
 					<Card.Title></Card.Title>
 					<Card.Text>
 						{bioText}
+						<br></br>
 						{userInfo.voted === arrayPosition ?
 							<Button>{firstName} Has Your Vote</Button>
 							:

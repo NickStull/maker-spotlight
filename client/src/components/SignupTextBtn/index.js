@@ -1,13 +1,13 @@
-import React, { useRef, useState, Spinner } from "react";
+import React, { useRef, useState } from "react";
 import { Form, Button, Modal, Container, Row, Col } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import { useAuth } from "../../utils/contexts/AuthContext";
-import "./signup.css";
+import "./signupTextBtn.css";
 
 import ExitButton from "../ExitButton";
 
-const Signup = () => {
+const SignupTextBtn = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -57,9 +57,9 @@ const Signup = () => {
 
   return (
     <>
-      <Button variant="secondary" id="signupBtn" onClick={handleShow}>
-        <span className="vote">VOTE</span> for the Next Feature
-      </Button>
+      <button variant="secondary" id="signupTextBtn" onClick={handleShow}>
+        SIGN UP
+      </button>
       <Modal show={show} onHide={handleClose}>
         <ExitButton url={"/"} />
         <Modal.Header>
@@ -130,44 +130,7 @@ const Signup = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      {/* <div style={styles.overlay} />
-      <div style={styles.modal}>
-        <button>
-          <Link to='/'>
-            Close Modal
-          </Link>
-        </button>
-        {error && <div>{error}</div>}
-        <form className="form" onSubmit={handleSubmit}>
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            ref={emailRef}
-            required
-          />
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            ref={passwordRef}
-            required
-          />
-          <input
-            name="passwordConfirm"
-            type="password"
-            placeholder="Confirm Password"
-            ref={passwordConfirmRef}
-            required
-          />
-          <button
-            disabled={loading}
-            type="submit">
-            Submit
-            </button>
-        </form> */}
-      {/* </div> */}
     </>
   );
 };
-export default Signup;
+export default SignupTextBtn;

@@ -2,11 +2,11 @@
 
 
 #pageHeader {
-	height: 100px;
+	// height: 100px;
 	background-color: rgb(112, 24, 24);
 	width: 100%;
-	padding: 1em 2em;
-	margin:0em 0em 2.5em 0em;
+	padding: 1em 2em .5em 2em;
+	margin:0em 0em 1.5em 0em;
 }
 
 .logo {
@@ -41,10 +41,6 @@
 // 	}
 // }
 
-.noPaddingNoMargin {
-	// margin: 0;
-	// padding: 0;
-}
 
 .centerHoriz {
 	justify-content: center;
@@ -69,6 +65,12 @@
 }
 
 #dropdownWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.loginWrapper{
 	display: flex;
 	flex-direction: column;
 	align-items: center;

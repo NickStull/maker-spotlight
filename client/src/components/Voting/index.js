@@ -113,16 +113,16 @@ const Voting = () => {
     return (
       <>
         <Container fluid>
-          <h2 className="white">Candidates for the Next Feature</h2>
+          <h2 className="candidatesText">Candidates for the Next Feature</h2>
           {userInfo.voted === -1 ? (
             <>
-              <h3 className="cream">Vote for the Next Featured Blademaker</h3>
-              <p className="cream">
+              <h3 className="variableText">Vote for the Next Featured Blademaker</h3>
+              <p className="variableText">
                 Select the craftsmen you would like to see profiled next.
               </p>
             </>
           ) : (
-            <h5 className="cream">
+            <h5 className="variableText">
               Thanks for helping us choose the next featured craftsmen!
             </h5>
           )}
