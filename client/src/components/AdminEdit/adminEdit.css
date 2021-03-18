@@ -55,4 +55,12 @@
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
+
+.arrow:hover > #backText {
+  opacity: 0;
+}
+
+.arrow:hover:after > #backText {
+  opacity: 0;
+}
 /*# sourceMappingURL=adminEdit.css.map */

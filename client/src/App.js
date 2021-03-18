@@ -10,6 +10,7 @@ import UserAccount from "./components/UserAccount";
 import PrivateAdminRoute from "./components/PrivateRoutes/PrivateAdminRoute";
 import Voting from "./components/Voting";
 import LoginRoute from "./components/PrivateRoutes/LoginRoutes";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <PrivateAdminRoute exact path="/admin" component={Admin} />
           <LoginRoute exact path="/vote" component={Voting} />
           {/* <Route exact path="/logout" component={Logout} /> */}
+          <NavBar />
         </AuthProvider>
       </Router>
     </>
