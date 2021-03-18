@@ -150,8 +150,6 @@ const Voting = () => {
                     location={`${city}, ${state}`}
                     business={businessName}
                     webAddress={website}
-                    image={images[0]}
-                    // vote={vote}
                     handleShow={handleShow}
                     setUserChoiceState={setUserChoiceState}
                     id={userId}
