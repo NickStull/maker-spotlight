@@ -1,0 +1,10 @@
+#signupTextBtn {
+  font-size: .75em;
+  color: #d0aa25;
+  background-color: transparent;
+  border: none;
+}
+
+#signupTextBtn :hover {
+  color: yellow;
+}

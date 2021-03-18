@@ -1,10 +1,10 @@
 #signupBtn {
-  display: block;
-  width: 80px;
+  display: inline;
+  width: 80px !important;
   height: 80px;
   border: 2px solid white;
   border-radius: 100px;
-  margin-top: 0;
+  margin: 0;
   font-size: .75em;
   background-color: #d0aa25;
   z-index: 2;
@@ -23,18 +23,5 @@
 .vote {
   font-size: 1.25em;
   font-weight: 700;
-}
-
-.center {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.marginAuto {
-  margin: auto;
 }
 /*# sourceMappingURL=signup.css.map */
