@@ -2,3 +2,11 @@
 div::-webkit-scrollbar {
   width: 12px !important;
 }
+
+/* Stunning image */
+.about-me {
+  float: left;
+  margin: 5px 15px 5px 0px;
+  width: 250px;
+  height: 250px;
+}

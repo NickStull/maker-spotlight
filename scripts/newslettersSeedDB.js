@@ -53,7 +53,7 @@ const newsLettersSeed = [
     email: 'AaronSybrantKnives@gmail.com',
     businessName: 'Aaron Sybrant Knives',
     address: '',
-    city: '',
+    city: 'North Branch',
     state: 'Minnesota',
     zipCode: '',
     phoneNumber: '',
@@ -66,22 +66,22 @@ const newsLettersSeed = [
       {
         id: 'First picture',
         link: 'https://res.cloudinary.com/makerspotlight/image/upload/v1616030675/volume%201/image_1_ug67li.jpg',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis.'
+        description: 'These three integral EDC blades are forged from 52100 steel. Handle materials are Desert Ironwood, Amboyna Burl, and grey G10.'
       },
       {
         id: 'Second picture',
         link: 'https://res.cloudinary.com/makerspotlight/image/upload/v1616030680/volume%201/image_2_xuprwn.jpg',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+        description: 'Small dagger forged from 80crv2 with a stainless steel guard and pommel, a beautiful fuller., and a stacked leather handle. Cutting edge is 5" and over all lengths is 8.75". Sheath is bison with a shark inlay.'
       },
       {
         id: 'Third picture',
-        link: 'https://res.cloudinary.com/makerspotlight/image/upload/v1616030675/volume%201/image_1_ug67li.jpg',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.'
+        link: 'https://res.cloudinary.com/makerspotlight/image/upload/v1616030641/volume%201/image_3_iycapm.jpg',
+        description: 'This beautiful EDC blade has a unique shape and forged from 52100 steel. It has a 4" cutting edge, with a 7.5 over all length. Handle material is a buckeye burl and sheath is bison with an elephant inlay.'
       },
       {
         id: 'Fourth picture',
-        link: 'https://res.cloudinary.com/makerspotlight/image/upload/v1616030641/volume%201/image_3_iycapm.jpg',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.'
+        link: 'https://res.cloudinary.com/makerspotlight/image/upload/v1616030684/volume%201/image_4_tbzzed.jpg',
+        description: 'This cleaver is forged from 52100 steel with a silicon bronze guard and an ironwood handle. 4.5" cutting edge, and 10" overall length. Sheath is bison with an elephant inlay.'
       },
     ],
     date: Date()
