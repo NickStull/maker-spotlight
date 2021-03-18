@@ -177,7 +177,7 @@ const Voting = () => {
               <Button variant="secondary" onClick={handleClose}>
                 Choose Another Bladesmith
               </Button>
-              <Button variant="primary" onClick={submitVote}>
+              <Button variant="danger" onClick={submitVote}>
                 Submit Your Vote
               </Button>
             </Modal.Footer>
