@@ -4,8 +4,8 @@
 
 ## Description:
 
-This is a website designed for custom knife aficionados. We host a featured knife maker every month! It is a place for those in the custom knife community to show off their hard work, get ideas for future projects, or just appreciate the art of talented craftsmen. We highlight a knife maker each month, and send out a monthly newsletter to our members.
-![ Alt text](name-of-gif-file. gif)
+This is a website designed for custom knife aficionados. It is a place for those in the custom knife community to show off their hard work, get ideas for future projects, or just appreciate the art of talented craftsmen. We highlight a knife maker each month, and send out a monthly newsletter to our members.
+![Page Preview](featuredEdgePreview.gif)
 
 ## Table of Contents:
 
