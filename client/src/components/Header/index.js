@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { AuthProvider, useAuth } from "../../utils/contexts/AuthContext";
+import { Link } from 'react-router-dom'
+import { Container, Row, Col, } from 'react-bootstrap'
+import { useAuth } from "../../utils/contexts/AuthContext";
 import HeaderDropdown from "../Dropdown";
 import Login from "../Login";
 import Signup from "../Signup";
 import "./header.css";
 import API from "../../utils/API";
-import AdminButton from "../AdminButton/AdminButton";
 
 const Header = () => {
   const [loggedInState, setLoggedInState] = useState(false);
-  const { currentUser, logout } = useAuth();
+  const { currentUser, logout, userInfo } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
 
   //check to see if user is logged in via context provider
@@ -37,22 +37,47 @@ const Header = () => {
 
   return (
     <>
-      {/* {console.log("current user", currentUser)} */}
-      <header className="pageHeader">
-        <a href="/" className="logo">
-          <h3 className="logo">Featured Edge</h3>
-          <h7 id="tagLine">Find Your Next Obsession</h7>
-        </a>
-        {/* display dropdown button based on loggedInState */}
-        {loggedInState ? (
-          <HeaderDropdown />
-        ) : (
-          <>
-            <Signup />
-            <Login />
-          </>
-        )}
-      </header>
+      <Container fluid id="pageHeader">
+        <Row className="noPaddingNoMargin">
+          <Col className="noPaddingNoMargin">
+            <a href="/" className="logo">
+              <h3 className="logo noPaddingNoMargin">Featured Edge</h3>
+              <h5 id='tagLine'>Find Your Next Obsession</h5>
+            </a>
+          </Col>
+          {/* display dropdown button based on loggedInState */}
+          {loggedInState ? (
+            <Col sm='auto' id='dropdownWrapper' className="noPaddingNoMargin">
+              <Row>
+                <HeaderDropdown />
+              </Row>
+              <Row>
+                <Link to='/vote' id='voteBtn'
+                  className={
+                    userInfo.voted === -1 ?
+                      'notVoted'
+                      : 'voted'
+                  }
+                >
+                  {userInfo.voted === -1 ?
+                    'Vote for the next feature'
+                    : 'View Featured Candidates'
+                  }
+                </Link>
+              </Row>
+            </Col>
+          ) : (
+            <>
+              <Col sm="auto" className="noPaddingNoMargin">
+                <Signup className="noPaddingNoMargin" />
+              </Col>
+              <Col sm="auto" className="noPaddingNoMargin">
+                <Login className="noPaddingNoMargin" />
+              </Col>
+            </>
+          )}
+        </Row >
+      </Container>
     </>
   );
 };
