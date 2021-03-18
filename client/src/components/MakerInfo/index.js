@@ -9,7 +9,7 @@ function MakerInfo() {
 
   let websiteText;
   
-  if (newsletterInfo !== {}) {
+  if (currentUser) {
     websiteText = newsletterInfo.website.includes("https://www.") 
       ? newsletterInfo.website.replace("https://www.","") 
       : newsletterInfo.website.replace("http://www.","");
