@@ -2,11 +2,11 @@
 
 
 #pageHeader {
-	// height: 100px;
+	max-height: 135px;
 	background-color: rgb(112, 24, 24);
 	width: 100%;
 	padding: 1em 2em .5em 2em;
-	margin:0em 0em 1.5em 0em;
+	margin:0em 0em 1.75em 0em;
 }
 
 .logo {
@@ -40,12 +40,6 @@
 	width: 80px !important;
 	height: 80px;
 }
-
-// @media (min-width: 600px) {
-//   .pageHeader {
-// 		height: 100px;
-// 	}
-// }
 
 
 #voteBtn {
@@ -84,6 +78,16 @@
 	flex-direction: row;
 }
 
-.test {
-
+@media (max-width: 576px) {
+  #pageHeader {
+		max-height: 118px;
+		padding-top: 0em;
+		margin-bottom: 3em;
+	}
+	.loginWrapper{
+		margin-top: .75em;
+	}
+	#voteSigninWrapper {
+		justify-content: center;
+	}
 }

@@ -57,7 +57,7 @@ const SignupTextBtn = () => {
 
   return (
     <>
-      <button variant="secondary" id="signupTextBtn" onClick={handleShow}>
+      <button id="signupTextBtn" onClick={handleShow}>
         SIGN UP
       </button>
       <Modal show={show} onHide={handleClose}>
