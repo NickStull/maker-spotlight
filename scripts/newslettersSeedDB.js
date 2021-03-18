@@ -45,6 +45,46 @@ const newsLettersSeed = [
       },
     ],
     date: Date()
+  },
+  {
+    issueNumber: 2,
+    firstName: 'Aaron',
+    lastName: 'Sybrant',
+    email: 'AaronSybrantKnives@gmail.com',
+    businessName: 'Aaron Sybrant Knives',
+    address: '',
+    city: '',
+    state: 'Minnesota',
+    zipCode: '',
+    phoneNumber: '',
+    website: 'https://www.facebook.com/groups/nccustom',
+    bioPicture: "https://res.cloudinary.com/makerspotlight/image/upload/v1616031288/volume%201/AS_Logo_o76ebk.jpg",
+    bioText: 'Aaron is an Army Veteran that found therapy in leather. Starting with making custom tack out of necessity for his families horses, he quickly found himself at home in the knife community. Soon after he became well known for his quality work, and unmatched enthusiasm for making sheaths that are not only beautiful to match the blade, but that are also bombproof. This love for craftsmanship and the knife community as a whole led to a natural progression to forging his own knives worthy of his leatherwork. Aarons hand-forged knives carry the same attention to detail and quality that he is known for with leather. Every blade that leaves his shop is meticulously crafted. In need of a new hand forged knife, bomb-proof sheath or custom leather work? Look no further!',
+    active: true,
+
+    photos: [
+      {
+        id: 'First picture',
+        link: 'https://res.cloudinary.com/makerspotlight/image/upload/v1616030675/volume%201/image_1_ug67li.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis.'
+      },
+      {
+        id: 'Second picture',
+        link: 'https://res.cloudinary.com/makerspotlight/image/upload/v1616030680/volume%201/image_2_xuprwn.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+      },
+      {
+        id: 'Third picture',
+        link: 'https://res.cloudinary.com/makerspotlight/image/upload/v1616030675/volume%201/image_1_ug67li.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.'
+      },
+      {
+        id: 'Fourth picture',
+        link: 'https://res.cloudinary.com/makerspotlight/image/upload/v1616030641/volume%201/image_3_iycapm.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex voluptate maxime neque fugit ab consequuntur voluptatum molestiae similique perspiciatis. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum iure consectetur temporibus eum quis eius perspiciatis voluptas.'
+      },
+    ],
+    date: Date()
   }
 ];
 
