@@ -1,7 +1,8 @@
 .close-container {
   position: relative;
   float: right;
-  margin-right: 15px;
+  margin-right: 20px;
+  margin-top: 5px;
   width: 10px;
   height: 10px;
   margin-bottom: 10px;
