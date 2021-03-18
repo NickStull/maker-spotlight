@@ -7,6 +7,11 @@ function MakerInfo() {
   
   const { newsletterInfo, currentUser } = useAuth();
   
+  let websiteText = newsletterInfo.website.includes("https://www.") 
+    ? newsletterInfo.website.replace("https://www.","") 
+    : newsletterInfo.website.replace("http://www.","");
+  
+  console.log("websiteText", websiteText);
   return (
     <Container fluid className='containerFluid mt-4 connected'>
       { currentUser ?
@@ -14,21 +19,31 @@ function MakerInfo() {
           <Card.Header style={{ fontSize: "30px", textAlign: "center"}}>{ newsletterInfo.businessName === "" ? newsletterInfo.firstName + " " + newsletterInfo.lastName : newsletterInfo.businessName }</Card.Header>
           <div className="row no-gutters">
             <Card.Body>
-              <Row style={{ alignItems: "center", marginTop: "5px" }}>
+              <Row style={{ marginTop: "5px" }}>
                 <Col sm={12} md={6}>
-                <h5><a href={ newsletterInfo.website } target="_blank">{ newsletterInfo.website }</a></h5>
-                </Col>
+                <h6><a className="infoText" href={ newsletterInfo.website } target="_blank">{ websiteText }</a></h6>
+                </Col> 
                 <Col sm={12} md={6}>
-                <h5 className="card-title-right">Email: { newsletterInfo.email }</h5>
+                <h6 className="infoText card-title-right">{ newsletterInfo.email }</h6>
                 </Col>
               </Row>
               <Row style={{ marginTop: "5px" }}>
-                <Col sm={12} md={6}>
-                <h5>Phone: { newsletterInfo.phoneNumber }</h5>
-                </Col>
-                <Col sm={12} md={6}>
-                <h5 className="card-title-right" >{ newsletterInfo.city }, { newsletterInfo.state } </h5>
-                </Col>
+                { newsletterInfo.phoneNumber === "" 
+                  ? 
+                    <Col>
+                      <h6 className="card-title infoText" >{ newsletterInfo.city }, { newsletterInfo.state } </h6>
+                    </Col> 
+                  :
+                    <>
+                      <Col sm={12} md={6}>
+                        <h6>Phone: { newsletterInfo.phoneNumber }</h6>
+                      </Col>
+                      <Col sm={12} md={6}>
+                        <h6 className="card-title-right infoText" >{ newsletterInfo.city }, { newsletterInfo.state } </h6>
+                      </Col>
+                    </>
+                }
+                
               </Row>
             </Card.Body>
           </div>

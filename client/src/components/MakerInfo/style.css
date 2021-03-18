@@ -2,9 +2,21 @@
  .card-title-right {
   text-align: right;
 }
- 
- @media only screen and (max-width: 767px) {
+
+@media only screen and (max-width: 300px) {
+  .infoText {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
   .card-title-right {
     text-align: left;
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  .infoText {
+    font-size: 18px;
   }
 }
