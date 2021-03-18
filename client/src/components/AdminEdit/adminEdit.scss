@@ -47,6 +47,13 @@
     transform: rotate(45deg);
 }
 
+.arrow:hover > #backText {
+    opacity: 0;
+}
+
+.arrow:hover:after > #backText {
+    opacity: 0;
+}
 //Set up
 // body {
 //   padding: 100px;
