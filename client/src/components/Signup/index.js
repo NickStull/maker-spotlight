@@ -74,10 +74,6 @@ const Signup = () => {
           </Col>
         </Row>
       </Container>
-      <Button variant="secondary" id="signupBtn" onClick={handleShow}>
-        <span className="vote">VOTE</span> for the Next Feature
-      </Button>
-
       <Modal show={show} onHide={handleClose}>
         <ExitButton />
         <Modal.Header>
