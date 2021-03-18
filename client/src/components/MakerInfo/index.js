@@ -6,12 +6,15 @@ import { useAuth } from '../../utils/contexts/AuthContext';
 function MakerInfo() {
   
   const { newsletterInfo, currentUser } = useAuth();
+
+  let websiteText;
   
-  let websiteText = newsletterInfo.website.includes("https://www.") 
-    ? newsletterInfo.website.replace("https://www.","") 
-    : newsletterInfo.website.replace("http://www.","");
-  
-  console.log("websiteText", websiteText);
+  if (newsletterInfo !== {}) {
+    websiteText = newsletterInfo.website.includes("https://www.") 
+      ? newsletterInfo.website.replace("https://www.","") 
+      : newsletterInfo.website.replace("http://www.","");
+  }
+
   return (
     <Container fluid className='containerFluid mt-4 connected'>
       { currentUser ?
