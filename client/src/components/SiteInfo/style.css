@@ -1,0 +1,10 @@
+/* Stunning image */
+.bioPicture {
+  max-width: 250px;
+}
+
+@media only screen and (max-width: 370px) {
+  .bioPicture {
+    max-width: 100%;
+  }
+}
