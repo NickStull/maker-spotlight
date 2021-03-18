@@ -67,14 +67,14 @@ const Login = () => {
                 required
               />
             </Form.Group>
-            <Button variant="primary" type="submit" disabled={loading}>
+            <Button variant="danger" type="submit" disabled={loading}>
               Log In
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <div>Need an account?</div>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose}>
             Sign Up
           </Button>
         </Modal.Footer>
