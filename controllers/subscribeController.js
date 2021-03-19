@@ -8,7 +8,6 @@ mailchimp.setConfig({
 
 module.exports = {
   create: async (req, res) => {
-    console.log("process: ", process.env.MAIL_CHIMP_APIKEY);
     let email = req.body.email;
     let firstName = req.body.firstName;
     let lastName = req.body.lastName;
