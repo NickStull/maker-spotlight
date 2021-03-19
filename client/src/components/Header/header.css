@@ -34,6 +34,11 @@
   padding-left: 30px;
 }
 
+#tagLine:hover {
+  color: #d0aa25;
+  text-decoration: none !important;
+}
+
 #signupBtn {
   width: 80px;
   height: 80px;
@@ -103,7 +108,7 @@
 @media (max-width: 576px) {
   #pageHeader {
     max-height: 130px;
-    margin-bottom: 2em;
+    margin-bottom: 3em;
   }
   .loginWrapper {
     margin-top: .75em;
@@ -116,7 +121,7 @@
 }
 
 .logoImg {
-  width: 250px;
+  width: 270px;
   padding-top: .625em;
 }
 /*# sourceMappingURL=header.css.map */

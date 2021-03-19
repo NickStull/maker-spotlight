@@ -63,4 +63,8 @@
 .arrow:hover:after > #backText {
   opacity: 0;
 }
+
+#arrowId {
+  margin-bottom: 1.5em;
+}
 /*# sourceMappingURL=adminEdit.css.map */

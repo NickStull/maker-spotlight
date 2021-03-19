@@ -27,10 +27,15 @@
 }
 #tagLine {
   color: #92969d;
+  // color: black;
 	font-family: 'Cinzel', serif;
 	font-weight: 400;
 	font-size: 1em;
 	padding-left: 30px;
+	&:hover {
+		color: #d0aa25;
+		text-decoration: none !important;
+	}
 }
 #signupBtn {
 	width: 80px;
@@ -82,7 +87,7 @@
   #pageHeader {
 		max-height: 130px;
 		// padding-top: 1em;
-		margin-bottom: 2em;
+		margin-bottom: 3em;
 	}
 	.loginWrapper{
 		margin-top: .75em;
@@ -93,6 +98,6 @@
 }
 
 .logoImg{
-	width: 250px;
+	width: 270px;
 	padding-top: .625em;
 }
