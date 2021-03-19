@@ -117,9 +117,6 @@ const Voting = () => {
           {userInfo.voted === -1 ? (
             <>
               <h3 className="variableText">Vote for the Next Featured Blademaker</h3>
-              <p className="variableText">
-                Select the craftsmen you would like to see profiled next.
-              </p>
             </>
           ) : (
             <h5 className="variableText">
